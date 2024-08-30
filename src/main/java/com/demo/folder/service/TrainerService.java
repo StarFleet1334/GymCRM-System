@@ -46,6 +46,10 @@ public class TrainerService {
   }
 
   public void createTrainer(Trainer trainer) {
+    if (trainer.getFirstName() == null || trainer.getLastName() == null) {
+      LOGGER.warn("Cannot create trainer with null firstName or lastName");
+      throw new IllegalArgumentException("First name and last name must not be null");
+    }
     List<Trainer> existingTrainers = trainerDAO.getAll().stream()
         .filter(t -> t.getFirstName().equalsIgnoreCase(trainer.getFirstName())
             && t.getLastName().equalsIgnoreCase(trainer.getLastName()))

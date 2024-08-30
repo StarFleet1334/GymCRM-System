@@ -24,7 +24,7 @@ public class Training {
     this.trainingName = "Unnamed Training";
     this.trainingType = TrainingType.NULL;
     this.trainingDate = null;
-    this.trainingDuration = 0;
+    this.trainingDuration = 60;
   }
 
   public Long getTraineeId() {

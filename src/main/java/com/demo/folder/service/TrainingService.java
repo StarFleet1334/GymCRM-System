@@ -49,10 +49,12 @@ public class TrainingService {
       return;
     }
     Date currentDate = new Date();
-    if (training.getTrainingDate().before(currentDate)) {
-      LOGGER.error("Training date {} is in the past. Training creation failed.",
-          training.getTrainingDate());
-      return;
+    if (training.getTrainingDate() == null) {
+      if (training.getTrainingDate().before(currentDate)) {
+        LOGGER.error("Training date {} is in the past. Training creation failed.",
+            training.getTrainingDate());
+        return;
+      }
     }
     if (training.getTrainingDuration() < 0) {
       LOGGER.error("Training duration cannot be negative. Training creation failed.");
@@ -60,17 +62,6 @@ public class TrainingService {
     }
     Map<Long, Object> trainings = storageBean.getByNameSpace(TRAININGS_NAMESPACE);
     Map<Long, Object> trainees = storageBean.getByNameSpace(TRAINEES_NAMESPACE);
-    if (!trainees.containsKey(training.getTraineeId())) {
-      LOGGER.error("Trainee with ID {} does not exist. Training creation failed.",
-          training.getTraineeId());
-      return;
-    }
-    Map<Long, Object> trainers = storageBean.getByNameSpace(TRAINERS_NAMESPACE);
-    if (!trainers.containsKey(training.getTrainerId())) {
-      LOGGER.error("Trainer with ID {} does not exist. Training creation failed.",
-          training.getTrainerId());
-      return;
-    }
     if (isTrainerBusy(training)) {
       LOGGER.error(
           "Trainer with ID {} is already busy during the specified training period. Training creation failed.",

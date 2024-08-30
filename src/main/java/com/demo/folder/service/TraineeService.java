@@ -33,6 +33,10 @@ public class TraineeService {
   }
 
   public void createTrainee(Trainee trainee) {
+    if (trainee.getFirstName() == null || trainee.getLastName() == null) {
+      LOGGER.warn("Cannot create trainee with null firstName or lastName");
+      throw new IllegalArgumentException("First name and last name must not be null");
+    }
     LOGGER.info("New Trainee got created");
     List<Trainee> existingTrainees = traineeDAO.getAll().stream()
         .filter(t -> t.getFirstName().equalsIgnoreCase(trainee.getFirstName())

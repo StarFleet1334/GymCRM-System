@@ -48,6 +48,7 @@ public class TestFirst {
     assertEquals("John@#$.Doe 123",trainee.getUsername(),"UserName should be john.doe123");
   }
 
+  // this should fail
   @Test
   void nullFirstAndLastNameCheck() {
     Trainee trainee = new Trainee();
@@ -58,6 +59,34 @@ public class TestFirst {
     assertNull(trainee.getLastName(), "LastName should be null");
     assertEquals("Unknown.Unknown",trainee.getUsername(),"UserName should be Unknown.Unknown");
   }
+
+  @Test
+  void updateTrainerInformation() {
+    Trainee trainee = new Trainee();
+    trainee.setFirstName("Jane");
+    trainee.setLastName("Smith");
+
+    // re-updating firstName and lastName
+    trainee.setFirstName("Janet");
+    trainee.setLastName("Doe");
+    assertEquals("Janet",trainee.getFirstName(),"UserName should be Janet");
+    assertEquals("Doe",trainee.getLastName(),"UserName should be Doe");
+    assertEquals("Janet.Doe",trainee.getUsername(),"UserName should be Janet.Doe");
+  }
+
+  @Test
+  void deletingTrainee() {
+    Trainee trainee = new Trainee();
+    trainee.setFirstName("AA");
+    trainee.setLastName("BB");
+    systemFacade.getTraineeService().createTrainee(trainee);
+    int sizeBefore = systemFacade.getTraineeService().getAllTrainees().size();
+    systemFacade.getTraineeService().deleteTrainee(trainee.getUserId());
+    assertNull(systemFacade.getTraineeService().getTrainee(trainee.getUserId()));
+    assertEquals(sizeBefore-1,systemFacade.getTraineeService().getAllTrainees().size());
+  }
+
+
 
 
 }
