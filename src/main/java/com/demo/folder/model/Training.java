@@ -72,7 +72,11 @@ public class Training {
   }
 
   public void setTrainingName(String trainingName) {
-    this.trainingName = trainingName;
+    if (trainingName != null && !trainingName.trim().isEmpty()) {
+      this.trainingName = trainingName;
+    } else {
+      LOGGER.warn("Training name cannot be null or empty. Keeping default name.");
+    }
   }
 
   public int getTrainingDuration() {
@@ -80,7 +84,12 @@ public class Training {
   }
 
   public void setTrainingDuration(int trainingDuration) {
-    this.trainingDuration = trainingDuration;
+    if (trainingDuration <= 0) {
+      LOGGER.warn("Invalid training duration: {}. Setting to default duration of 60 minutes.", trainingDuration);
+      this.trainingDuration = 60;
+    } else {
+      this.trainingDuration = trainingDuration;
+    }
   }
 
   public void describe() {

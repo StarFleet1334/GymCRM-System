@@ -54,9 +54,8 @@ public class TraineeService {
         }
       } while (duplicate.isPresent());
     }
-    trainee.setPassword(Generator.generatePassword());
-    trainee.setUsername(Generator.generateUserName(trainee.getFirstName(), trainee.getLastName()));
     traineeDAO.create(trainee);
+
   }
 
   public TraineeDAO getTraineeDAO() {

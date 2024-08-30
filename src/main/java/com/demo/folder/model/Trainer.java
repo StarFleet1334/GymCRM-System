@@ -16,10 +16,12 @@ public class Trainer extends User {
   private List<TrainingType> trainingType;
 
   public Trainer() {
+    super();
     this.userId = trainerIdCounter++;
     this.trainingType = new ArrayList<>();
     this.training = new ArrayList<>();
   }
+
 
   public static long getTrainerIdCounter() {
     return trainerIdCounter;

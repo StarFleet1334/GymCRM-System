@@ -65,8 +65,6 @@ public class TrainerService {
         }
       } while (duplicate.isPresent());
     }
-    trainer.setPassword(Generator.generatePassword());
-    trainer.setUsername(Generator.generateUserName(trainer.getFirstName(), trainer.getLastName()));
     trainerDAO.create(trainer);
   }
 

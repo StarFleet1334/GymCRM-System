@@ -1,5 +1,6 @@
 package com.demo.folder.model;
 
+import com.demo.folder.utils.Generator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -7,11 +8,15 @@ public class User {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(User.class);
   protected long userId;
-  private String firstName;
-  private String lastName;
-  private String username;
+  protected String firstName;
+  protected String lastName;
+  protected String username;
   private String password;
   private boolean isActive;
+
+  public User() {
+    this.password = Generator.generatePassword();
+  }
 
   public Long getUserId() {
     return userId;
@@ -22,7 +27,11 @@ public class User {
   }
 
   public void setFirstName(String firstName) {
+    if (firstName == null || firstName == "") {
+      LOGGER.error("firstName is null or empty");
+    }
     this.firstName = firstName;
+    updateUsername();
   }
 
   public String getLastName() {
@@ -30,7 +39,11 @@ public class User {
   }
 
   public void setLastName(String lastName) {
+    if (lastName == null || lastName == "") {
+      LOGGER.error("lastName is null or empty");
+    }
     this.lastName = lastName;
+    updateUsername();
   }
 
   public String getUsername() {
@@ -67,5 +80,11 @@ public class User {
         ", isActive=" + isActive +
         '}';
     LOGGER.info(msg);
+  }
+
+  private void updateUsername() {
+    if (firstName != null && lastName != null && userId > 0) {
+      this.username = firstName + "." + lastName;
+    }
   }
 }

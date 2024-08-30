@@ -17,6 +17,7 @@ public class Trainee extends User {
   private List<Training> training;
 
   public Trainee() {
+    super();
     this.userId = traineeIdCounter++;
     this.training = new ArrayList<>();
     this.address = "Unknown";
@@ -76,6 +77,4 @@ public class Trainee extends User {
     System.out.println(msg);
     LOGGER.info(msg);
   }
-
-
 }
