@@ -2,8 +2,8 @@ package com.demo.folder.service;
 
 import com.demo.folder.dao.TraineeDAO;
 import com.demo.folder.model.Trainee;
-import com.demo.folder.model.Training;
 import com.demo.folder.storage.StorageBean;
+import com.demo.folder.utils.Generator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +12,8 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
+
+import static com.demo.folder.utils.StorageUtil.TRAINEES_NAMESPACE;
 
 @Service
 public class TraineeService {
@@ -51,7 +53,8 @@ public class TraineeService {
                 }
             } while (duplicate.isPresent());
         }
-
+        trainee.setPassword(Generator.generatePassword());
+        trainee.setUsername(Generator.generateUserName(trainee.getFirstName(),trainee.getLastName()));
         traineeDAO.create(trainee);
     }
 
@@ -96,7 +99,7 @@ public class TraineeService {
         existingTrainee.setActive(trainee.isActive());
         existingTrainee.setDateOfBirth(trainee.getDateOfBirth());
         existingTrainee.setAddress(trainee.getAddress());
-        storageBean.getByNameSpace("trainees").put(userId, existingTrainee);
+        storageBean.getByNameSpace(TRAINEES_NAMESPACE).put(userId, existingTrainee);
         LOGGER.info("Trainee with userId {} successfully updated: {}", userId, existingTrainee);
     }
 }

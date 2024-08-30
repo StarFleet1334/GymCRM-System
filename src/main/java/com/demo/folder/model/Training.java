@@ -26,14 +26,6 @@ public class Training {
         this.trainingDuration = 0;
     }
 
-    public static long getTrainingIdCounter() {
-        return trainingIdCounter;
-    }
-
-    public static void setTrainingIdCounter(Long trainingIdCounter) {
-        Training.trainingIdCounter = trainingIdCounter;
-    }
-
     public Long getTraineeId() {
         return traineeId;
     }

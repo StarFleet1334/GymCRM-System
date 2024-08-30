@@ -7,12 +7,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import static com.demo.folder.utils.StorageUtil.TRAINERS_NAMESPACE;
+
 @Component
 public class TrainerProcessor {
-
     private static final Logger LOGGER = LoggerFactory.getLogger(TrainerProcessor.class);
-    private static final String TRAINERS_NAMESPACE = "trainers";
-
     private final StorageBean storageBean;
 
     @Autowired

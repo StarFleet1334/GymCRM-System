@@ -9,11 +9,12 @@ import org.springframework.stereotype.Component;
 
 import java.text.SimpleDateFormat;
 
+import static com.demo.folder.utils.StorageUtil.TRAINEES_NAMESPACE;
+
 @Component
 public class TraineeProcessor {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TraineeProcessor.class);
-    private static final String TRAINEES_NAMESPACE = "trainees";
 
     private final StorageBean storageBean;
 

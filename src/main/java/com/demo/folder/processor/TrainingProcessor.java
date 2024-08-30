@@ -10,12 +10,11 @@ import org.springframework.stereotype.Component;
 
 import java.text.SimpleDateFormat;
 
+import static com.demo.folder.utils.StorageUtil.TRAININGS_NAMESPACE;
+
 @Component
 public class TrainingProcessor {
-
     private static final Logger LOGGER = LoggerFactory.getLogger(TrainingProcessor.class);
-    private static final String TRAININGS_NAMESPACE = "trainings";
-
     private final StorageBean storageBean;
 
     @Autowired
