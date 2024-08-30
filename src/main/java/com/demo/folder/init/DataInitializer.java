@@ -18,47 +18,47 @@ import java.util.List;
 @PropertySource("classpath:application.properties")
 public class DataInitializer {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(DataInitializer.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger(DataInitializer.class);
 
-    @Value("${data.trainee.file.path}")
-    private String traineeFilePath;
+  @Value("${data.trainee.file.path}")
+  private String traineeFilePath;
 
-    @Value("${data.trainer.file.path}")
-    private String trainerFilePath;
+  @Value("${data.trainer.file.path}")
+  private String trainerFilePath;
 
-    @Value("${data.training.file.path}")
-    private String trainingFilePath;
+  @Value("${data.training.file.path}")
+  private String trainingFilePath;
 
-    private final FileReaderService fileReaderService;
-    private final TraineeProcessor traineeProcessor;
-    private final TrainerProcessor trainerProcessor;
-    private final TrainingProcessor trainingProcessor;
+  private final FileReaderService fileReaderService;
+  private final TraineeProcessor traineeProcessor;
+  private final TrainerProcessor trainerProcessor;
+  private final TrainingProcessor trainingProcessor;
 
-    @Autowired
-    public DataInitializer(FileReaderService fileReaderService,
-                           TraineeProcessor traineeProcessor,
-                           TrainerProcessor trainerProcessor,
-                           TrainingProcessor trainingProcessor) {
-        this.fileReaderService = fileReaderService;
-        this.traineeProcessor = traineeProcessor;
-        this.trainerProcessor = trainerProcessor;
-        this.trainingProcessor = trainingProcessor;
+  @Autowired
+  public DataInitializer(FileReaderService fileReaderService,
+      TraineeProcessor traineeProcessor,
+      TrainerProcessor trainerProcessor,
+      TrainingProcessor trainingProcessor) {
+    this.fileReaderService = fileReaderService;
+    this.traineeProcessor = traineeProcessor;
+    this.trainerProcessor = trainerProcessor;
+    this.trainingProcessor = trainingProcessor;
+  }
+
+  @PostConstruct
+  public void initData() {
+    processFile(traineeFilePath, traineeProcessor::process);
+    processFile(trainerFilePath, trainerProcessor::process);
+    processFile(trainingFilePath, trainingProcessor::process);
+  }
+
+  private void processFile(String filePath, java.util.function.Consumer<String> processor) {
+    List<String> lines = fileReaderService.readLines(filePath);
+    if (lines.isEmpty()) {
+      LOGGER.warn("No data found in file: {}", filePath);
+      return;
     }
 
-    @PostConstruct
-    public void initData() {
-        processFile(traineeFilePath, traineeProcessor::process);
-        processFile(trainerFilePath, trainerProcessor::process);
-        processFile(trainingFilePath, trainingProcessor::process);
-    }
-
-    private void processFile(String filePath, java.util.function.Consumer<String> processor) {
-        List<String> lines = fileReaderService.readLines(filePath);
-        if (lines.isEmpty()) {
-            LOGGER.warn("No data found in file: {}", filePath);
-            return;
-        }
-
-        lines.stream().skip(1).forEach(processor);
-    }
+    lines.stream().skip(1).forEach(processor);
+  }
 }

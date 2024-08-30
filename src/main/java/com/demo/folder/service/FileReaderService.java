@@ -11,14 +11,14 @@ import java.util.List;
 @Service
 public class FileReaderService {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(FileReaderService.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger(FileReaderService.class);
 
-    public List<String> readLines(String filePath) {
-        try {
-            return Files.readAllLines(Paths.get(filePath));
-        } catch (Exception e) {
-            LOGGER.error("Error reading file: {}", filePath, e);
-            return List.of();
-        }
+  public List<String> readLines(String filePath) {
+    try {
+      return Files.readAllLines(Paths.get(filePath));
+    } catch (Exception e) {
+      LOGGER.error("Error reading file: {}", filePath, e);
+      return List.of();
     }
+  }
 }

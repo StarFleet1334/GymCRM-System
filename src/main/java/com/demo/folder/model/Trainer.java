@@ -8,70 +8,71 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Trainer extends User {
-    private static final Logger LOGGER = LoggerFactory.getLogger(Trainer.class);
-    private static long trainerIdCounter = 1;
-    private String specialization;
-    private List<Training> training;
-    private List<TrainingType> trainingType;
 
-    public Trainer() {
-        this.userId = trainerIdCounter++;
-        this.trainingType = new ArrayList<>();
-        this.training = new ArrayList<>();
-    }
+  private static final Logger LOGGER = LoggerFactory.getLogger(Trainer.class);
+  private static long trainerIdCounter = 1;
+  private String specialization;
+  private List<Training> training;
+  private List<TrainingType> trainingType;
 
-    public static long getTrainerIdCounter() {
-        return trainerIdCounter;
-    }
+  public Trainer() {
+    this.userId = trainerIdCounter++;
+    this.trainingType = new ArrayList<>();
+    this.training = new ArrayList<>();
+  }
 
-    public static void setTrainerIdCounter(long trainerIdCounter) {
-        Trainer.trainerIdCounter = trainerIdCounter;
-    }
+  public static long getTrainerIdCounter() {
+    return trainerIdCounter;
+  }
 
-    public String getSpecialization() {
-        return specialization;
-    }
+  public static void setTrainerIdCounter(long trainerIdCounter) {
+    Trainer.trainerIdCounter = trainerIdCounter;
+  }
 
-    public void setSpecialization(String specialization) {
-        this.specialization = specialization;
-    }
+  public String getSpecialization() {
+    return specialization;
+  }
 
-    public List<Training> getTraining() {
-        return training;
-    }
+  public void setSpecialization(String specialization) {
+    this.specialization = specialization;
+  }
 
-    public void setTraining(List<Training> training) {
-        this.training = training;
-    }
+  public List<Training> getTraining() {
+    return training;
+  }
 
-    public List<TrainingType> getTrainingType() {
-        return trainingType;
-    }
+  public void setTraining(List<Training> training) {
+    this.training = training;
+  }
 
-    public void setTrainingType(List<TrainingType> trainingType) {
-        this.trainingType = trainingType;
-    }
+  public List<TrainingType> getTrainingType() {
+    return trainingType;
+  }
 
-    public void describe() {
-        String trainingInfo = training.isEmpty() ? "No Trainings" : training.stream()
-                .map(Training::getTrainingName)
-                .collect(Collectors.joining(", "));
+  public void setTrainingType(List<TrainingType> trainingType) {
+    this.trainingType = trainingType;
+  }
 
-        String trainingTypeInfo = trainingType.isEmpty() ? "No Training Types" : trainingType.stream()
-                .map(TrainingType::getTrainingTypeName)
-                .collect(Collectors.joining(", "));
+  public void describe() {
+    String trainingInfo = training.isEmpty() ? "No Trainings" : training.stream()
+        .map(Training::getTrainingName)
+        .collect(Collectors.joining(", "));
 
-        String msg = "Trainer{" +
-                "userId=" + getUserId() +
-                ", firstName='" + getFirstName() + '\'' +
-                ", lastName='" + getLastName() + '\'' +
-                ", username='" + getUsername() + '\'' +
-                ", password='" + getPassword() + '\'' +
-                ", isActive=" + isActive() +
-                ", specialization='" + specialization + '\'' +
-                ", trainings='" + trainingInfo + '\'' +
-                ", trainingTypes='" + trainingTypeInfo + '\'' +
-                '}';
-        LOGGER.info(msg);
-    }
+    String trainingTypeInfo = trainingType.isEmpty() ? "No Training Types" : trainingType.stream()
+        .map(TrainingType::getTrainingTypeName)
+        .collect(Collectors.joining(", "));
+
+    String msg = "Trainer{" +
+        "userId=" + getUserId() +
+        ", firstName='" + getFirstName() + '\'' +
+        ", lastName='" + getLastName() + '\'' +
+        ", username='" + getUsername() + '\'' +
+        ", password='" + getPassword() + '\'' +
+        ", isActive=" + isActive() +
+        ", specialization='" + specialization + '\'' +
+        ", trainings='" + trainingInfo + '\'' +
+        ", trainingTypes='" + trainingTypeInfo + '\'' +
+        '}';
+    LOGGER.info(msg);
+  }
 }

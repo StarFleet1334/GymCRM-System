@@ -14,42 +14,43 @@ import java.util.stream.Collectors;
 
 @Repository
 public class TraineeDAOImpl implements TraineeDAO {
-    private StorageBean storageBean;
-    private static final Logger LOGGER = LoggerFactory.getLogger(TraineeDAOImpl.class);
 
-    @Autowired
-    public TraineeDAOImpl(StorageBean storageBean) {
-        this.storageBean = storageBean;
-    }
+  private StorageBean storageBean;
+  private static final Logger LOGGER = LoggerFactory.getLogger(TraineeDAOImpl.class);
 
-    @Override
-    public void create(Trainee entity) {
-        Map<Long, Object> trainees = storageBean.getByNameSpace("trainees");
-        trainees.put(entity.getUserId(), entity);
-        LOGGER.info("Trainee got created: {}", entity.getUsername());
-    }
+  @Autowired
+  public TraineeDAOImpl(StorageBean storageBean) {
+    this.storageBean = storageBean;
+  }
 
-    @Override
-    public Trainee read(Long id) {
-        Map<Long, Object> trainees = storageBean.getByNameSpace("trainees");
-        return (Trainee) trainees.get(id);
-    }
+  @Override
+  public void create(Trainee entity) {
+    Map<Long, Object> trainees = storageBean.getByNameSpace("trainees");
+    trainees.put(entity.getUserId(), entity);
+    LOGGER.info("Trainee got created: {}", entity.getUsername());
+  }
 
-    @Override
-    public void update(Trainee entity) {
-        storageBean.getByNameSpace("trainees").put(entity.getUserId(), entity);
-        LOGGER.info("Trainee got updated: {}", entity.getUsername());
-    }
+  @Override
+  public Trainee read(Long id) {
+    Map<Long, Object> trainees = storageBean.getByNameSpace("trainees");
+    return (Trainee) trainees.get(id);
+  }
 
-    @Override
-    public void delete(Long id) {
-        storageBean.getByNameSpace("trainees").remove(id);
-        LOGGER.info("Trainee got deleted with id: {}", id);
-    }
+  @Override
+  public void update(Trainee entity) {
+    storageBean.getByNameSpace("trainees").put(entity.getUserId(), entity);
+    LOGGER.info("Trainee got updated: {}", entity.getUsername());
+  }
 
-    @Override
-    public List<Trainee> getAll() {
-        Map<Long, Object> trainees = storageBean.getByNameSpace("trainees");
-        return trainees.values().stream().map(u -> (Trainee) u).collect(Collectors.toList());
-    }
+  @Override
+  public void delete(Long id) {
+    storageBean.getByNameSpace("trainees").remove(id);
+    LOGGER.info("Trainee got deleted with id: {}", id);
+  }
+
+  @Override
+  public List<Trainee> getAll() {
+    Map<Long, Object> trainees = storageBean.getByNameSpace("trainees");
+    return trainees.values().stream().map(u -> (Trainee) u).collect(Collectors.toList());
+  }
 }

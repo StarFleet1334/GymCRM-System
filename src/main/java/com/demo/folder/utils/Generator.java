@@ -6,21 +6,21 @@ import java.util.stream.IntStream;
 
 public class Generator {
 
-    private static final String ALLOWED_CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-_=+[]{}|;:',.<>?/~`";
-    private static final int PASSWORD_LENGTH = 10;
-    private static final SecureRandom RANDOM = new SecureRandom();
+  private static final String ALLOWED_CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-_=+[]{}|;:',.<>?/~`";
+  private static final int PASSWORD_LENGTH = 10;
+  private static final SecureRandom RANDOM = new SecureRandom();
 
-    public static String generatePassword() {
-        return IntStream.range(0, PASSWORD_LENGTH)
-                .map(i -> RANDOM.nextInt(ALLOWED_CHARACTERS.length()))
-                .mapToObj(ALLOWED_CHARACTERS::charAt)
-                .map(Object::toString)
-                .collect(Collectors.joining());
-    }
+  public static String generatePassword() {
+    return IntStream.range(0, PASSWORD_LENGTH)
+        .map(i -> RANDOM.nextInt(ALLOWED_CHARACTERS.length()))
+        .mapToObj(ALLOWED_CHARACTERS::charAt)
+        .map(Object::toString)
+        .collect(Collectors.joining());
+  }
 
-    public static String generateUserName(String firstName,String lastName) {
-        return firstName + "." + lastName;
-    }
+  public static String generateUserName(String firstName, String lastName) {
+    return firstName + "." + lastName;
+  }
 
 
 }

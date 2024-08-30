@@ -4,67 +4,68 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class User {
-    private static final Logger LOGGER = LoggerFactory.getLogger(User.class);
-    protected long userId;
-    private String firstName;
-    private String lastName;
-    private String username;
-    private String password;
-    private boolean isActive;
 
-    public Long getUserId() {
-        return userId;
-    }
+  private static final Logger LOGGER = LoggerFactory.getLogger(User.class);
+  protected long userId;
+  private String firstName;
+  private String lastName;
+  private String username;
+  private String password;
+  private boolean isActive;
 
-    public String getFirstName() {
-        return firstName;
-    }
+  public Long getUserId() {
+    return userId;
+  }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
+  public String getFirstName() {
+    return firstName;
+  }
 
-    public String getLastName() {
-        return lastName;
-    }
+  public void setFirstName(String firstName) {
+    this.firstName = firstName;
+  }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
+  public String getLastName() {
+    return lastName;
+  }
 
-    public String getUsername() {
-        return username;
-    }
+  public void setLastName(String lastName) {
+    this.lastName = lastName;
+  }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
+  public String getUsername() {
+    return username;
+  }
 
-    public String getPassword() {
-        return password;
-    }
+  public void setUsername(String username) {
+    this.username = username;
+  }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+  public String getPassword() {
+    return password;
+  }
 
-    public boolean isActive() {
-        return isActive;
-    }
+  public void setPassword(String password) {
+    this.password = password;
+  }
 
-    public void setActive(boolean isActive) {
-        this.isActive = isActive;
-    }
+  public boolean isActive() {
+    return isActive;
+  }
 
-    public void describe() {
-        String msg = "User{" +
-                "userId=" + userId +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", isActive=" + isActive +
-                '}';
-        LOGGER.info(msg);
-    }
+  public void setActive(boolean isActive) {
+    this.isActive = isActive;
+  }
+
+  public void describe() {
+    String msg = "User{" +
+        "userId=" + userId +
+        ", firstName='" + firstName + '\'' +
+        ", lastName='" + lastName + '\'' +
+        ", username='" + username + '\'' +
+        ", password='" + password + '\'' +
+        ", isActive=" + isActive +
+        '}';
+    LOGGER.info(msg);
+  }
 }
