@@ -1,0 +1,6 @@
+userId,firstName,lastName,userName,password,specialization,isActive
+1,David,Wilson,dwilson,trainhard,Software Engineering,true
+2,Sarah,Connor,sconnor,techguru,Data Science,true
+3,Chris,Evans,cevans,security2024,Cyber Security,true
+4,Mary,James,mjames,password123,Project Management,false
+5,James,Smith,jsmith,train123,Cloud Computing,true
