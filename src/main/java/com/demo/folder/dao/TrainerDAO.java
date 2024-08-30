@@ -1,10 +1,12 @@
 package com.demo.folder.dao;
 
+import com.demo.folder.model.Trainer;
+
 import java.util.List;
 
-public interface TrainerDAO<T> {
-    void create(T entity);
-    T read(Long id);
-    void update(T entity);
-    List<T> getAll();
+public interface TrainerDAO {
+    void create(Trainer entity);
+    Trainer read(Long id);
+    void update(Trainer entity);
+    List<Trainer> getAll();
 }

@@ -13,7 +13,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Repository
-public class TrainerDAOImpl implements TrainerDAO<Trainer> {
+public class TrainerDAOImpl implements TrainerDAO {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TrainerDAOImpl.class);
     private StorageBean storageBean;

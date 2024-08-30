@@ -1,11 +1,13 @@
 package com.demo.folder.dao;
 
+import com.demo.folder.model.Trainee;
+
 import java.util.List;
 
-public interface TraineeDAO<T> {
-    void create(T entity);
-    T read(Long id);
-    void update(T entity);
+public interface TraineeDAO {
+    void create(Trainee entity);
+    Trainee read(Long id);
+    void update(Trainee entity);
     void delete(Long id);
-    List<T> getAll();
+    List<Trainee> getAll();
 }
