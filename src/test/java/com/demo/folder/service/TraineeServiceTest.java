@@ -35,14 +35,16 @@ class TraineeServiceTest {
     int afterSize = systemFacade.getTraineeService().getAllTrainees().size();
 
     assertEquals(beforeSize - 1, afterSize, "Trainee count should decrease by 1 after deletion");
-    assertNull(systemFacade.getTraineeService().getTrainee(3L), "Deleted trainee should not be retrievable");
+    assertNull(systemFacade.getTraineeService().getTrainee(3L),
+        "Deleted trainee should not be retrievable");
   }
 
   @Test
   public void testGetAllTrainees_passwordsAreUnique() {
     List<Trainee> traineeList = systemFacade.getTraineeService().getAllTrainees();
     Set<String> passwords = new HashSet<>();
-    boolean allUnique = traineeList.stream().allMatch(trainee -> passwords.add(trainee.getPassword()));
+    boolean allUnique = traineeList.stream()
+        .allMatch(trainee -> passwords.add(trainee.getPassword()));
     assertEquals(true, allUnique, "Passwords should be unique across trainees");
   }
 }

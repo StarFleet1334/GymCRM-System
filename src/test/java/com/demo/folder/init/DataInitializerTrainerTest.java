@@ -15,6 +15,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 class DataInitializerTrainerTest {
+
   @Autowired
   private SystemFacade systemFacade;
   private static final String TRAINER_PATH = "src/main/resources/data/trainer.csv";
@@ -24,7 +25,8 @@ class DataInitializerTrainerTest {
   public void initialDataTrainerCheck() throws IOException {
     List<Trainer> trainers = systemFacade.getTrainerService().getAllTrainers();
 
-    try (CSVReader csvReader = new CSVReader(new FileReader("src/main/resources/data/trainer.csv"))) {
+    try (CSVReader csvReader = new CSVReader(
+        new FileReader("src/main/resources/data/trainer.csv"))) {
       String[] nextRecord;
       int index = 0;
 
@@ -39,12 +41,14 @@ class DataInitializerTrainerTest {
         String specialization = nextRecord[5];
         boolean isActive = Boolean.parseBoolean(nextRecord[6]);
 
-        assertTrainer(trainers.get(index), userId, firstName, lastName, username, password, specialization, isActive);
+        assertTrainer(trainers.get(index), userId, firstName, lastName, username, password,
+            specialization, isActive);
         index++;
       }
       assertEquals(index, trainers.size(), "Number of trainers should match the CSV records.");
     }
   }
+
   private void assertTrainer(Trainer trainer, Long userId, String firstName, String lastName,
       String username, String password, String specialization, boolean isActive) {
     assertEquals(userId, trainer.getUserId(), "User ID does not match.");

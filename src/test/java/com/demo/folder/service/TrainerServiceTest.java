@@ -29,7 +29,8 @@ public class TrainerServiceTest {
   public void testGetAllTrainers_passwordsAreUnique() {
     List<Trainer> trainerList = systemFacade.getTrainerService().getAllTrainers();
     Set<String> passwords = new HashSet<>();
-    boolean allUnique = trainerList.stream().allMatch(trainer -> passwords.add(trainer.getPassword()));
+    boolean allUnique = trainerList.stream()
+        .allMatch(trainer -> passwords.add(trainer.getPassword()));
     assertTrue(allUnique, "Passwords should be unique across trainers");
   }
 }

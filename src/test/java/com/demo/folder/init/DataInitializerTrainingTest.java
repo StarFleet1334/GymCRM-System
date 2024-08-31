@@ -38,7 +38,8 @@ class DataInitializerTrainingTest {
         String trainingType = nextRecord[4];
         String trainingDate = nextRecord[5];
         int trainingDuration = Integer.parseInt(nextRecord[6]);
-        assertTraining(trainings.get(index), trainingId, traineeId, trainerId, trainingName, trainingType, trainingDate, trainingDuration);
+        assertTraining(trainings.get(index), trainingId, traineeId, trainerId, trainingName,
+            trainingType, trainingDate, trainingDuration);
         index++;
       }
       assertEquals(index, trainings.size(), "Number of trainings should match the CSV records.");
@@ -48,13 +49,17 @@ class DataInitializerTrainingTest {
   }
 
   private void assertTraining(Training training, Long trainingId, Long traineeId, Long trainerId,
-      String trainingName, String trainingType, String trainingDate, int trainingDuration) throws ParseException {
+      String trainingName, String trainingType, String trainingDate, int trainingDuration)
+      throws ParseException {
     assertEquals(trainingId, training.getTrainingId(), "Training ID does not match.");
     assertEquals(traineeId, training.getTraineeId(), "Trainee ID does not match.");
     assertEquals(trainerId, training.getTrainerId(), "Trainer ID does not match.");
     assertEquals(trainingName, training.getTrainingName(), "Training name does not match.");
-    assertEquals(trainingType, training.getTrainingType().toString(), "Training type does not match."); // Assuming getTrainingType() returns an enum
-    assertEquals(dateFormat.parse(trainingDate), training.getTrainingDate(), "Training date does not match.");
-    assertEquals(trainingDuration, training.getTrainingDuration(), "Training duration does not match.");
+    assertEquals(trainingType, training.getTrainingType().toString(),
+        "Training type does not match."); // Assuming getTrainingType() returns an enum
+    assertEquals(dateFormat.parse(trainingDate), training.getTrainingDate(),
+        "Training date does not match.");
+    assertEquals(trainingDuration, training.getTrainingDuration(),
+        "Training duration does not match.");
   }
 }

@@ -39,7 +39,8 @@ class DataInitializerTraineeTest {
         String dateOfBirthStr = nextRecord[5];
         String address = nextRecord[6];
         boolean isActive = Boolean.parseBoolean(nextRecord[7]);
-        assertTrainee(trainees.get(index), userId, firstName, lastName, username, password, dateOfBirthStr, address, isActive);
+        assertTrainee(trainees.get(index), userId, firstName, lastName, username, password,
+            dateOfBirthStr, address, isActive);
         index++;
       }
       assertEquals(index, trainees.size(), "Number of trainees should match the CSV records.");
@@ -49,13 +50,15 @@ class DataInitializerTraineeTest {
   }
 
   private void assertTrainee(Trainee trainee, Long userId, String firstName, String lastName,
-      String username, String password, String dateOfBirth, String address, boolean isActive) throws ParseException {
+      String username, String password, String dateOfBirth, String address, boolean isActive)
+      throws ParseException {
     assertEquals(userId, trainee.getUserId(), "User ID does not match.");
     assertEquals(firstName, trainee.getFirstName(), "First name does not match.");
     assertEquals(lastName, trainee.getLastName(), "Last name does not match.");
     assertEquals(username, trainee.getUsername(), "Username does not match.");
     assertEquals(password, trainee.getPassword(), "Password does not match.");
-    assertEquals(dateFormat.parse(dateOfBirth), trainee.getDateOfBirth(), "Date of birth does not match.");
+    assertEquals(dateFormat.parse(dateOfBirth), trainee.getDateOfBirth(),
+        "Date of birth does not match.");
     assertEquals(address, trainee.getAddress(), "Address does not match.");
     assertEquals(isActive, trainee.isActive(), "Active status does not match.");
   }
