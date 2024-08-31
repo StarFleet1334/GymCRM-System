@@ -1,6 +1,7 @@
 package com.demo.folder;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.demo.folder.model.Trainee;
@@ -65,6 +66,15 @@ public class TestThree {
       }
     }
     assertTrue(check);
+  }
+
+  @Test
+  public void deleteTraineeCheck() {
+    int beforeSize = systemFacade.getTraineeService().getAllTrainees().size();
+    systemFacade.getTraineeService().deleteTrainee(3L);
+    int afterSize = systemFacade.getTraineeService().getAllTrainees().size();
+    assertEquals(beforeSize - 1, afterSize);
+    assertNull(systemFacade.getTraineeService().getTrainee(3L));
   }
 
 }
