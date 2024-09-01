@@ -4,6 +4,7 @@ import com.demo.folder.dao.TrainerDAO;
 import com.demo.folder.model.Trainer;
 import com.demo.folder.storage.StorageBean;
 import com.demo.folder.utils.Generator;
+import java.util.Objects;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -82,15 +83,29 @@ public class TrainerService {
       return;
     }
     Trainer existingTrainer = existingTraineeOptional.get();
-    existingTrainer.setFirstName(trainer.getFirstName());
-    existingTrainer.setLastName(trainer.getLastName());
-    existingTrainer.setUsername(trainer.getUsername());
-    existingTrainer.setPassword(trainer.getPassword());
+    if (!Objects.equals(trainer.getFirstName(), "Unknown")) {
+      existingTrainer.setFirstName(trainer.getFirstName());
+    }
+    if (!Objects.equals(trainer.getLastName(), "Unknown")) {
+      existingTrainer.setLastName(trainer.getLastName());
+    }
+    if (!Objects.equals(trainer.getFirstName(), "Unknown") || !Objects.equals(trainer.getLastName(),
+        "Unknown")) {
+      existingTrainer.setUsername(Generator.generateUserName(
+          !Objects.equals(trainer.getFirstName(), "Unknown") ? trainer.getFirstName() : existingTrainer.getFirstName(),
+          !Objects.equals(trainer.getLastName(), "Unknown") ? trainer.getLastName() : existingTrainer.getLastName()
+      ));
+    }
+    if (trainer.getPassword() != null) {
+      existingTrainer.setPassword(trainer.getPassword());
+    }
     existingTrainer.setActive(trainer.isActive());
-    existingTrainer.setSpecialization(trainer.getSpecialization());
-    storageBean.getByNameSpace(TRAINERS_NAMESPACE).put(userId, "trainers");
+
+    if (!Objects.equals(trainer.getSpecialization(), "Unknown")) {
+      existingTrainer.setSpecialization(trainer.getSpecialization());
+    }
+
+    storageBean.getByNameSpace(TRAINERS_NAMESPACE).put(userId, existingTrainer);
     LOGGER.info("Trainee with userId {} successfully updated: {}", userId, existingTrainer);
   }
-
-
 }

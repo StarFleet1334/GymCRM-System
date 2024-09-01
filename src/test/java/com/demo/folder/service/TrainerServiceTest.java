@@ -33,4 +33,35 @@ public class TrainerServiceTest {
         .allMatch(trainer -> passwords.add(trainer.getPassword()));
     assertTrue(allUnique, "Passwords should be unique across trainers");
   }
+
+  @Test
+  public void testCreateTrainer() {
+    Trainer trainer = new Trainer();
+    trainer.setFirstName("Ilia");
+    trainer.setLastName("Lataria");
+    trainer.setSpecialization("Boxer");
+    trainer.setActive(true);
+    systemFacade.getTrainerService().createTrainer(trainer);
+    // Let's verify that this trainer exists
+    assertEquals("Ilia", trainer.getFirstName(), "Expected first name is Ilia");
+    assertEquals("Lataria", trainer.getLastName(), "Expected last name is Lataria");
+    assertEquals("Boxer", trainer.getSpecialization(), "Expected specialization is Boxer");
+    assertTrue(trainer.isActive(), "Expected active is true");
+  }
+
+
+  @Test
+  public void testUpdateTrainer() {
+    Trainer trainer = new Trainer();
+    trainer.setFirstName("Dondo");
+    trainer.setSpecialization("Dancer");
+    systemFacade.getTrainerService().update(4L, trainer);
+    systemFacade.getTrainerService().getTrainer(4L).describe();
+    // Check that name is changed
+    assertEquals("Dondo", systemFacade.getTrainerService().getTrainer(4L).getFirstName(), "Expected first name is Dondo");
+    // Check that Specialization is also changed
+    assertEquals("Dancer",systemFacade.getTrainerService().getTrainer(4L).getSpecialization(), "Expected specialization to be Dancer");
+    // Check userName
+    assertEquals("Dondo.James",systemFacade.getTrainerService().getTrainer(4L).getUsername(), "Expected userName to be Dondo.James");
+  }
 }

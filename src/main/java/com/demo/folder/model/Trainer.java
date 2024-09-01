@@ -20,6 +20,8 @@ public class Trainer extends User {
     this.userId = trainerIdCounter++;
     this.trainingType = new ArrayList<>();
     this.training = new ArrayList<>();
+    this.setFirstName("Unknown");
+    this.setLastName("Unknown");
   }
 
 

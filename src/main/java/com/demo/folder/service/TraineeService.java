@@ -4,6 +4,7 @@ import com.demo.folder.dao.TraineeDAO;
 import com.demo.folder.model.Trainee;
 import com.demo.folder.storage.StorageBean;
 import com.demo.folder.utils.Generator;
+import java.util.Objects;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -97,13 +98,30 @@ public class TraineeService {
       return;
     }
     Trainee existingTrainee = existingTraineeOptional.get();
-    existingTrainee.setFirstName(trainee.getFirstName());
-    existingTrainee.setLastName(trainee.getLastName());
-    existingTrainee.setUsername(trainee.getUsername());
-    existingTrainee.setPassword(trainee.getPassword());
+    if (!Objects.equals(trainee.getFirstName(), "Unknown")) {
+      existingTrainee.setFirstName(trainee.getFirstName());
+    }
+    if (!Objects.equals(trainee.getLastName(), "Unknown")) {
+      existingTrainee.setLastName(trainee.getLastName());
+    }
+    if (!Objects.equals(trainee.getFirstName(), "Unknown") || !Objects.equals(trainee.getLastName(),
+        "Unknown")) {
+      existingTrainee.setUsername(Generator.generateUserName(
+          !Objects.equals(trainee.getFirstName(), "Unknown") ? trainee.getFirstName() : existingTrainee.getFirstName(),
+          !Objects.equals(trainee.getLastName(), "Unknown") ? trainee.getLastName() : existingTrainee.getLastName()
+      ));
+    }
+    if (trainee.getPassword() != null) {
+      existingTrainee.setPassword(trainee.getPassword());
+    }
+    if (trainee.getDateOfBirth() != null) {
+      existingTrainee.setDateOfBirth(trainee.getDateOfBirth());
+    }
+    if (!Objects.equals(trainee.getAddress(), "Unknown")) {
+      existingTrainee.setAddress(trainee.getAddress());
+    }
+    // For boolean, you may have to check if it's explicitly set or use some default logic
     existingTrainee.setActive(trainee.isActive());
-    existingTrainee.setDateOfBirth(trainee.getDateOfBirth());
-    existingTrainee.setAddress(trainee.getAddress());
     storageBean.getByNameSpace(TRAINEES_NAMESPACE).put(userId, existingTrainee);
     LOGGER.info("Trainee with userId {} successfully updated: {}", userId, existingTrainee);
   }
