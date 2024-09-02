@@ -63,7 +63,7 @@ public class TrainerService {
         }
       } while (duplicate.isPresent());
     }
-    // When creating it auto-generates password for trainer
+    // When creating it auto-generates password for trainer!
     trainer.setPassword(Generator.generatePassword());
     trainerDAO.create(trainer);
   }
@@ -93,8 +93,7 @@ public class TrainerService {
               : existingTrainer.getLastName()
       ));
     }
-    // We check here to not set password if not provided
-
+    // We check here to not set password if not provided!
     if (trainer.getPassword() != null) {
       existingTrainer.setPassword(trainer.getPassword());
     }

@@ -14,17 +14,17 @@ import org.springframework.context.annotation.PropertySource;
 public class SpringConfig {
 
 
-  // Bean for TrainingService
+  // Bean for TrainingService!
   @Bean
   public TrainingService trainingService() {
     return new TrainingService();
   }
-  // Bean for TrainerService
+  // Bean for TrainerService!
   @Bean
   public TrainerService trainerService() {
     return new TrainerService();
   }
-  // Bean for TraineeService
+  // Bean for TraineeService!
   @Bean
   public TraineeService traineeService() {
     return new TraineeService();

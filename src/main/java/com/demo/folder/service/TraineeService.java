@@ -54,7 +54,7 @@ public class TraineeService {
         }
       } while (duplicate.isPresent());
     }
-    // When creating it auto-generates password for trainee
+    // When creating it auto-generates password for trainee!
     trainee.setPassword(Generator.generatePassword());
     traineeDAO.create(trainee);
 
@@ -110,7 +110,7 @@ public class TraineeService {
               : existingTrainee.getLastName()
       ));
     }
-    // We check here to not set password if not provided
+    // We check here to not set password if not provided!
     if (trainee.getPassword() != null) {
       existingTrainee.setPassword(trainee.getPassword());
     }

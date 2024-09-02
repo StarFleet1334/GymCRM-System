@@ -13,7 +13,7 @@ public class User {
   private String password;
   private boolean isActive;
 
-  // User Password gets's initially null
+  // User Password gets's initially null!
   public User() {
     this.password = null;
   }
