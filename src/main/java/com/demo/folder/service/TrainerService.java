@@ -15,19 +15,13 @@ import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import static com.demo.folder.utils.StorageUtil.TRAINERS_NAMESPACE;
 
 @Service
 public class TrainerService {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(TrainerService.class);
   private TrainerDAO trainerDAO;
-  private StorageBean storageBean;
 
-  @Autowired
-  public TrainerService(StorageBean storageBean) {
-    this.storageBean = storageBean;
-  }
 
   @Autowired
   public void setTrainerDAO(TrainerDAO trainerDAO) {
@@ -70,6 +64,7 @@ public class TrainerService {
         }
       } while (duplicate.isPresent());
     }
+    trainer.setPassword(Generator.generatePassword());
     trainerDAO.create(trainer);
   }
 
@@ -92,8 +87,10 @@ public class TrainerService {
     if (!Objects.equals(trainer.getFirstName(), "Unknown") || !Objects.equals(trainer.getLastName(),
         "Unknown")) {
       existingTrainer.setUsername(Generator.generateUserName(
-          !Objects.equals(trainer.getFirstName(), "Unknown") ? trainer.getFirstName() : existingTrainer.getFirstName(),
-          !Objects.equals(trainer.getLastName(), "Unknown") ? trainer.getLastName() : existingTrainer.getLastName()
+          !Objects.equals(trainer.getFirstName(), "Unknown") ? trainer.getFirstName()
+              : existingTrainer.getFirstName(),
+          !Objects.equals(trainer.getLastName(), "Unknown") ? trainer.getLastName()
+              : existingTrainer.getLastName()
       ));
     }
     if (trainer.getPassword() != null) {
@@ -105,7 +102,6 @@ public class TrainerService {
       existingTrainer.setSpecialization(trainer.getSpecialization());
     }
 
-    storageBean.getByNameSpace(TRAINERS_NAMESPACE).put(userId, existingTrainer);
     LOGGER.info("Trainee with userId {} successfully updated: {}", userId, existingTrainer);
   }
 }

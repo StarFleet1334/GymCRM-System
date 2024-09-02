@@ -2,6 +2,7 @@ package com.demo.folder.init;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import com.demo.folder.config.SpringConfig;
 import com.demo.folder.model.Trainee;
 import com.demo.folder.system.SystemFacade;
 import com.opencsv.CSVReader;
@@ -11,10 +12,13 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-@SpringBootTest
+@ExtendWith(SpringExtension.class)
+@ContextConfiguration(classes = {SpringConfig.class})
 class DataInitializerTraineeTest {
 
   @Autowired

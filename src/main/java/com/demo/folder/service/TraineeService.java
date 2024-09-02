@@ -21,12 +21,7 @@ public class TraineeService {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(TraineeService.class);
   private TraineeDAO traineeDAO;
-  private StorageBean storageBean;
 
-  @Autowired
-  public TraineeService(StorageBean storageBean) {
-    this.storageBean = storageBean;
-  }
 
   @Autowired
   public void setTraineeDAO(TraineeDAO traineeDAO) {
@@ -59,6 +54,7 @@ public class TraineeService {
         }
       } while (duplicate.isPresent());
     }
+    trainee.setPassword(Generator.generatePassword());
     traineeDAO.create(trainee);
 
   }
@@ -107,8 +103,10 @@ public class TraineeService {
     if (!Objects.equals(trainee.getFirstName(), "Unknown") || !Objects.equals(trainee.getLastName(),
         "Unknown")) {
       existingTrainee.setUsername(Generator.generateUserName(
-          !Objects.equals(trainee.getFirstName(), "Unknown") ? trainee.getFirstName() : existingTrainee.getFirstName(),
-          !Objects.equals(trainee.getLastName(), "Unknown") ? trainee.getLastName() : existingTrainee.getLastName()
+          !Objects.equals(trainee.getFirstName(), "Unknown") ? trainee.getFirstName()
+              : existingTrainee.getFirstName(),
+          !Objects.equals(trainee.getLastName(), "Unknown") ? trainee.getLastName()
+              : existingTrainee.getLastName()
       ));
     }
     if (trainee.getPassword() != null) {
@@ -122,7 +120,7 @@ public class TraineeService {
     }
     // For boolean, you may have to check if it's explicitly set or use some default logic
     existingTrainee.setActive(trainee.isActive());
-    storageBean.getByNameSpace(TRAINEES_NAMESPACE).put(userId, existingTrainee);
+    traineeDAO.update(existingTrainee);
     LOGGER.info("Trainee with userId {} successfully updated: {}", userId, existingTrainee);
   }
 }

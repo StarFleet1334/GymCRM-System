@@ -19,6 +19,11 @@ public class TrainingDAOImpl implements TrainingDAO {
   private static final Logger LOGGER = LoggerFactory.getLogger(TraineeDAOImpl.class);
 
   @Autowired
+  public TrainingDAOImpl(StorageBean storageBean) {
+    this.storageBean = storageBean;
+  }
+
+  @Autowired
   public void setStorageBean(StorageBean storageBean) {
     this.storageBean = storageBean;
   }
