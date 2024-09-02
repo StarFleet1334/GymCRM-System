@@ -15,7 +15,7 @@ public class User {
   private boolean isActive;
 
   public User() {
-    this.password = Generator.generatePassword();
+    this.password = null;
   }
 
   public Long getUserId() {

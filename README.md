@@ -11,6 +11,5 @@ Spring-based module, which handles gym CRM system.
 profile.
 - Trainer Service class - possibility to create/update/select Trainer profile.
 - Training Service class - possibility to create/select Training profile
-
-## Note
-- Each method in Test class must be run independently, since I do not reset state
+- Test classes: TraineeServiceTest,TrainerServiceTest and TrainingServiceTest
+- Auto-Insertion of predefined data 
