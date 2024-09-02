@@ -2,7 +2,6 @@ package com.demo.folder.service;
 
 import com.demo.folder.dao.TrainerDAO;
 import com.demo.folder.model.Trainer;
-import com.demo.folder.storage.StorageBean;
 import com.demo.folder.utils.Generator;
 import java.util.Objects;
 import org.slf4j.Logger;
@@ -64,6 +63,7 @@ public class TrainerService {
         }
       } while (duplicate.isPresent());
     }
+    // When creating it auto-generates password for trainer
     trainer.setPassword(Generator.generatePassword());
     trainerDAO.create(trainer);
   }
@@ -93,6 +93,8 @@ public class TrainerService {
               : existingTrainer.getLastName()
       ));
     }
+    // We check here to not set password if not provided
+
     if (trainer.getPassword() != null) {
       existingTrainer.setPassword(trainer.getPassword());
     }

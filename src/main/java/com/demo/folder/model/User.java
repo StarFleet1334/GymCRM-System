@@ -1,6 +1,5 @@
 package com.demo.folder.model;
 
-import com.demo.folder.utils.Generator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,6 +13,7 @@ public class User {
   private String password;
   private boolean isActive;
 
+  // User Password gets's initially null
   public User() {
     this.password = null;
   }
