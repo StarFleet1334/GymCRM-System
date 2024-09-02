@@ -2,18 +2,21 @@ package com.demo.folder.init;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import com.demo.folder.config.SpringConfig;
 import com.demo.folder.model.Trainer;
 import com.demo.folder.system.SystemFacade;
 import com.opencsv.CSVReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.List;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-@SpringBootTest
+@ExtendWith(SpringExtension.class)
+@ContextConfiguration(classes = {SpringConfig.class})
 class DataInitializerTrainerTest {
 
   @Autowired
@@ -26,7 +29,7 @@ class DataInitializerTrainerTest {
     List<Trainer> trainers = systemFacade.getTrainerService().getAllTrainers();
 
     try (CSVReader csvReader = new CSVReader(
-        new FileReader("src/main/resources/data/trainer.csv"))) {
+        new FileReader(TRAINER_PATH))) {
       String[] nextRecord;
       int index = 0;
 

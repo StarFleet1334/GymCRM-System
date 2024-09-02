@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import com.demo.folder.config.SpringConfig;
 import com.demo.folder.model.Trainee;
 import com.demo.folder.system.SystemFacade;
 import java.util.HashSet;
@@ -11,10 +12,13 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicBoolean;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-@SpringBootTest
+@ExtendWith(SpringExtension.class)
+@ContextConfiguration(classes = {SpringConfig.class})
 class TraineeServiceTest {
 
   @Autowired
@@ -57,8 +61,8 @@ class TraineeServiceTest {
     // Let's check if that trainee got created
     AtomicBoolean exists = new AtomicBoolean(false);
     systemFacade.getTraineeService().getAllTrainees().forEach(s -> {
-        if (s.getUsername().equals("A.B")) {
-          exists.set(true);
+      if (s.getUsername().equals("A.B")) {
+        exists.set(true);
       }
     });
     assertTrue(exists.get());
@@ -71,9 +75,11 @@ class TraineeServiceTest {
     systemFacade.getTraineeService().update(3L, trainee);
     systemFacade.getTraineeService().getTrainee(3L).describe();
     // Let's check if FirstName got updated
-    assertEquals("A", systemFacade.getTraineeService().getTrainee(3L).getFirstName(), "Expected first name is A");
+    assertEquals("A", systemFacade.getTraineeService().getTrainee(3L).getFirstName(),
+        "Expected first name is A");
     // Let's check if the userName got updated
-    assertEquals("A.Brown",systemFacade.getTraineeService().getTrainee(3L).getUsername(), "Expected username is A.Brown");
+    assertEquals("A.Brown", systemFacade.getTraineeService().getTrainee(3L).getUsername(),
+        "Expected username is A.Brown");
   }
 
   @Test

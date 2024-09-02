@@ -3,16 +3,20 @@ package com.demo.folder.service;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import com.demo.folder.config.SpringConfig;
 import com.demo.folder.model.Trainer;
 import com.demo.folder.system.SystemFacade;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-@SpringBootTest
+@ExtendWith(SpringExtension.class)
+@ContextConfiguration(classes = {SpringConfig.class})
 public class TrainerServiceTest {
 
   @Autowired
@@ -58,10 +62,13 @@ public class TrainerServiceTest {
     systemFacade.getTrainerService().update(4L, trainer);
     systemFacade.getTrainerService().getTrainer(4L).describe();
     // Check that name is changed
-    assertEquals("Dondo", systemFacade.getTrainerService().getTrainer(4L).getFirstName(), "Expected first name is Dondo");
+    assertEquals("Dondo", systemFacade.getTrainerService().getTrainer(4L).getFirstName(),
+        "Expected first name is Dondo");
     // Check that Specialization is also changed
-    assertEquals("Dancer",systemFacade.getTrainerService().getTrainer(4L).getSpecialization(), "Expected specialization to be Dancer");
+    assertEquals("Dancer", systemFacade.getTrainerService().getTrainer(4L).getSpecialization(),
+        "Expected specialization to be Dancer");
     // Check userName
-    assertEquals("Dondo.James",systemFacade.getTrainerService().getTrainer(4L).getUsername(), "Expected userName to be Dondo.James");
+    assertEquals("Dondo.James", systemFacade.getTrainerService().getTrainer(4L).getUsername(),
+        "Expected userName to be Dondo.James");
   }
 }
