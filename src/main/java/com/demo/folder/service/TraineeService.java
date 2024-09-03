@@ -120,6 +120,10 @@ public class TraineeService {
     if (!Objects.equals(trainee.getAddress(), "Unknown")) {
       existingTrainee.setAddress(trainee.getAddress());
     }
+
+    if (!trainee.getTraining().isEmpty()) {
+      existingTrainee.setTraining(trainee.getTraining());
+    }
     // For boolean, you may have to check if it's explicitly set or use some default logic
     existingTrainee.setActive(trainee.isActive());
     traineeDAO.update(existingTrainee);

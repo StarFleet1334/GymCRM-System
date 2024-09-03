@@ -3,6 +3,7 @@ package com.demo.folder.processor;
 import com.demo.folder.model.Training;
 import com.demo.folder.model.TrainingType;
 import com.demo.folder.storage.StorageBean;
+import java.util.Objects;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,8 +34,16 @@ public class TrainingProcessor {
     try {
       Training training = new Training();
       training.setTrainingId(Long.parseLong(parts[0]));
-      training.setTraineeId(Long.parseLong(parts[1]));
-      training.setTrainerId(Long.parseLong(parts[2]));
+      if (Objects.equals(parts[1], "")) {
+        training.setTraineeId(null);
+      } else {
+        training.setTraineeId(Long.parseLong(parts[1]));
+      }
+      if (Objects.equals(parts[2], "")) {
+        training.setTrainerId(null);
+      } else {
+        training.setTrainerId(Long.parseLong(parts[2]));
+      }
       training.setTrainingName(parts[3]);
       TrainingType trainingType = getTrainingType(parts[4]);
       if (trainingType == null) {

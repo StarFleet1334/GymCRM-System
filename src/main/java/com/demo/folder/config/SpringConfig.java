@@ -10,6 +10,7 @@ import com.demo.folder.service.TraineeService;
 import com.demo.folder.service.TrainerService;
 import com.demo.folder.service.TrainingService;
 import com.demo.folder.storage.StorageBean;
+import com.demo.folder.system.SystemFacade;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -20,6 +21,11 @@ import org.springframework.context.annotation.PropertySource;
 @PropertySource("classpath:application.properties")
 public class SpringConfig {
 
+  @Bean
+  public SystemFacade systemFacade(TraineeService traineeService, TrainerService trainerService,
+      TrainingService trainingService, StorageBean storageBean) {
+    return new SystemFacade(traineeService, trainerService, trainingService, storageBean);
+  }
 
   @Bean
   public StorageBean storageBean() {

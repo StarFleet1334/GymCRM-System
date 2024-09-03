@@ -48,12 +48,20 @@ public class Trainer extends User {
     this.training = training;
   }
 
+  public void addTraining(Training training) {
+    this.training.add(training);
+  }
+
   public List<TrainingType> getTrainingType() {
     return trainingType;
   }
 
   public void setTrainingType(List<TrainingType> trainingType) {
     this.trainingType = trainingType;
+  }
+
+  public void addTrainingType(TrainingType trainingType) {
+    this.trainingType.add(trainingType);
   }
 
   public void describe() {
