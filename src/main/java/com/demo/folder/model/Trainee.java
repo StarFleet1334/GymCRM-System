@@ -57,6 +57,10 @@ public class Trainee extends User {
     this.training = training;
   }
 
+  public void addTraining(Training training) {
+    this.training.add(training);
+  }
+
   public void describe() {
     String trainingInfo = training.isEmpty() ? "Not Enrolled" : training.stream()
         .map(Training::getTrainingName)
