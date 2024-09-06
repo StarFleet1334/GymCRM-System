@@ -1,16 +1,14 @@
-package com.demo.folder.daoImpl;
+package com.demo.folder.dao;
 
-import com.demo.folder.dao.TraineeDAO;
 import com.demo.folder.model.Trainee;
 import com.demo.folder.storage.StorageBean;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 @Repository
 public class TraineeDAOImpl implements TraineeDAO {

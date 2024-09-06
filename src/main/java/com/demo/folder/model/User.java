@@ -27,7 +27,7 @@ public class User {
   }
 
   public void setFirstName(String firstName) {
-    if (firstName == null || firstName == "") {
+    if (firstName.isEmpty()) {
       LOGGER.error("firstName is null or empty");
     }
     this.firstName = firstName;
@@ -39,7 +39,7 @@ public class User {
   }
 
   public void setLastName(String lastName) {
-    if (lastName == null || lastName == "") {
+    if (lastName.isEmpty()) {
       LOGGER.error("lastName is null or empty");
     }
     this.lastName = lastName;

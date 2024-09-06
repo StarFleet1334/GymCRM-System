@@ -1,5 +1,7 @@
 package com.demo.folder.service;
 
+import com.demo.folder.actions.trainer.TrainerUpdateImpl;
+import com.demo.folder.actions.trainer.TrainerUpdater;
 import com.demo.folder.dao.TrainerDAO;
 import com.demo.folder.model.Trainer;
 import com.demo.folder.utils.Generator;
@@ -27,10 +29,6 @@ public class TrainerService {
     this.trainerDAO = trainerDAO;
   }
 
-  public TrainerDAO getTrainerDAO() {
-    return trainerDAO;
-  }
-
   public Trainer getTrainer(Long userId) {
     return trainerDAO.read(userId);
   }
@@ -40,7 +38,7 @@ public class TrainerService {
   }
 
   public void createTrainer(Trainer trainer) {
-    if (trainer.getFirstName() == null || trainer.getLastName() == null) {
+    if (trainer.getFirstName().isEmpty() || trainer.getLastName().isEmpty()) {
       LOGGER.warn("Cannot create trainer with null firstName or lastName");
       throw new IllegalArgumentException("First name and last name must not be null");
     }
@@ -68,7 +66,7 @@ public class TrainerService {
     trainerDAO.create(trainer);
   }
 
-  public void update(Long userId, Trainer trainer) {
+  public void update(Long userId, Trainer updatedTrainer) {
     Collection<Trainer> allTrainers = getAllTrainers();
     Optional<Trainer> existingTraineeOptional = allTrainers.stream()
         .filter(t -> t.getUserId().equals(userId))
@@ -78,31 +76,16 @@ public class TrainerService {
       return;
     }
     Trainer existingTrainer = existingTraineeOptional.get();
-    if (!Objects.equals(trainer.getFirstName(), "Unknown")) {
-      existingTrainer.setFirstName(trainer.getFirstName());
-    }
-    if (!Objects.equals(trainer.getLastName(), "Unknown")) {
-      existingTrainer.setLastName(trainer.getLastName());
-    }
-    if (!Objects.equals(trainer.getFirstName(), "Unknown") || !Objects.equals(trainer.getLastName(),
-        "Unknown")) {
-      existingTrainer.setUsername(Generator.generateUserName(
-          !Objects.equals(trainer.getFirstName(), "Unknown") ? trainer.getFirstName()
-              : existingTrainer.getFirstName(),
-          !Objects.equals(trainer.getLastName(), "Unknown") ? trainer.getLastName()
-              : existingTrainer.getLastName()
-      ));
-    }
-    // We check here to not set password if not provided!
-    if (trainer.getPassword() != null) {
-      existingTrainer.setPassword(trainer.getPassword());
-    }
-    existingTrainer.setActive(trainer.isActive());
-
-    if (!Objects.equals(trainer.getSpecialization(), "Unknown")) {
-      existingTrainer.setSpecialization(trainer.getSpecialization());
-    }
-
+    List<TrainerUpdater> updaterList = List.of(
+        TrainerUpdateImpl.UPDATE_USERNAME,
+        TrainerUpdateImpl.UPDATE_LAST_NAME,
+        TrainerUpdateImpl.UPDATE_USERNAME,
+        TrainerUpdateImpl.UPDATE_PASSWORD,
+        TrainerUpdateImpl.UPDATE_SPECIALIZATION,
+        TrainerUpdateImpl.UPDATE_ACTIVE_STATUS
+    );
+    updaterList.forEach(updater -> updater.update(existingTrainer, updatedTrainer));
+    trainerDAO.update(existingTrainer);
     LOGGER.info("Trainee with userId {} successfully updated: {}", userId, existingTrainer);
   }
 }

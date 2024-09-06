@@ -1,10 +1,10 @@
 package com.demo.folder.service;
 
+import com.demo.folder.actions.trainee.TraineeUpdateImpl;
+import com.demo.folder.actions.trainee.TraineeUpdater;
 import com.demo.folder.dao.TraineeDAO;
 import com.demo.folder.model.Trainee;
-import com.demo.folder.storage.StorageBean;
 import com.demo.folder.utils.Generator;
-import java.util.Objects;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +13,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
-
-import static com.demo.folder.utils.StorageUtil.TRAINEES_NAMESPACE;
 
 @Service
 public class TraineeService {
@@ -29,7 +27,7 @@ public class TraineeService {
   }
 
   public void createTrainee(Trainee trainee) {
-    if (trainee.getFirstName() == null || trainee.getLastName() == null) {
+    if (trainee.getFirstName().isEmpty() || trainee.getLastName().isEmpty()) {
       LOGGER.warn("Cannot create trainee with null firstName or lastName");
       throw new IllegalArgumentException("First name and last name must not be null");
     }
@@ -60,10 +58,6 @@ public class TraineeService {
 
   }
 
-  public TraineeDAO getTraineeDAO() {
-    return traineeDAO;
-  }
-
   public Trainee getTrainee(Long userId) {
     return traineeDAO.read(userId);
   }
@@ -85,7 +79,7 @@ public class TraineeService {
     LOGGER.info("Trainee with id {} deleted", userId);
   }
 
-  public void update(Long userId, Trainee trainee) {
+  public void update(Long userId, Trainee updatedTrainee) {
     Collection<Trainee> allTrainees = getAllTrainees();
     Optional<Trainee> existingTraineeOptional = allTrainees.stream()
         .filter(t -> t.getUserId().equals(userId))
@@ -95,37 +89,19 @@ public class TraineeService {
       return;
     }
     Trainee existingTrainee = existingTraineeOptional.get();
-    if (!Objects.equals(trainee.getFirstName(), "Unknown")) {
-      existingTrainee.setFirstName(trainee.getFirstName());
-    }
-    if (!Objects.equals(trainee.getLastName(), "Unknown")) {
-      existingTrainee.setLastName(trainee.getLastName());
-    }
-    if (!Objects.equals(trainee.getFirstName(), "Unknown") || !Objects.equals(trainee.getLastName(),
-        "Unknown")) {
-      existingTrainee.setUsername(Generator.generateUserName(
-          !Objects.equals(trainee.getFirstName(), "Unknown") ? trainee.getFirstName()
-              : existingTrainee.getFirstName(),
-          !Objects.equals(trainee.getLastName(), "Unknown") ? trainee.getLastName()
-              : existingTrainee.getLastName()
-      ));
-    }
-    // We check here to not set password if not provided!
-    if (trainee.getPassword() != null) {
-      existingTrainee.setPassword(trainee.getPassword());
-    }
-    if (trainee.getDateOfBirth() != null) {
-      existingTrainee.setDateOfBirth(trainee.getDateOfBirth());
-    }
-    if (!Objects.equals(trainee.getAddress(), "Unknown")) {
-      existingTrainee.setAddress(trainee.getAddress());
-    }
 
-    if (!trainee.getTraining().isEmpty()) {
-      existingTrainee.setTraining(trainee.getTraining());
-    }
-    // For boolean, you may have to check if it's explicitly set or use some default logic
-    existingTrainee.setActive(trainee.isActive());
+    List<TraineeUpdater> updaters = List.of(
+        TraineeUpdateImpl.UPDATE_FIRST_NAME,
+        TraineeUpdateImpl.UPDATE_LAST_NAME,
+        TraineeUpdateImpl.UPDATE_USERNAME,
+        TraineeUpdateImpl.UPDATE_PASSWORD,
+        TraineeUpdateImpl.UPDATE_DOB,
+        TraineeUpdateImpl.UPDATE_ADDRESS,
+        TraineeUpdateImpl.UPDATE_TRAINING,
+        TraineeUpdateImpl.UPDATE_ACTIVE_STATUS
+    );
+
+    updaters.forEach(updater -> updater.update(existingTrainee, updatedTrainee));
     traineeDAO.update(existingTrainee);
     LOGGER.info("Trainee with userId {} successfully updated: {}", userId, existingTrainee);
   }

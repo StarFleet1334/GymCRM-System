@@ -24,14 +24,6 @@ public class Trainer extends User {
   }
 
 
-  public static long getTrainerIdCounter() {
-    return trainerIdCounter;
-  }
-
-  public static void setTrainerIdCounter(long trainerIdCounter) {
-    Trainer.trainerIdCounter = trainerIdCounter;
-  }
-
   public String getSpecialization() {
     return specialization;
   }
@@ -50,10 +42,6 @@ public class Trainer extends User {
 
   public void addTraining(Training training) {
     this.training.add(training);
-  }
-
-  public List<TrainingType> getTrainingType() {
-    return trainingType;
   }
 
   public void setTrainingType(List<TrainingType> trainingType) {

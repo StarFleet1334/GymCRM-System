@@ -25,14 +25,6 @@ public class Trainee extends User {
   }
 
 
-  public static long getTraineeIdCounter() {
-    return traineeIdCounter;
-  }
-
-  public static void setTraineeIdCounter(long traineeIdCounter) {
-    Trainee.traineeIdCounter = traineeIdCounter;
-  }
-
   public String getAddress() {
     return address;
   }
