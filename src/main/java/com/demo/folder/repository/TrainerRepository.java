@@ -50,11 +50,18 @@ public class TrainerRepository {
 
   @Transactional(readOnly = true)
   public List<Trainer> findUnassignedTrainers(List<Trainer> assignedTrainers) {
-    return getCurrentSession()
-        .createQuery("FROM Trainer t WHERE t NOT IN :assignedTrainers", Trainer.class)
-        .setParameter("assignedTrainers", assignedTrainers)
-        .list();
+    if (assignedTrainers == null || assignedTrainers.isEmpty()) {
+      // If there are no assigned trainers, return all trainers
+      return getCurrentSession().createQuery("FROM Trainer", Trainer.class).list();
+    } else {
+      // Otherwise, return trainers that are not in the assignedTrainers list
+      return getCurrentSession()
+          .createQuery("FROM Trainer t WHERE t NOT IN :assignedTrainers", Trainer.class)
+          .setParameter("assignedTrainers", assignedTrainers)
+          .list();
+    }
   }
+
 
 
 }

@@ -21,7 +21,7 @@ public class Trainer {
   @OneToMany(mappedBy = "trainer")
   private List<Training> trainings;
 
-  @ManyToMany
+  @ManyToMany(fetch = FetchType.EAGER)
   @JoinTable(
       name = "trainer_trainee",
       joinColumns = @JoinColumn(name = "trainer_id"),

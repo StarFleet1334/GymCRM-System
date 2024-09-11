@@ -887,21 +887,21 @@ public class ProfileService {
   private void addTraining(Trainee trainee) {
     Scanner scanner = new Scanner(System.in);
 
+    // Fetch trainers assigned to this trainee
     List<Trainer> assignedTrainers = traineeService.getAssignedTrainers(trainee);
 
-    System.out.println("You have the following trainers assigned:");
-    if (assignedTrainers.isEmpty()) {
-      System.out.println("No trainers are currently assigned to you.");
-    } else {
+    if (!assignedTrainers.isEmpty()) {
+      System.out.println("You have the following trainers assigned:");
       for (int i = 0; i < assignedTrainers.size(); i++) {
         System.out.println(
-            (i + 1) + ". " + assignedTrainers.get(i).getUser().getUsername() + " - Specialization: "
-                + assignedTrainers.get(i).getSpecialization().getTrainingTypeName());
+            (i + 1) + ". " + assignedTrainers.get(i).getUser().getUsername() +
+                " - Specialization: " + assignedTrainers.get(i).getSpecialization().getTrainingTypeName());
       }
+    } else {
+      System.out.println("No trainers are currently assigned to you.");
     }
 
-    System.out.println(
-        "Do you want to schedule training with one of your current trainers? (yes/no): ");
+    System.out.print("Do you want to schedule training with one of your current trainers? (yes/no): ");
     String choice = scanner.nextLine();
 
     Trainer selectedTrainer = null;
@@ -909,7 +909,7 @@ public class ProfileService {
     if (choice.equalsIgnoreCase("yes") && !assignedTrainers.isEmpty()) {
       System.out.print("Select a trainer by number from the list: ");
       int selectedTrainerIndex = scanner.nextInt() - 1;
-      scanner.nextLine();
+      scanner.nextLine(); // Consume the newline
 
       if (selectedTrainerIndex >= 0 && selectedTrainerIndex < assignedTrainers.size()) {
         selectedTrainer = assignedTrainers.get(selectedTrainerIndex);
@@ -918,6 +918,7 @@ public class ProfileService {
         return;
       }
     } else {
+      // Fetch trainers not assigned to this trainee
       List<Trainer> unassignedTrainers = traineeService.getUnassignedTrainers(trainee);
 
       if (unassignedTrainers.isEmpty()) {
@@ -927,14 +928,14 @@ public class ProfileService {
 
       System.out.println("Available trainers you can choose from:");
       for (int i = 0; i < unassignedTrainers.size(); i++) {
-        System.out.println((i + 1) + ". " + unassignedTrainers.get(i).getUser().getUsername()
-            + " - Specialization: " + unassignedTrainers.get(i).getSpecialization()
-            .getTrainingTypeName());
+        System.out.println(
+            (i + 1) + ". " + unassignedTrainers.get(i).getUser().getUsername() +
+                " - Specialization: " + unassignedTrainers.get(i).getSpecialization().getTrainingTypeName());
       }
 
       System.out.print("Select a trainer by number from the list: ");
       int selectedTrainerIndex = scanner.nextInt() - 1;
-      scanner.nextLine();
+      scanner.nextLine(); // Consume the newline
 
       if (selectedTrainerIndex >= 0 && selectedTrainerIndex < unassignedTrainers.size()) {
         selectedTrainer = unassignedTrainers.get(selectedTrainerIndex);
@@ -944,15 +945,15 @@ public class ProfileService {
       }
     }
 
-    System.out.println("You have selected: " + selectedTrainer.getUser().getUsername() + " ("
-        + selectedTrainer.getSpecialization().getTrainingTypeName() + ")");
+    System.out.println("You have selected: " + selectedTrainer.getUser().getUsername() + " (" +
+        selectedTrainer.getSpecialization().getTrainingTypeName() + ")");
 
     System.out.print("Enter training name: ");
     String trainingName = scanner.nextLine();
 
     System.out.print("Enter training duration (in days): ");
     int trainingDuration = scanner.nextInt();
-    scanner.nextLine();
+    scanner.nextLine(); // Consume the newline
 
     System.out.print("Enter training date (yyyy-mm-dd): ");
     String dateInput = scanner.nextLine();
@@ -964,6 +965,7 @@ public class ProfileService {
       return;
     }
 
+    // Create and save the new training
     Training newTraining = new Training();
     newTraining.setTrainingName(trainingName);
     newTraining.setTrainingDuration(trainingDuration);
@@ -973,9 +975,9 @@ public class ProfileService {
 
     trainingService.saveTraining(newTraining);
 
-    System.out.println(
-        "Training scheduled successfully with trainer: " + selectedTrainer.getUser().getUsername());
+    System.out.println("Training scheduled successfully with trainer: " + selectedTrainer.getUser().getUsername());
   }
+
 
 
 }
