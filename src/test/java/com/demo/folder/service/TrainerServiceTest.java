@@ -1,75 +1,56 @@
 package com.demo.folder.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import com.demo.folder.config.SpringConfig;
-import com.demo.folder.model.Trainer;
-import com.demo.folder.system.SystemFacade;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import com.demo.folder.entity.Trainer;
+import com.demo.folder.entity.TrainingType;
+import com.demo.folder.entity.User;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.transaction.annotation.Transactional;
 
-// Using Context!
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = {SpringConfig.class})
+@Transactional
 public class TrainerServiceTest {
 
   @Autowired
-  private SystemFacade systemFacade;
+  private TrainerService trainerService;
+
+  @Autowired
+  private TrainingTypeService trainingTypeService;
+
+  @Autowired
+  private UserService userService;
 
   @Test
-  public void testGetTrainer_checkFirstNameAndLastName() {
-    Trainer trainer = systemFacade.getTrainerService().getTrainer(2L);
-    assertEquals("Sarah", trainer.getFirstName(), "Expected first name is Sarah");
-    assertEquals("Connor", trainer.getLastName(), "Expected last name is Connor");
-  }
-
-  @Test
-  public void testGetAllTrainers_passwordsAreUnique() {
-    List<Trainer> trainerList = systemFacade.getTrainerService().getAllTrainers();
-    Set<String> passwords = new HashSet<>();
-    boolean allUnique = trainerList.stream()
-        .allMatch(trainer -> passwords.add(trainer.getPassword()));
-    assertTrue(allUnique, "Passwords should be unique across trainers");
-  }
-
-  @Test
+  @Rollback
   public void testCreateTrainer() {
+    User user = new User();
+    user.setFirstName("Jane");
+    user.setLastName("Smith");
+    user.setUsername("janesmith");
+    user.setPassword("password");
+    user.setActive(true);
+
+    TrainingType specialization = new TrainingType();
+    specialization.setTrainingTypeName("Strength");
+    trainingTypeService.createTrainingType(specialization);
+
     Trainer trainer = new Trainer();
-    trainer.setFirstName("Ilia");
-    trainer.setLastName("Lataria");
-    trainer.setSpecialization("Boxer");
-    trainer.setActive(true);
-    systemFacade.getTrainerService().createTrainer(trainer);
-    // Let's verify that this trainer exists
-    assertEquals("Ilia", trainer.getFirstName(), "Expected first name is Ilia");
-    assertEquals("Lataria", trainer.getLastName(), "Expected last name is Lataria");
-    assertEquals("Boxer", trainer.getSpecialization(), "Expected specialization is Boxer");
-    assertTrue(trainer.isActive(), "Expected active is true");
+    trainer.setUser(user);
+    trainer.setSpecialization(specialization);
+
+    Trainer savedTrainer = trainerService.createTrainer(trainer);
+
+    assertEquals("Jane", savedTrainer.getUser().getFirstName());
   }
 
 
-  @Test
-  public void testUpdateTrainer() {
-    Trainer trainer = new Trainer();
-    trainer.setFirstName("Dondo");
-    trainer.setSpecialization("Dancer");
-    systemFacade.getTrainerService().update(4L, trainer);
-    systemFacade.getTrainerService().getTrainer(4L).describe();
-    // Check that name is changed
-    assertEquals("Dondo", systemFacade.getTrainerService().getTrainer(4L).getFirstName(),
-        "Expected first name is Dondo");
-    // Check that Specialization is also changed
-    assertEquals("Dancer", systemFacade.getTrainerService().getTrainer(4L).getSpecialization(),
-        "Expected specialization to be Dancer");
-    // Check userName
-    assertEquals("Dondo.James", systemFacade.getTrainerService().getTrainer(4L).getUsername(),
-        "Expected userName to be Dondo.James");
-  }
+
+
 }

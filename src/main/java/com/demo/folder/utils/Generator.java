@@ -21,6 +21,4 @@ public class Generator {
   public static String generateUserName(String firstName, String lastName) {
     return firstName + "." + lastName;
   }
-
-
 }
