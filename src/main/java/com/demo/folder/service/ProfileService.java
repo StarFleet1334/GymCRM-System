@@ -195,6 +195,12 @@ public class ProfileService {
             System.out.println(s.getSpecialization().getTrainingTypeName());
           }
           System.out.println(", isActive: " + s.getUser().isActive());
+          System.out.println(", Trainees: ");
+          if (s.getTrainees() != null) {
+            for (int i = 0; i < s.getTrainees().size(); i++) {
+              System.out.println("UserName:  " + s.getTrainees().get(i).getUser().getUsername() );
+            }
+          }
         });
         break;
       case 3:
@@ -887,7 +893,6 @@ public class ProfileService {
   private void addTraining(Trainee trainee) {
     Scanner scanner = new Scanner(System.in);
 
-    // Fetch trainers assigned to this trainee
     List<Trainer> assignedTrainers = traineeService.getAssignedTrainers(trainee);
 
     if (!assignedTrainers.isEmpty()) {
@@ -909,7 +914,7 @@ public class ProfileService {
     if (choice.equalsIgnoreCase("yes") && !assignedTrainers.isEmpty()) {
       System.out.print("Select a trainer by number from the list: ");
       int selectedTrainerIndex = scanner.nextInt() - 1;
-      scanner.nextLine(); // Consume the newline
+      scanner.nextLine();
 
       if (selectedTrainerIndex >= 0 && selectedTrainerIndex < assignedTrainers.size()) {
         selectedTrainer = assignedTrainers.get(selectedTrainerIndex);
@@ -953,7 +958,7 @@ public class ProfileService {
 
     System.out.print("Enter training duration (in days): ");
     int trainingDuration = scanner.nextInt();
-    scanner.nextLine(); // Consume the newline
+    scanner.nextLine();
 
     System.out.print("Enter training date (yyyy-mm-dd): ");
     String dateInput = scanner.nextLine();
