@@ -18,13 +18,11 @@ public class TrainingTypeRepository {
     return sessionFactory.getCurrentSession();
   }
 
-  @Transactional
   public void save(TrainingType trainingType) {
     getCurrentSession().persist(trainingType);
     getCurrentSession().flush();
   }
 
-  @Transactional(readOnly = true)
   public List<TrainingType> findAll() {
     return getCurrentSession().createQuery("FROM TrainingType", TrainingType.class).list();
   }

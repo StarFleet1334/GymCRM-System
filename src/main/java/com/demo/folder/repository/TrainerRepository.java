@@ -21,12 +21,10 @@ public class TrainerRepository {
     return sessionFactory.getCurrentSession();
   }
 
-  @Transactional
   public void save(Trainer trainer) {
     getCurrentSession().merge(trainer);
   }
 
-  @Transactional(readOnly = true)
   public Trainer findByUsername(String username) {
     return getCurrentSession()
         .createQuery("FROM Trainer t WHERE t.user.username = :username", Trainer.class)
@@ -34,12 +32,10 @@ public class TrainerRepository {
         .uniqueResult();
   }
 
-  @Transactional(readOnly = true)
   public List<Trainer> findAll() {
     return getCurrentSession().createQuery("FROM Trainer", Trainer.class).list();
   }
 
-  @Transactional
   public void updateTrainerStatus(Long trainerId, boolean status) {
     Trainer trainer = getCurrentSession().get(Trainer.class, trainerId);
     if (trainer != null) {
@@ -48,7 +44,6 @@ public class TrainerRepository {
     }
   }
 
-  @Transactional(readOnly = true)
   public List<Trainer> findUnassignedTrainers(List<Trainer> assignedTrainers) {
     if (assignedTrainers == null || assignedTrainers.isEmpty()) {
       // If there are no assigned trainers, return all trainers
@@ -61,7 +56,6 @@ public class TrainerRepository {
           .list();
     }
   }
-
 
 
 }

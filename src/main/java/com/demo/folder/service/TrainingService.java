@@ -3,6 +3,7 @@ package com.demo.folder.service;
 import com.demo.folder.entity.Trainer;
 import com.demo.folder.entity.Training;
 import com.demo.folder.repository.TrainingRepository;
+import jakarta.persistence.EntityNotFoundException;
 import java.time.LocalDate;
 import java.util.List;
 import org.slf4j.Logger;
@@ -13,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class TrainingService {
+
   private static final Logger LOGGER = LoggerFactory.getLogger(TrainingService.class);
   @Autowired
   private TrainingRepository trainingRepository;
@@ -20,8 +22,17 @@ public class TrainingService {
   @Transactional
   public List<Training> getTrainingsForTraineeByCriteria(Long traineeId, LocalDate fromDate,
       LocalDate toDate, String trainerName, String trainingType) {
-    LOGGER.info("Fetching trainings for trainee with ID: {}, from: {}, to: {}, trainerName: {}, trainingType: {}",
+    LOGGER.info(
+        "Fetching trainings for trainee with ID: {}, from: {}, to: {}, trainerName: {}, trainingType: {}",
         traineeId, fromDate, toDate, trainerName, trainingType);
+
+    if (traineeId == null || traineeId <= 0) {
+      throw new IllegalArgumentException("Invalid trainee ID.");
+    }
+
+    if (fromDate != null && toDate != null && fromDate.isAfter(toDate)) {
+      throw new IllegalArgumentException("From date cannot be after to date.");
+    }
     return trainingRepository.findTrainingsForTraineeByCriteria(traineeId, fromDate, toDate,
         trainerName, trainingType);
   }
@@ -31,6 +42,13 @@ public class TrainingService {
       LocalDate toDate, String traineeName) {
     LOGGER.info("Fetching trainings for trainer with ID: {}, from: {}, to: {}, traineeName: {}",
         trainerId, fromDate, toDate, traineeName);
+    if (trainerId == null || trainerId <= 0) {
+      throw new IllegalArgumentException("Invalid trainer ID.");
+    }
+    if (fromDate != null && toDate != null && fromDate.isAfter(toDate)) {
+      throw new IllegalArgumentException("From date cannot be after to date.");
+    }
+
     return trainingRepository.findTrainingsForTrainerByCriteria(trainerId, fromDate, toDate,
         traineeName);
   }
@@ -44,8 +62,12 @@ public class TrainingService {
   @Transactional(readOnly = true)
   public List<Training> getAllTrainings() {
     LOGGER.info("Fetching all trainings");
+    List<Training> trainings = trainingRepository.findAll();
+    if (trainings.isEmpty()) {
+      throw new EntityNotFoundException("No trainings found.");
+    }
 
-    return trainingRepository.findAll();
+    return trainings;
   }
 }
 

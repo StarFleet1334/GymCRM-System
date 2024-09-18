@@ -4,6 +4,7 @@ import com.demo.folder.entity.Trainee;
 import com.demo.folder.entity.Trainer;
 import com.demo.folder.repository.TraineeRepository;
 import com.demo.folder.repository.TrainerRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import java.util.List;
 
 @Service
 public class TraineeService {
+
   private static final Logger LOGGER = LoggerFactory.getLogger(TraineeService.class);
   private final TraineeRepository traineeRepository;
   private final TrainerRepository trainerRepository;
@@ -37,13 +39,26 @@ public class TraineeService {
   @Transactional
   public Trainee findTraineeByUsername(String username) {
     LOGGER.info("Finding Trainee by username: {}", username);
-    return traineeRepository.findByUsername(username);
+    if (username == null || username.isEmpty()) {
+      throw new IllegalArgumentException("Username cannot be null or empty.");
+    }
+
+    Trainee trainee = traineeRepository.findByUsername(username);
+
+    if (trainee == null) {
+      throw new EntityNotFoundException("Trainee with username " + username + " not found.");
+    }
+    return trainee;
   }
 
   @Transactional(readOnly = true)
   public List<Trainee> getAllTrainees() {
     LOGGER.info("Fetching all Trainees.");
-    return traineeRepository.findAll();
+    List<Trainee> trainees = traineeRepository.findAll();
+    if (trainees.isEmpty()) {
+      throw new EntityNotFoundException("No trainees found.");
+    }
+    return trainees;
   }
 
 
@@ -67,19 +82,34 @@ public class TraineeService {
 
   @Transactional
   public void updateTrainee(Trainee trainee) {
+    String username = trainee.getUser().getUsername();
     LOGGER.info("Updating Trainee with username: {}", trainee.getUser().getUsername());
-    traineeRepository.save(trainee); // Update trainee
+    Trainee existingTrainee = traineeRepository.findByUsername(username);
+    if (existingTrainee == null) {
+      throw new EntityNotFoundException("Trainee with username " + username + " not found.");
+    }
+    traineeRepository.save(trainee);
   }
 
   @Transactional(readOnly = true)
   public List<Trainer> getAssignedTrainers(Trainee trainee) {
+    String username = trainee.getUser().getUsername();
     LOGGER.info("Fetching assigned trainers for Trainee: {}", trainee.getUser().getUsername());
+    Trainee existingTrainee = traineeRepository.findByUsername(username);
+    if (existingTrainee == null) {
+      throw new EntityNotFoundException("Trainee with username " + username + " not found.");
+    }
     return trainee.getTrainers();
   }
 
   @Transactional(readOnly = true)
   public List<Trainer> getUnassignedTrainers(Trainee trainee) {
+    String username = trainee.getUser().getUsername();
     LOGGER.info("Fetching unassigned trainers for Trainee: {}", trainee.getUser().getUsername());
+    Trainee existingTrainee = traineeRepository.findByUsername(username);
+    if (existingTrainee == null) {
+      throw new EntityNotFoundException("Trainee with username " + username + " not found.");
+    }
     List<Trainer> assignedTrainers = trainee.getTrainers();
     return trainerRepository.findUnassignedTrainers(assignedTrainers);
   }

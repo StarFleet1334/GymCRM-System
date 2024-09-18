@@ -3,6 +3,7 @@ package com.demo.folder.service;
 
 import com.demo.folder.entity.TrainingType;
 import com.demo.folder.repository.TrainingTypeRepository;
+import jakarta.persistence.EntityNotFoundException;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,6 +26,11 @@ public class TrainingTypeService {
   @Transactional(readOnly = true)
   public List<TrainingType> getAllTrainingTypes() {
     LOGGER.info("Fetching all training types");
-    return trainingTypeRepository.findAll();
+    List<TrainingType> trainingTypes = trainingTypeRepository.findAll();
+    if (trainingTypes.isEmpty()) {
+      throw new EntityNotFoundException("No training types found.");
+    }
+
+    return trainingTypes;
   }
 }

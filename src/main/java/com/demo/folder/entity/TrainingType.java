@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @Entity
+@Table(name = "training_types")
 public class TrainingType {
   private static final Logger LOGGER = LoggerFactory.getLogger(TrainingType.class);
 

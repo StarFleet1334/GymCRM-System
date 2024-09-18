@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @Entity
+@Table(name = "trainees")
 public class Trainee {
   private static final Logger LOGGER = LoggerFactory.getLogger(Trainee.class);
 

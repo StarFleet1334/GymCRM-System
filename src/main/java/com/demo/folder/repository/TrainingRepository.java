@@ -24,12 +24,10 @@ public class TrainingRepository {
     return sessionFactory.getCurrentSession();
   }
 
-  @Transactional
   public void save(Training training) {
     getCurrentSession().merge(training);
   }
 
-  @Transactional(readOnly = true)
   public List<Training> findByTrainingDateAfter(Date date) {
     return getCurrentSession()
         .createQuery("FROM Training t WHERE t.trainingDate > :date", Training.class)
@@ -37,12 +35,10 @@ public class TrainingRepository {
         .list();
   }
 
-  @Transactional(readOnly = true)
   public List<Training> findAll() {
     return getCurrentSession().createQuery("FROM Training", Training.class).list();
   }
 
-  @Transactional(readOnly = true)
   public List<Training> findTrainingsForTraineeByCriteria(Long traineeId, LocalDate fromDate,
       LocalDate toDate, String trainerName, String trainingType) {
     StringBuilder queryStr = new StringBuilder("FROM Training t WHERE t.trainee.id = :traineeId");
@@ -79,7 +75,6 @@ public class TrainingRepository {
     return query.getResultList();
   }
 
-  @Transactional(readOnly = true)
   public List<Training> findTrainingsForTrainerByCriteria(Long trainerId, LocalDate fromDate,
       LocalDate toDate, String traineeName) {
     StringBuilder queryStr = new StringBuilder("FROM Training t WHERE t.trainer.id = :trainerId");

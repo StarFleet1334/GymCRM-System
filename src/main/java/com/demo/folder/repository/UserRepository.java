@@ -21,12 +21,10 @@ public class UserRepository {
     return sessionFactory.getCurrentSession();
   }
 
-  @Transactional
   public void save(User user) {
     getCurrentSession().merge(user);
   }
 
-  @Transactional(readOnly = true)
   public User findByUsername(String username) {
     return getCurrentSession()
         .createQuery("FROM User u WHERE u.username = :username", User.class)
@@ -34,7 +32,6 @@ public class UserRepository {
         .uniqueResult();
   }
 
-  @Transactional(readOnly = true)
   public User findByUsernameWithAssociations(String username) {
     return getCurrentSession()
         .createQuery(
@@ -44,12 +41,10 @@ public class UserRepository {
         .uniqueResult();
   }
 
-  @Transactional(readOnly = true)
   public List<User> findAll() {
     return getCurrentSession().createQuery("FROM User", User.class).list();
   }
 
-  @Transactional(readOnly = true)
   public List<String> findUsernamesStartingWith(String baseUsername) {
     return sessionFactory.getCurrentSession()
         .createQuery("SELECT u.username FROM User u WHERE u.username LIKE :baseUsername",

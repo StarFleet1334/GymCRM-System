@@ -13,6 +13,7 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.core.env.Environment;
 
 @Configuration
 @ComponentScan(basePackages = "com.demo.folder")
@@ -20,13 +21,19 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 public class SpringConfig {
 
+  private final Environment env;
+
+  public SpringConfig(Environment env) {
+    this.env = env;
+  }
+
   @Bean
   public DataSource dataSource() {
     DriverManagerDataSource dataSource = new DriverManagerDataSource();
-    dataSource.setDriverClassName("org.h2.Driver");
-    dataSource.setUrl("jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1");
-    dataSource.setUsername("sa");
-    dataSource.setPassword("");
+    dataSource.setDriverClassName(env.getProperty("spring.datasource.driver-class-name"));
+    dataSource.setUrl(env.getProperty("spring.datasource.url"));
+    dataSource.setUsername(env.getProperty("spring.datasource.username"));
+    dataSource.setPassword(env.getProperty("spring.datasource.password"));
     return dataSource;
   }
 
