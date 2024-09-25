@@ -23,11 +23,11 @@
     <property name="hibernate.format_sql">true</property>
 
     <!-- Mapped entity classes -->
-    <mapping class="com.demo.folder.entity.Trainee"/>
-    <mapping class="com.demo.folder.entity.Trainer"/>
-    <mapping class="com.demo.folder.entity.Training"/>
-    <mapping class="com.demo.folder.entity.TrainingType"/>
-    <mapping class="com.demo.folder.entity.User"/>
+    <mapping class="com.demo.folder.entity.base.Trainee"/>
+    <mapping class="com.demo.folder.entity.base.Trainer"/>
+    <mapping class="com.demo.folder.entity.base.Training"/>
+    <mapping class="com.demo.folder.entity.base.TrainingType"/>
+    <mapping class="com.demo.folder.entity.base.User"/>
 
   </session-factory>
 </hibernate-configuration>

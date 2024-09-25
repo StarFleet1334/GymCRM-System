@@ -1,11 +1,11 @@
 package com.demo.folder.repository;
 
-import com.demo.folder.entity.Trainee;
+import com.demo.folder.entity.base.Trainee;
+import com.demo.folder.entity.base.Trainer;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -18,12 +18,16 @@ public class TraineeRepository {
   public TraineeRepository() {
   }
 
-  private Session getCurrentSession() {
+  public Session getCurrentSession() {
     return sessionFactory.getCurrentSession();
   }
 
   public void save(Trainee trainee) {
     getCurrentSession().merge(trainee);
+  }
+
+  public void save(Trainer trainer) {
+    getCurrentSession().merge(trainer);
   }
 
   public Trainee findByUsername(String username) {

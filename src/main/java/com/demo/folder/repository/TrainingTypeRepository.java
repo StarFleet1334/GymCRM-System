@@ -1,12 +1,12 @@
 package com.demo.folder.repository;
 
-import com.demo.folder.entity.TrainingType;
+import com.demo.folder.entity.base.TrainingType;
 import java.util.List;
+import java.util.Optional;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 public class TrainingTypeRepository {
@@ -25,5 +25,16 @@ public class TrainingTypeRepository {
 
   public List<TrainingType> findAll() {
     return getCurrentSession().createQuery("FROM TrainingType", TrainingType.class).list();
+  }
+  public Optional<TrainingType> findById(Long id) {
+    TrainingType trainingType = getCurrentSession().get(TrainingType.class, id);
+    return Optional.ofNullable(trainingType);
+  }
+
+  public TrainingType findByName(String name) {
+    return getCurrentSession()
+        .createQuery("FROM TrainingType WHERE trainingTypeName = :name", TrainingType.class)
+        .setParameter("name", name)
+        .uniqueResult();
   }
 }

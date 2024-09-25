@@ -1,12 +1,12 @@
 package com.demo.folder.repository;
 
-import com.demo.folder.entity.Training;
+import com.demo.folder.entity.base.Trainee;
+import com.demo.folder.entity.base.Training;
 import java.time.LocalDate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
@@ -104,6 +104,18 @@ public class TrainingRepository {
 
     return query.getResultList();
   }
+
+  public List<Training> findByTrainee(Trainee trainee) {
+    return getCurrentSession()
+        .createQuery("FROM Training t WHERE t.trainee = :trainee", Training.class)
+        .setParameter("trainee", trainee)
+        .list();
+  }
+
+  public void delete(Training training) {
+    getCurrentSession().remove(training);
+  }
+
 
 
 }

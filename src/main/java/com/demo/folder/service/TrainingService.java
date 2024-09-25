@@ -1,7 +1,9 @@
 package com.demo.folder.service;
 
-import com.demo.folder.entity.Trainer;
-import com.demo.folder.entity.Training;
+import com.demo.folder.entity.base.Trainee;
+import com.demo.folder.entity.base.Trainer;
+import com.demo.folder.entity.base.Training;
+import com.demo.folder.entity.dto.request.TrainingRequestDTO;
 import com.demo.folder.repository.TrainingRepository;
 import jakarta.persistence.EntityNotFoundException;
 import java.time.LocalDate;
@@ -19,12 +21,18 @@ public class TrainingService {
   @Autowired
   private TrainingRepository trainingRepository;
 
+  @Autowired
+  private TrainerService trainerService;
+
+  @Autowired
+  private TraineeService traineeService;
+
   @Transactional
   public List<Training> getTrainingsForTraineeByCriteria(Long traineeId, LocalDate fromDate,
       LocalDate toDate, String trainerName, String trainingType) {
-    LOGGER.info(
-        "Fetching trainings for trainee with ID: {}, from: {}, to: {}, trainerName: {}, trainingType: {}",
-        traineeId, fromDate, toDate, trainerName, trainingType);
+//    LOGGER.info(
+//        "Fetching trainings for trainee with ID: {}, from: {}, to: {}, trainerName: {}, trainingType: {}",
+//        traineeId, fromDate, toDate, trainerName, trainingType);
 
     if (traineeId == null || traineeId <= 0) {
       throw new IllegalArgumentException("Invalid trainee ID.");
@@ -40,8 +48,8 @@ public class TrainingService {
   @Transactional
   public List<Training> getTrainingsForTrainerByCriteria(Long trainerId, LocalDate fromDate,
       LocalDate toDate, String traineeName) {
-    LOGGER.info("Fetching trainings for trainer with ID: {}, from: {}, to: {}, traineeName: {}",
-        trainerId, fromDate, toDate, traineeName);
+//    LOGGER.info("Fetching trainings for trainer with ID: {}, from: {}, to: {}, traineeName: {}",
+//        trainerId, fromDate, toDate, traineeName);
     if (trainerId == null || trainerId <= 0) {
       throw new IllegalArgumentException("Invalid trainer ID.");
     }
@@ -55,19 +63,58 @@ public class TrainingService {
 
   @Transactional
   public void saveTraining(Training training) {
-    LOGGER.info("Saving training with name: {}", training.getTrainingName());
+//    LOGGER.info("Saving training with name: {}", training.getTrainingName());
     trainingRepository.save(training);
   }
 
   @Transactional(readOnly = true)
   public List<Training> getAllTrainings() {
-    LOGGER.info("Fetching all trainings");
+//    LOGGER.info("Fetching all trainings");
     List<Training> trainings = trainingRepository.findAll();
     if (trainings.isEmpty()) {
       throw new EntityNotFoundException("No trainings found.");
     }
 
     return trainings;
+  }
+
+  @Transactional
+  public void createTraining(TrainingRequestDTO trainingRequestDTO) {
+    Trainee trainee = traineeService.findTraineeByUsername(trainingRequestDTO.getTraineeUserName());
+    if (trainee == null) {
+      throw new EntityNotFoundException("Trainee with username " + trainingRequestDTO.getTraineeUserName() + " not found.");
+    }
+
+    Trainer trainer = trainerService.findTrainerByUsername(trainingRequestDTO.getTrainerUserName());
+    if (trainer == null) {
+      throw new EntityNotFoundException("Trainer with username " + trainingRequestDTO.getTrainerUserName() + " not found.");
+    }
+
+    if (!trainee.getTrainers().contains(trainer)) {
+      trainee.getTrainers().add(trainer);
+      traineeService.updateTrainee(trainee);
+    }
+
+    if (!trainer.getTrainees().contains(trainee)) {
+      trainer.getTrainees().add(trainee);
+      trainerService.updateTrainer(trainer);
+    }
+
+
+
+    Training training = new Training();
+    training.setTrainee(trainee);
+    training.setTrainer(trainer);
+    training.setTrainingName(trainingRequestDTO.getTrainingName());
+    training.setTrainingDate(trainingRequestDTO.getTrainingDate());
+    training.setTrainingDuration(trainingRequestDTO.getDuration());
+
+    trainee.getTrainings().add(training);
+    LOGGER.info("Trainee's trainings list: {}", trainee.getTrainings());
+    traineeService.updateTrainee(trainee);
+
+    saveTraining(training);
+//    LOGGER.info("Created training for trainee {} with trainer {}", trainee.getUser().getUsername(), trainer.getUser().getUsername());
   }
 }
 

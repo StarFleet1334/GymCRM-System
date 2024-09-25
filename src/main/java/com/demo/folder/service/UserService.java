@@ -1,6 +1,7 @@
 package com.demo.folder.service;
 
-import com.demo.folder.entity.User;
+import com.demo.folder.entity.base.User;
+import com.demo.folder.error.exception.AuthenticationException;
 import com.demo.folder.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.slf4j.Logger;
@@ -21,25 +22,25 @@ public class UserService {
 
   @Transactional
   public User authenticate(String username, String password) {
-    LOGGER.info("Authenticating user with username: {}", username);
+//    LOGGER.info("Authenticating user with username: {}", username);
     User user = userRepository.findByUsernameWithAssociations(username);
     if (user != null && user.getPassword().equals(password)) {
-      LOGGER.info("Authentication successful for username: {}", username);
+//      LOGGER.info("Authentication successful for username: {}", username);
       return user;
     }
-    LOGGER.warn("Authentication failed for username: {}", username);
-    return null;
+//    LOGGER.warn("Authentication failed for username: {}", username);
+    throw new AuthenticationException("Invalid credentials");
   }
 
   @Transactional
   public void createUser(User user) {
-    LOGGER.info("Creating new user: {}", user.getUsername());
+//    LOGGER.info("Creating new user: {}", user.getUsername());
     userRepository.save(user);
   }
 
   @Transactional(readOnly = true)
   public List<User> getAllUsers() {
-    LOGGER.info("Fetching all users");
+//    LOGGER.info("Fetching all users");
     List<User> users = userRepository.findAll();
     if (users.isEmpty()) {
       throw new EntityNotFoundException("No users found.");
@@ -49,7 +50,7 @@ public class UserService {
 
   @Transactional(readOnly = true)
   public boolean usernameExists(String username) {
-    LOGGER.info("Checking if username exists: {}", username);
+//    LOGGER.info("Checking if username exists: {}", username);
     if (username == null || username.isEmpty()) {
       throw new IllegalArgumentException("Username cannot be null or empty.");
     }
@@ -59,7 +60,7 @@ public class UserService {
 
   @Transactional(readOnly = true)
   public List<String> findUsernamesStartingWith(String baseUsername) {
-    LOGGER.info("Finding usernames starting with: {}", baseUsername);
+//    LOGGER.info("Finding usernames starting with: {}", baseUsername);
     if (baseUsername == null || baseUsername.isEmpty()) {
       throw new IllegalArgumentException("Base username cannot be null or empty.");
     }
@@ -68,7 +69,7 @@ public class UserService {
 
   @Transactional
   public void updatePassword(User user, String newPassword) {
-    LOGGER.info("Updating password for user: {}", user.getUsername());
+//    LOGGER.info("Updating password for user: {}", user.getUsername());
     if (user == null) {
       throw new IllegalArgumentException("User object cannot be null.");
     }
@@ -81,7 +82,7 @@ public class UserService {
 
   @Transactional
   public void updateUser(User user) {
-    LOGGER.info("Updating user: {}", user.getUsername());
+//    LOGGER.info("Updating user: {}", user.getUsername());
     if (user == null) {
       throw new IllegalArgumentException("User object cannot be null.");
     }

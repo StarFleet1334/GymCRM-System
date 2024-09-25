@@ -1,10 +1,10 @@
 package com.demo.folder.service;
 
-import com.demo.folder.entity.Trainee;
-import com.demo.folder.entity.Trainer;
-import com.demo.folder.entity.Training;
-import com.demo.folder.entity.TrainingType;
-import com.demo.folder.entity.User;
+import com.demo.folder.entity.base.Trainee;
+import com.demo.folder.entity.base.Trainer;
+import com.demo.folder.entity.base.Training;
+import com.demo.folder.entity.base.TrainingType;
+import com.demo.folder.entity.base.User;
 import com.demo.folder.utils.Generator;
 import java.sql.Date;
 import java.time.LocalDate;
