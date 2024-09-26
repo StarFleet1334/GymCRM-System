@@ -1,0 +1,1054 @@
+2024-09-26 12:32:58 [main] INFO  org.eclipse.jetty.server.Server - jetty-11.0.24; built: 2024-08-26T18:11:22.448Z; git: 5dfc59a691b748796f922208956bd1f2794bcd16; jvm 22.0.2+9-70
+2024-09-26 12:32:58 [main] INFO  o.e.j.s.s.DefaultSessionIdManager - Session workerName=node0
+2024-09-26 12:32:58 [main] INFO  o.e.j.s.handler.ContextHandler.ROOT - Initializing Spring DispatcherServlet 'org.springframework.web.servlet.DispatcherServlet-3e84448c'
+2024-09-26 12:32:58 [main] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'org.springframework.web.servlet.DispatcherServlet-3e84448c'
+2024-09-26 12:32:58 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.0.Final
+2024-09-26 12:32:58 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2024-09-26 12:32:59 [main] INFO  SQL dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2024-09-26 12:32:59 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-09-26 12:32:59 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-09-26 12:33:00 [main] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1694 ms
+2024-09-26 12:33:00 [main] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@53da2aec{/,null,AVAILABLE}
+2024-09-26 12:33:00 [main] INFO  o.e.jetty.server.AbstractConnector - Started ServerConnector@57a3af25{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2024-09-26 12:33:00 [main] INFO  org.eclipse.jetty.server.Server - Started Server@7133da86{STARTING}[11.0.24,sto=0] @2097ms
+2024-09-26 12:33:03 [qtp235237152-36] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: 793689e4-753f-4e3c-b87c-9cd6c9928cfa
+2024-09-26 12:33:03 [qtp235237152-36] INFO  c.d.f.t.RequestLoggingInterceptor - Transaction ID: 793689e4-753f-4e3c-b87c-9cd6c9928cfa | Incoming request: GET /swagger-ui/index.html
+2024-09-26 12:33:03 [qtp235237152-36] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: 793689e4-753f-4e3c-b87c-9cd6c9928cfa completed.
+2024-09-26 12:33:27 [qtp235237152-31] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: ea15f8b7-567e-46df-b9e3-47c2de148700
+2024-09-26 12:33:27 [qtp235237152-31] INFO  c.d.f.t.RequestLoggingInterceptor - Transaction ID: ea15f8b7-567e-46df-b9e3-47c2de148700 | Incoming request: GET /v3/api-docs
+2024-09-26 12:33:27 [qtp235237152-31] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: ea15f8b7-567e-46df-b9e3-47c2de148700 completed.
+2024-09-26 12:33:27 [qtp235237152-35] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: 279de980-3443-4d09-9950-34bb63085e45
+2024-09-26 12:33:27 [qtp235237152-35] INFO  c.d.f.t.RequestLoggingInterceptor - Transaction ID: 279de980-3443-4d09-9950-34bb63085e45 | Incoming request: GET /v3/api-docs
+2024-09-26 12:33:27 [qtp235237152-35] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: 279de980-3443-4d09-9950-34bb63085e45 completed.
+2024-09-26 12:35:08 [main] INFO  org.eclipse.jetty.server.Server - jetty-11.0.24; built: 2024-08-26T18:11:22.448Z; git: 5dfc59a691b748796f922208956bd1f2794bcd16; jvm 22.0.2+9-70
+2024-09-26 12:35:08 [main] INFO  o.e.j.s.s.DefaultSessionIdManager - Session workerName=node0
+2024-09-26 12:35:08 [main] INFO  o.e.j.s.handler.ContextHandler.ROOT - Initializing Spring DispatcherServlet 'org.springframework.web.servlet.DispatcherServlet-3d6f0054'
+2024-09-26 12:35:08 [main] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'org.springframework.web.servlet.DispatcherServlet-3d6f0054'
+2024-09-26 12:35:09 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.0.Final
+2024-09-26 12:35:09 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2024-09-26 12:35:09 [main] INFO  SQL dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2024-09-26 12:35:09 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-09-26 12:35:09 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-09-26 12:35:10 [main] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1526 ms
+2024-09-26 12:35:10 [main] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@2c06e145{/,null,AVAILABLE}
+2024-09-26 12:35:10 [main] INFO  o.e.jetty.server.AbstractConnector - Started ServerConnector@747ddf94{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2024-09-26 12:35:10 [main] INFO  org.eclipse.jetty.server.Server - Started Server@1da2cb77{STARTING}[11.0.24,sto=0] @1917ms
+2024-09-26 12:35:13 [qtp203849460-30] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: cce0a4b5-ec73-4272-a62e-b5e695cc6e8e
+2024-09-26 12:35:13 [qtp203849460-30] INFO  c.d.f.t.RequestLoggingInterceptor - Transaction ID: cce0a4b5-ec73-4272-a62e-b5e695cc6e8e | Incoming request: GET /v3/api-docs
+2024-09-26 12:35:13 [qtp203849460-30] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: cce0a4b5-ec73-4272-a62e-b5e695cc6e8e completed.
+2024-09-26 12:35:14 [qtp203849460-26] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: 3b05fc03-3c32-4560-af4a-a2dda3bb687a
+2024-09-26 12:35:14 [qtp203849460-26] INFO  c.d.f.t.RequestLoggingInterceptor - Transaction ID: 3b05fc03-3c32-4560-af4a-a2dda3bb687a | Incoming request: GET /v3/api-docs
+2024-09-26 12:35:14 [qtp203849460-26] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: 3b05fc03-3c32-4560-af4a-a2dda3bb687a completed.
+2024-09-26 12:35:14 [qtp203849460-32] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: a51de383-1389-48c8-bc9b-6aeb3b7887af
+2024-09-26 12:35:14 [qtp203849460-32] INFO  c.d.f.t.RequestLoggingInterceptor - Transaction ID: a51de383-1389-48c8-bc9b-6aeb3b7887af | Incoming request: GET /v3/api-docs
+2024-09-26 12:35:14 [qtp203849460-32] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: a51de383-1389-48c8-bc9b-6aeb3b7887af completed.
+2024-09-26 12:35:15 [qtp203849460-31] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: 22c0917a-ac76-4501-baba-2e9fdd194691
+2024-09-26 12:35:15 [qtp203849460-31] INFO  c.d.f.t.RequestLoggingInterceptor - Transaction ID: 22c0917a-ac76-4501-baba-2e9fdd194691 | Incoming request: GET /v3/api-docs
+2024-09-26 12:35:15 [qtp203849460-31] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: 22c0917a-ac76-4501-baba-2e9fdd194691 completed.
+2024-09-26 12:35:15 [qtp203849460-32] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: cdf9850f-b020-41b7-a804-79a3d85e76cf
+2024-09-26 12:35:15 [qtp203849460-32] INFO  c.d.f.t.RequestLoggingInterceptor - Transaction ID: cdf9850f-b020-41b7-a804-79a3d85e76cf | Incoming request: GET /v3/api-docs
+2024-09-26 12:35:15 [qtp203849460-32] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: cdf9850f-b020-41b7-a804-79a3d85e76cf completed.
+2024-09-26 12:35:15 [qtp203849460-31] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: c7175791-c150-4a19-9973-d8bd83995e13
+2024-09-26 12:35:15 [qtp203849460-31] INFO  c.d.f.t.RequestLoggingInterceptor - Transaction ID: c7175791-c150-4a19-9973-d8bd83995e13 | Incoming request: GET /v3/api-docs
+2024-09-26 12:35:15 [qtp203849460-31] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: c7175791-c150-4a19-9973-d8bd83995e13 completed.
+2024-09-26 12:35:16 [qtp203849460-32] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: f27ddfa7-7dca-4274-80fc-21e83980f4a9
+2024-09-26 12:35:16 [qtp203849460-32] INFO  c.d.f.t.RequestLoggingInterceptor - Transaction ID: f27ddfa7-7dca-4274-80fc-21e83980f4a9 | Incoming request: GET /v3/api-docs
+2024-09-26 12:35:16 [qtp203849460-32] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: f27ddfa7-7dca-4274-80fc-21e83980f4a9 completed.
+2024-09-26 12:35:17 [qtp203849460-31] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: 84fb2147-98d9-4aed-a51d-52fab1bf9fd9
+2024-09-26 12:35:17 [qtp203849460-31] INFO  c.d.f.t.RequestLoggingInterceptor - Transaction ID: 84fb2147-98d9-4aed-a51d-52fab1bf9fd9 | Incoming request: GET /v3/api-docs
+2024-09-26 12:35:17 [qtp203849460-31] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: 84fb2147-98d9-4aed-a51d-52fab1bf9fd9 completed.
+2024-09-26 12:35:17 [qtp203849460-32] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: 86e47dd0-5ec3-4b23-90c1-9ef4a177bd9c
+2024-09-26 12:35:17 [qtp203849460-32] INFO  c.d.f.t.RequestLoggingInterceptor - Transaction ID: 86e47dd0-5ec3-4b23-90c1-9ef4a177bd9c | Incoming request: GET /v3/api-docs
+2024-09-26 12:35:17 [qtp203849460-32] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: 86e47dd0-5ec3-4b23-90c1-9ef4a177bd9c completed.
+2024-09-26 12:35:18 [qtp203849460-31] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: 0c0dc99f-8794-475a-9ac8-be88d0dd6cc0
+2024-09-26 12:35:18 [qtp203849460-31] INFO  c.d.f.t.RequestLoggingInterceptor - Transaction ID: 0c0dc99f-8794-475a-9ac8-be88d0dd6cc0 | Incoming request: GET /v3/api-docs
+2024-09-26 12:35:18 [qtp203849460-31] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: 0c0dc99f-8794-475a-9ac8-be88d0dd6cc0 completed.
+2024-09-26 12:35:18 [qtp203849460-32] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: faaaddd9-01e4-45cb-acd7-9d06d356283a
+2024-09-26 12:35:18 [qtp203849460-32] INFO  c.d.f.t.RequestLoggingInterceptor - Transaction ID: faaaddd9-01e4-45cb-acd7-9d06d356283a | Incoming request: GET /v3/api-docs
+2024-09-26 12:35:18 [qtp203849460-32] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: faaaddd9-01e4-45cb-acd7-9d06d356283a completed.
+2024-09-26 12:35:18 [qtp203849460-31] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: 7af42282-d917-40b4-9279-a450d6dc8314
+2024-09-26 12:35:18 [qtp203849460-31] INFO  c.d.f.t.RequestLoggingInterceptor - Transaction ID: 7af42282-d917-40b4-9279-a450d6dc8314 | Incoming request: GET /v3/api-docs
+2024-09-26 12:35:18 [qtp203849460-31] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: 7af42282-d917-40b4-9279-a450d6dc8314 completed.
+2024-09-26 12:35:18 [qtp203849460-32] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: c62a7489-b30f-40c1-a1ac-0bb1cab336fc
+2024-09-26 12:35:18 [qtp203849460-32] INFO  c.d.f.t.RequestLoggingInterceptor - Transaction ID: c62a7489-b30f-40c1-a1ac-0bb1cab336fc | Incoming request: GET /v3/api-docs
+2024-09-26 12:35:18 [qtp203849460-32] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: c62a7489-b30f-40c1-a1ac-0bb1cab336fc completed.
+2024-09-26 12:35:18 [qtp203849460-31] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: 3f996430-1fe3-422e-bfe1-c2ad1cad5041
+2024-09-26 12:35:18 [qtp203849460-31] INFO  c.d.f.t.RequestLoggingInterceptor - Transaction ID: 3f996430-1fe3-422e-bfe1-c2ad1cad5041 | Incoming request: GET /v3/api-docs
+2024-09-26 12:35:18 [qtp203849460-31] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: 3f996430-1fe3-422e-bfe1-c2ad1cad5041 completed.
+2024-09-26 12:35:19 [qtp203849460-32] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: 2234a998-f0ed-4e80-8f23-a7b684cb1c24
+2024-09-26 12:35:19 [qtp203849460-32] INFO  c.d.f.t.RequestLoggingInterceptor - Transaction ID: 2234a998-f0ed-4e80-8f23-a7b684cb1c24 | Incoming request: GET /v3/api-docs
+2024-09-26 12:35:19 [qtp203849460-32] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: 2234a998-f0ed-4e80-8f23-a7b684cb1c24 completed.
+2024-09-26 12:35:19 [qtp203849460-32] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: f4da6fa4-4bc4-489d-8f8e-09d7edfcfd84
+2024-09-26 12:35:19 [qtp203849460-32] INFO  c.d.f.t.RequestLoggingInterceptor - Transaction ID: f4da6fa4-4bc4-489d-8f8e-09d7edfcfd84 | Incoming request: GET /v3/api-docs
+2024-09-26 12:35:19 [qtp203849460-32] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: f4da6fa4-4bc4-489d-8f8e-09d7edfcfd84 completed.
+2024-09-26 12:35:19 [qtp203849460-32] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: e5c2f14c-4719-47e3-a769-73e7ff557f48
+2024-09-26 12:35:19 [qtp203849460-32] INFO  c.d.f.t.RequestLoggingInterceptor - Transaction ID: e5c2f14c-4719-47e3-a769-73e7ff557f48 | Incoming request: GET /v3/api-docs
+2024-09-26 12:35:19 [qtp203849460-32] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: e5c2f14c-4719-47e3-a769-73e7ff557f48 completed.
+2024-09-26 12:35:19 [qtp203849460-31] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: e9568518-faa7-45e6-bae6-a6ef479e26ca
+2024-09-26 12:35:19 [qtp203849460-31] INFO  c.d.f.t.RequestLoggingInterceptor - Transaction ID: e9568518-faa7-45e6-bae6-a6ef479e26ca | Incoming request: GET /v3/api-docs
+2024-09-26 12:35:19 [qtp203849460-31] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: e9568518-faa7-45e6-bae6-a6ef479e26ca completed.
+2024-09-26 12:35:19 [qtp203849460-32] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: fa8e61e4-6f91-4f13-9b21-8dcebfbc9ae4
+2024-09-26 12:35:19 [qtp203849460-32] INFO  c.d.f.t.RequestLoggingInterceptor - Transaction ID: fa8e61e4-6f91-4f13-9b21-8dcebfbc9ae4 | Incoming request: GET /v3/api-docs
+2024-09-26 12:35:19 [qtp203849460-32] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: fa8e61e4-6f91-4f13-9b21-8dcebfbc9ae4 completed.
+2024-09-26 12:35:19 [qtp203849460-31] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: a798e616-dbee-486d-9b2f-e301fb580039
+2024-09-26 12:35:19 [qtp203849460-31] INFO  c.d.f.t.RequestLoggingInterceptor - Transaction ID: a798e616-dbee-486d-9b2f-e301fb580039 | Incoming request: GET /v3/api-docs
+2024-09-26 12:35:19 [qtp203849460-31] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: a798e616-dbee-486d-9b2f-e301fb580039 completed.
+2024-09-26 12:35:20 [qtp203849460-32] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: 251db3b3-c9c7-4218-a000-dd6710769dd4
+2024-09-26 12:35:20 [qtp203849460-32] INFO  c.d.f.t.RequestLoggingInterceptor - Transaction ID: 251db3b3-c9c7-4218-a000-dd6710769dd4 | Incoming request: GET /v3/api-docs
+2024-09-26 12:35:20 [qtp203849460-32] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: 251db3b3-c9c7-4218-a000-dd6710769dd4 completed.
+2024-09-26 12:35:20 [qtp203849460-31] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: b3315460-7677-4792-b0ce-444c1ab828e8
+2024-09-26 12:35:20 [qtp203849460-31] INFO  c.d.f.t.RequestLoggingInterceptor - Transaction ID: b3315460-7677-4792-b0ce-444c1ab828e8 | Incoming request: GET /v3/api-docs
+2024-09-26 12:35:20 [qtp203849460-31] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: b3315460-7677-4792-b0ce-444c1ab828e8 completed.
+2024-09-26 12:35:20 [qtp203849460-32] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: f4c341a0-f59c-4d8b-93b1-45df71a621f4
+2024-09-26 12:35:20 [qtp203849460-32] INFO  c.d.f.t.RequestLoggingInterceptor - Transaction ID: f4c341a0-f59c-4d8b-93b1-45df71a621f4 | Incoming request: GET /v3/api-docs
+2024-09-26 12:35:20 [qtp203849460-32] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: f4c341a0-f59c-4d8b-93b1-45df71a621f4 completed.
+2024-09-26 12:35:20 [qtp203849460-31] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: 86a0748b-f962-4f91-96d9-43ea15a8f7ea
+2024-09-26 12:35:20 [qtp203849460-31] INFO  c.d.f.t.RequestLoggingInterceptor - Transaction ID: 86a0748b-f962-4f91-96d9-43ea15a8f7ea | Incoming request: GET /v3/api-docs
+2024-09-26 12:35:20 [qtp203849460-31] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: 86a0748b-f962-4f91-96d9-43ea15a8f7ea completed.
+2024-09-26 12:35:20 [qtp203849460-32] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: d6eb5a8c-1953-445f-b6b9-0e12182fe450
+2024-09-26 12:35:20 [qtp203849460-32] INFO  c.d.f.t.RequestLoggingInterceptor - Transaction ID: d6eb5a8c-1953-445f-b6b9-0e12182fe450 | Incoming request: GET /v3/api-docs
+2024-09-26 12:35:20 [qtp203849460-32] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: d6eb5a8c-1953-445f-b6b9-0e12182fe450 completed.
+2024-09-26 12:35:21 [qtp203849460-31] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: 453de6d1-294d-462b-9f47-3d586b9bb374
+2024-09-26 12:35:21 [qtp203849460-31] INFO  c.d.f.t.RequestLoggingInterceptor - Transaction ID: 453de6d1-294d-462b-9f47-3d586b9bb374 | Incoming request: GET /v3/api-docs
+2024-09-26 12:35:21 [qtp203849460-31] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: 453de6d1-294d-462b-9f47-3d586b9bb374 completed.
+2024-09-26 12:35:21 [qtp203849460-32] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: 5ccf2374-0f49-4725-9461-6c36779e67c2
+2024-09-26 12:35:21 [qtp203849460-32] INFO  c.d.f.t.RequestLoggingInterceptor - Transaction ID: 5ccf2374-0f49-4725-9461-6c36779e67c2 | Incoming request: GET /v3/api-docs
+2024-09-26 12:35:21 [qtp203849460-32] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: 5ccf2374-0f49-4725-9461-6c36779e67c2 completed.
+2024-09-26 12:35:21 [qtp203849460-31] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: 1ca186ba-4ac3-4ae9-ba66-8afd213e2bfb
+2024-09-26 12:35:21 [qtp203849460-31] INFO  c.d.f.t.RequestLoggingInterceptor - Transaction ID: 1ca186ba-4ac3-4ae9-ba66-8afd213e2bfb | Incoming request: GET /v3/api-docs
+2024-09-26 12:35:21 [qtp203849460-31] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: 1ca186ba-4ac3-4ae9-ba66-8afd213e2bfb completed.
+2024-09-26 12:35:21 [qtp203849460-31] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: ff1f0191-8906-4b6d-a4ba-a94bf0780c99
+2024-09-26 12:35:21 [qtp203849460-31] INFO  c.d.f.t.RequestLoggingInterceptor - Transaction ID: ff1f0191-8906-4b6d-a4ba-a94bf0780c99 | Incoming request: GET /v3/api-docs
+2024-09-26 12:35:21 [qtp203849460-31] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: ff1f0191-8906-4b6d-a4ba-a94bf0780c99 completed.
+2024-09-26 12:35:21 [qtp203849460-31] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: 73242876-ec29-4ac8-a3c5-af684a958ba5
+2024-09-26 12:35:21 [qtp203849460-31] INFO  c.d.f.t.RequestLoggingInterceptor - Transaction ID: 73242876-ec29-4ac8-a3c5-af684a958ba5 | Incoming request: GET /v3/api-docs
+2024-09-26 12:35:21 [qtp203849460-31] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: 73242876-ec29-4ac8-a3c5-af684a958ba5 completed.
+2024-09-26 12:35:22 [qtp203849460-32] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: da6d111f-7bcb-4c65-9281-e79c0ccddb36
+2024-09-26 12:35:22 [qtp203849460-32] INFO  c.d.f.t.RequestLoggingInterceptor - Transaction ID: da6d111f-7bcb-4c65-9281-e79c0ccddb36 | Incoming request: GET /v3/api-docs
+2024-09-26 12:35:22 [qtp203849460-32] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: da6d111f-7bcb-4c65-9281-e79c0ccddb36 completed.
+2024-09-26 12:35:22 [qtp203849460-31] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: 6dd06c90-1ac7-483b-9c37-85a479593ed1
+2024-09-26 12:35:22 [qtp203849460-31] INFO  c.d.f.t.RequestLoggingInterceptor - Transaction ID: 6dd06c90-1ac7-483b-9c37-85a479593ed1 | Incoming request: GET /v3/api-docs
+2024-09-26 12:35:22 [qtp203849460-31] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: 6dd06c90-1ac7-483b-9c37-85a479593ed1 completed.
+2024-09-26 12:35:22 [qtp203849460-32] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: d443e90a-a20b-4e44-b22b-c42c5552e965
+2024-09-26 12:35:22 [qtp203849460-32] INFO  c.d.f.t.RequestLoggingInterceptor - Transaction ID: d443e90a-a20b-4e44-b22b-c42c5552e965 | Incoming request: GET /v3/api-docs
+2024-09-26 12:35:22 [qtp203849460-32] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: d443e90a-a20b-4e44-b22b-c42c5552e965 completed.
+2024-09-26 12:39:27 [main] INFO  org.eclipse.jetty.server.Server - jetty-11.0.24; built: 2024-08-26T18:11:22.448Z; git: 5dfc59a691b748796f922208956bd1f2794bcd16; jvm 22.0.2+9-70
+2024-09-26 12:39:27 [main] INFO  o.e.j.s.s.DefaultSessionIdManager - Session workerName=node0
+2024-09-26 12:39:27 [main] INFO  o.e.j.s.handler.ContextHandler.ROOT - Initializing Spring DispatcherServlet 'org.springframework.web.servlet.DispatcherServlet-3d6f0054'
+2024-09-26 12:39:27 [main] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'org.springframework.web.servlet.DispatcherServlet-3d6f0054'
+2024-09-26 12:39:27 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.0.Final
+2024-09-26 12:39:27 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2024-09-26 12:39:28 [main] INFO  SQL dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2024-09-26 12:39:28 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-09-26 12:39:28 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-09-26 12:39:28 [main] WARN  o.s.w.c.s.AnnotationConfigWebApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'all' defined in com.demo.folder.config.OpenApiConfig: Failed to instantiate [org.springdoc.core.models.GroupedOpenApi]: Factory method 'all' threw exception with message: Group name can not be null or empty
+2024-09-26 12:39:29 [main] ERROR o.s.web.servlet.DispatcherServlet - Context initialization failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'all' defined in com.demo.folder.config.OpenApiConfig: Failed to instantiate [org.springdoc.core.models.GroupedOpenApi]: Factory method 'all' threw exception with message: Group name can not be null or empty
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:648)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:485)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1355)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1185)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:971)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625)
+	at org.springframework.web.servlet.FrameworkServlet.configureAndRefreshWebApplicationContext(FrameworkServlet.java:706)
+	at org.springframework.web.servlet.FrameworkServlet.initWebApplicationContext(FrameworkServlet.java:583)
+	at org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:537)
+	at org.springframework.web.servlet.HttpServletBean.init(HttpServletBean.java:169)
+	at jakarta.servlet.GenericServlet.init(GenericServlet.java:178)
+	at jakarta.servlet.http.HttpServlet.init(HttpServlet.java:114)
+	at org.eclipse.jetty.servlet.ServletHolder.initServlet(ServletHolder.java:633)
+	at org.eclipse.jetty.servlet.ServletHolder.initialize(ServletHolder.java:415)
+	at org.eclipse.jetty.servlet.ServletHandler.lambda$initialize$2(ServletHandler.java:725)
+	at java.base/java.util.stream.SortedOps$SizedRefSortingSink.end(SortedOps.java:357)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:557)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:546)
+	at java.base/java.util.stream.StreamSpliterators$WrappingSpliterator.forEachRemaining(StreamSpliterators.java:310)
+	at java.base/java.util.stream.Streams$ConcatSpliterator.forEachRemaining(Streams.java:735)
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:782)
+	at org.eclipse.jetty.servlet.ServletHandler.initialize(ServletHandler.java:749)
+	at org.eclipse.jetty.servlet.ServletContextHandler.startContext(ServletContextHandler.java:392)
+	at org.eclipse.jetty.server.handler.ContextHandler.doStart(ContextHandler.java:902)
+	at org.eclipse.jetty.servlet.ServletContextHandler.doStart(ServletContextHandler.java:306)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:93)
+	at org.eclipse.jetty.util.component.ContainerLifeCycle.start(ContainerLifeCycle.java:171)
+	at org.eclipse.jetty.server.Server.start(Server.java:470)
+	at org.eclipse.jetty.util.component.ContainerLifeCycle.doStart(ContainerLifeCycle.java:114)
+	at org.eclipse.jetty.server.handler.AbstractHandler.doStart(AbstractHandler.java:89)
+	at org.eclipse.jetty.server.Server.doStart(Server.java:415)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:93)
+	at com.demo.folder.App.main(App.java:39)
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springdoc.core.models.GroupedOpenApi]: Factory method 'all' threw exception with message: Group name can not be null or empty
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:178)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:644)
+	... 39 common frames omitted
+Caused by: java.lang.IllegalArgumentException: Group name can not be null or empty
+	at org.springframework.util.Assert.isTrue(Assert.java:111)
+	at org.springdoc.core.models.GroupedOpenApi.<init>(GroupedOpenApi.java:121)
+	at org.springdoc.core.models.GroupedOpenApi$Builder.build(GroupedOpenApi.java:542)
+	at com.demo.folder.config.OpenApiConfig.createDefaultGroupedOpenApi(OpenApiConfig.java:40)
+	at com.demo.folder.config.OpenApiConfig.all(OpenApiConfig.java:32)
+	at com.demo.folder.config.OpenApiConfig$$SpringCGLIB$$0.CGLIB$all$0(<generated>)
+	at com.demo.folder.config.OpenApiConfig$$SpringCGLIB$$FastClass$$1.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:258)
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:348)
+	at com.demo.folder.config.OpenApiConfig$$SpringCGLIB$$0.all(<generated>)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:146)
+	... 40 common frames omitted
+2024-09-26 12:39:29 [main] WARN  o.e.j.s.handler.ContextHandler.ROOT - unavailable
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'all' defined in com.demo.folder.config.OpenApiConfig: Failed to instantiate [org.springdoc.core.models.GroupedOpenApi]: Factory method 'all' threw exception with message: Group name can not be null or empty
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:648)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:485)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1355)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1185)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:971)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625)
+	at org.springframework.web.servlet.FrameworkServlet.configureAndRefreshWebApplicationContext(FrameworkServlet.java:706)
+	at org.springframework.web.servlet.FrameworkServlet.initWebApplicationContext(FrameworkServlet.java:583)
+	at org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:537)
+	at org.springframework.web.servlet.HttpServletBean.init(HttpServletBean.java:169)
+	at jakarta.servlet.GenericServlet.init(GenericServlet.java:178)
+	at jakarta.servlet.http.HttpServlet.init(HttpServlet.java:114)
+	at org.eclipse.jetty.servlet.ServletHolder.initServlet(ServletHolder.java:633)
+	at org.eclipse.jetty.servlet.ServletHolder.initialize(ServletHolder.java:415)
+	at org.eclipse.jetty.servlet.ServletHandler.lambda$initialize$2(ServletHandler.java:725)
+	at java.base/java.util.stream.SortedOps$SizedRefSortingSink.end(SortedOps.java:357)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:557)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:546)
+	at java.base/java.util.stream.StreamSpliterators$WrappingSpliterator.forEachRemaining(StreamSpliterators.java:310)
+	at java.base/java.util.stream.Streams$ConcatSpliterator.forEachRemaining(Streams.java:735)
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:782)
+	at org.eclipse.jetty.servlet.ServletHandler.initialize(ServletHandler.java:749)
+	at org.eclipse.jetty.servlet.ServletContextHandler.startContext(ServletContextHandler.java:392)
+	at org.eclipse.jetty.server.handler.ContextHandler.doStart(ContextHandler.java:902)
+	at org.eclipse.jetty.servlet.ServletContextHandler.doStart(ServletContextHandler.java:306)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:93)
+	at org.eclipse.jetty.util.component.ContainerLifeCycle.start(ContainerLifeCycle.java:171)
+	at org.eclipse.jetty.server.Server.start(Server.java:470)
+	at org.eclipse.jetty.util.component.ContainerLifeCycle.doStart(ContainerLifeCycle.java:114)
+	at org.eclipse.jetty.server.handler.AbstractHandler.doStart(AbstractHandler.java:89)
+	at org.eclipse.jetty.server.Server.doStart(Server.java:415)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:93)
+	at com.demo.folder.App.main(App.java:39)
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springdoc.core.models.GroupedOpenApi]: Factory method 'all' threw exception with message: Group name can not be null or empty
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:178)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:644)
+	... 39 common frames omitted
+Caused by: java.lang.IllegalArgumentException: Group name can not be null or empty
+	at org.springframework.util.Assert.isTrue(Assert.java:111)
+	at org.springdoc.core.models.GroupedOpenApi.<init>(GroupedOpenApi.java:121)
+	at org.springdoc.core.models.GroupedOpenApi$Builder.build(GroupedOpenApi.java:542)
+	at com.demo.folder.config.OpenApiConfig.createDefaultGroupedOpenApi(OpenApiConfig.java:40)
+	at com.demo.folder.config.OpenApiConfig.all(OpenApiConfig.java:32)
+	at com.demo.folder.config.OpenApiConfig$$SpringCGLIB$$0.CGLIB$all$0(<generated>)
+	at com.demo.folder.config.OpenApiConfig$$SpringCGLIB$$FastClass$$1.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:258)
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:348)
+	at com.demo.folder.config.OpenApiConfig$$SpringCGLIB$$0.all(<generated>)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:146)
+	... 40 common frames omitted
+2024-09-26 12:40:02 [main] INFO  org.eclipse.jetty.server.Server - jetty-11.0.24; built: 2024-08-26T18:11:22.448Z; git: 5dfc59a691b748796f922208956bd1f2794bcd16; jvm 22.0.2+9-70
+2024-09-26 12:40:02 [main] INFO  o.e.j.s.s.DefaultSessionIdManager - Session workerName=node0
+2024-09-26 12:40:02 [main] INFO  o.e.j.s.handler.ContextHandler.ROOT - Initializing Spring DispatcherServlet 'org.springframework.web.servlet.DispatcherServlet-3d6f0054'
+2024-09-26 12:40:02 [main] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'org.springframework.web.servlet.DispatcherServlet-3d6f0054'
+2024-09-26 12:40:03 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.0.Final
+2024-09-26 12:40:03 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2024-09-26 12:40:03 [main] INFO  SQL dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2024-09-26 12:40:03 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-09-26 12:40:04 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-09-26 12:40:04 [main] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1465 ms
+2024-09-26 12:40:04 [main] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@39296cef{/,null,AVAILABLE}
+2024-09-26 12:40:04 [main] INFO  o.e.jetty.server.AbstractConnector - Started ServerConnector@747ddf94{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2024-09-26 12:40:04 [main] INFO  org.eclipse.jetty.server.Server - Started Server@1da2cb77{STARTING}[11.0.24,sto=0] @1856ms
+2024-09-26 12:40:07 [qtp203849460-32] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: a9b705f2-66b6-4454-bef5-d221f81c840b
+2024-09-26 12:40:07 [qtp203849460-32] INFO  c.d.f.t.RequestLoggingInterceptor - Transaction ID: a9b705f2-66b6-4454-bef5-d221f81c840b | Incoming request: GET /swagger-ui/index.html
+2024-09-26 12:40:07 [qtp203849460-32] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: a9b705f2-66b6-4454-bef5-d221f81c840b completed.
+2024-09-26 12:40:09 [qtp203849460-27] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: ad93c3c0-1701-4377-acf3-e3a80ce17b37
+2024-09-26 12:40:09 [qtp203849460-27] INFO  c.d.f.t.RequestLoggingInterceptor - Transaction ID: ad93c3c0-1701-4377-acf3-e3a80ce17b37 | Incoming request: GET /swagger-ui/index.html
+2024-09-26 12:40:09 [qtp203849460-27] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: ad93c3c0-1701-4377-acf3-e3a80ce17b37 completed.
+2024-09-26 12:40:12 [qtp203849460-31] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: 4fe07cda-a83f-4994-a217-8c70c03bb03e
+2024-09-26 12:40:12 [qtp203849460-31] INFO  c.d.f.t.RequestLoggingInterceptor - Transaction ID: 4fe07cda-a83f-4994-a217-8c70c03bb03e | Incoming request: GET /v3/api-docs
+2024-09-26 12:40:12 [qtp203849460-31] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: 4fe07cda-a83f-4994-a217-8c70c03bb03e completed.
+2024-09-26 12:40:12 [qtp203849460-30] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: 183f2a9d-cb64-46bc-82ce-b5ab462991d0
+2024-09-26 12:40:12 [qtp203849460-30] INFO  c.d.f.t.RequestLoggingInterceptor - Transaction ID: 183f2a9d-cb64-46bc-82ce-b5ab462991d0 | Incoming request: GET /v3/api-docs
+2024-09-26 12:40:12 [qtp203849460-30] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: 183f2a9d-cb64-46bc-82ce-b5ab462991d0 completed.
+2024-09-26 12:40:13 [qtp203849460-31] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: e2cfb625-6409-48d6-b604-f1e89847126d
+2024-09-26 12:40:13 [qtp203849460-31] INFO  c.d.f.t.RequestLoggingInterceptor - Transaction ID: e2cfb625-6409-48d6-b604-f1e89847126d | Incoming request: GET /v3/api-docs
+2024-09-26 12:40:13 [qtp203849460-31] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: e2cfb625-6409-48d6-b604-f1e89847126d completed.
+2024-09-26 12:41:17 [main] INFO  org.eclipse.jetty.server.Server - jetty-11.0.24; built: 2024-08-26T18:11:22.448Z; git: 5dfc59a691b748796f922208956bd1f2794bcd16; jvm 22.0.2+9-70
+2024-09-26 12:41:17 [main] INFO  o.e.j.s.s.DefaultSessionIdManager - Session workerName=node0
+2024-09-26 12:41:17 [main] INFO  o.e.j.s.handler.ContextHandler.ROOT - Initializing Spring DispatcherServlet 'org.springframework.web.servlet.DispatcherServlet-3d6f0054'
+2024-09-26 12:41:17 [main] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'org.springframework.web.servlet.DispatcherServlet-3d6f0054'
+2024-09-26 12:41:17 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.0.Final
+2024-09-26 12:41:17 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2024-09-26 12:41:17 [main] INFO  SQL dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2024-09-26 12:41:17 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-09-26 12:41:18 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-09-26 12:41:18 [main] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1485 ms
+2024-09-26 12:41:18 [main] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@7dfca9e6{/,null,AVAILABLE}
+2024-09-26 12:41:18 [main] INFO  o.e.jetty.server.AbstractConnector - Started ServerConnector@747ddf94{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2024-09-26 12:41:18 [main] INFO  org.eclipse.jetty.server.Server - Started Server@1da2cb77{STARTING}[11.0.24,sto=0] @1874ms
+2024-09-26 12:41:20 [qtp203849460-32] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: b00574b1-7111-498e-84a9-1ce9926b4f10
+2024-09-26 12:41:20 [qtp203849460-32] INFO  c.d.f.t.RequestLoggingInterceptor - Transaction ID: b00574b1-7111-498e-84a9-1ce9926b4f10 | Incoming request: GET /swagger-ui/index.html
+2024-09-26 12:41:20 [qtp203849460-32] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: b00574b1-7111-498e-84a9-1ce9926b4f10 completed.
+2024-09-26 12:41:22 [qtp203849460-27] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: 174e71c5-2971-475b-b3e7-a437ae8bc435
+2024-09-26 12:41:22 [qtp203849460-27] INFO  c.d.f.t.RequestLoggingInterceptor - Transaction ID: 174e71c5-2971-475b-b3e7-a437ae8bc435 | Incoming request: GET /swagger-ui/index.html
+2024-09-26 12:41:22 [qtp203849460-27] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: 174e71c5-2971-475b-b3e7-a437ae8bc435 completed.
+2024-09-26 12:41:27 [qtp203849460-31] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: c25959a3-8ceb-45d4-8c52-32de839bd2b6
+2024-09-26 12:41:27 [qtp203849460-31] INFO  c.d.f.t.RequestLoggingInterceptor - Transaction ID: c25959a3-8ceb-45d4-8c52-32de839bd2b6 | Incoming request: GET /v3/api-docs
+2024-09-26 12:41:27 [qtp203849460-31] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: c25959a3-8ceb-45d4-8c52-32de839bd2b6 completed.
+2024-09-26 12:41:27 [qtp203849460-28] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: 0d5386c9-f38e-4fe7-b7e5-3c75529a001f
+2024-09-26 12:41:27 [qtp203849460-28] INFO  c.d.f.t.RequestLoggingInterceptor - Transaction ID: 0d5386c9-f38e-4fe7-b7e5-3c75529a001f | Incoming request: GET /v3/api-docs
+2024-09-26 12:41:27 [qtp203849460-28] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: 0d5386c9-f38e-4fe7-b7e5-3c75529a001f completed.
+2024-09-26 12:52:28 [main] INFO  org.eclipse.jetty.server.Server - jetty-11.0.24; built: 2024-08-26T18:11:22.448Z; git: 5dfc59a691b748796f922208956bd1f2794bcd16; jvm 22.0.2+9-70
+2024-09-26 12:52:28 [main] INFO  o.e.j.s.s.DefaultSessionIdManager - Session workerName=node0
+2024-09-26 12:52:28 [main] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@eadd4fb{/,null,AVAILABLE}
+2024-09-26 12:52:28 [main] INFO  o.e.jetty.server.AbstractConnector - Started ServerConnector@436813f3{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2024-09-26 12:52:28 [main] INFO  org.eclipse.jetty.server.Server - Started Server@57af006c{STARTING}[11.0.24,sto=0] @402ms
+2024-09-26 12:52:52 [qtp776700275-35] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: 2d9aefa6-051b-4dfe-81d1-d54ffb263f73
+2024-09-26 12:52:52 [qtp776700275-35] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: 2d9aefa6-051b-4dfe-81d1-d54ffb263f73 completed.
+2024-09-26 12:53:04 [main] INFO  org.eclipse.jetty.server.Server - jetty-11.0.24; built: 2024-08-26T18:11:22.448Z; git: 5dfc59a691b748796f922208956bd1f2794bcd16; jvm 22.0.2+9-70
+2024-09-26 12:53:04 [main] INFO  o.e.j.s.s.DefaultSessionIdManager - Session workerName=node0
+2024-09-26 12:53:04 [main] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@eadd4fb{/,null,AVAILABLE}
+2024-09-26 12:53:04 [main] INFO  o.e.jetty.server.AbstractConnector - Started ServerConnector@436813f3{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2024-09-26 12:53:04 [main] INFO  org.eclipse.jetty.server.Server - Started Server@57af006c{STARTING}[11.0.24,sto=0] @370ms
+2024-09-26 12:53:16 [main] INFO  org.eclipse.jetty.server.Server - jetty-11.0.24; built: 2024-08-26T18:11:22.448Z; git: 5dfc59a691b748796f922208956bd1f2794bcd16; jvm 22.0.2+9-70
+2024-09-26 12:53:16 [main] INFO  o.e.j.s.s.DefaultSessionIdManager - Session workerName=node0
+2024-09-26 12:53:16 [main] INFO  o.e.j.s.handler.ContextHandler.ROOT - Initializing Spring DispatcherServlet 'org.springframework.web.servlet.DispatcherServlet-3d6f0054'
+2024-09-26 12:53:16 [main] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'org.springframework.web.servlet.DispatcherServlet-3d6f0054'
+2024-09-26 12:53:17 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.0.Final
+2024-09-26 12:53:17 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2024-09-26 12:53:17 [main] INFO  SQL dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2024-09-26 12:53:17 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-09-26 12:53:18 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-09-26 12:53:18 [main] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1436 ms
+2024-09-26 12:53:18 [main] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@5aa334c{/,null,AVAILABLE}
+2024-09-26 12:53:18 [main] INFO  o.e.jetty.server.AbstractConnector - Started ServerConnector@747ddf94{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2024-09-26 12:53:18 [main] INFO  org.eclipse.jetty.server.Server - Started Server@1da2cb77{STARTING}[11.0.24,sto=0] @1783ms
+2024-09-26 12:53:22 [qtp203849460-31] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: f0131a5b-2aad-4dd6-a393-1291ad2d6467
+2024-09-26 12:53:22 [qtp203849460-31] INFO  c.d.f.t.RequestLoggingInterceptor - Transaction ID: f0131a5b-2aad-4dd6-a393-1291ad2d6467 | Incoming request: POST /api/trainee/register
+2024-09-26 12:53:22 [qtp203849460-31] INFO  c.d.f.t.RequestLoggingInterceptor - Transaction ID: f0131a5b-2aad-4dd6-a393-1291ad2d6467 | Response status: 200
+2024-09-26 12:53:22 [qtp203849460-31] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: f0131a5b-2aad-4dd6-a393-1291ad2d6467 completed.
+2024-09-26 12:57:03 [main] INFO  org.eclipse.jetty.server.Server - jetty-11.0.24; built: 2024-08-26T18:11:22.448Z; git: 5dfc59a691b748796f922208956bd1f2794bcd16; jvm 22.0.2+9-70
+2024-09-26 12:57:03 [main] INFO  o.e.j.s.s.DefaultSessionIdManager - Session workerName=node0
+2024-09-26 12:57:03 [main] INFO  o.e.j.s.handler.ContextHandler.ROOT - Initializing Spring DispatcherServlet 'org.springframework.web.servlet.DispatcherServlet-73700b80'
+2024-09-26 12:57:03 [main] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'org.springframework.web.servlet.DispatcherServlet-73700b80'
+2024-09-26 12:57:03 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.0.Final
+2024-09-26 12:57:03 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2024-09-26 12:57:04 [main] INFO  SQL dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2024-09-26 12:57:04 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-09-26 12:57:04 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-09-26 12:57:05 [main] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1480 ms
+2024-09-26 12:57:05 [main] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@38363e96{/,null,AVAILABLE}
+2024-09-26 12:57:05 [main] INFO  o.e.jetty.server.AbstractConnector - Started ServerConnector@131774fe{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2024-09-26 12:57:05 [main] INFO  org.eclipse.jetty.server.Server - Started Server@71238fc2{STARTING}[11.0.24,sto=0] @1901ms
+2024-09-26 12:57:08 [qtp694316372-41] INFO  c.d.f.t.RequestLoggingInterceptor - Transaction ID: null | Incoming request: POST /api/trainee/register
+2024-09-26 12:57:08 [qtp694316372-41] INFO  c.d.f.t.RequestLoggingInterceptor - Transaction ID: null | Response status: 200
+2024-09-26 12:57:11 [qtp694316372-28] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /swagger-ui/index.html
+2024-09-26 12:57:11 [qtp694316372-32] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /swagger-ui/index.html
+2024-09-26 13:00:47 [main] INFO  org.eclipse.jetty.server.Server - jetty-11.0.24; built: 2024-08-26T18:11:22.448Z; git: 5dfc59a691b748796f922208956bd1f2794bcd16; jvm 22.0.2+9-70
+2024-09-26 13:00:47 [main] INFO  o.e.j.s.s.DefaultSessionIdManager - Session workerName=node0
+2024-09-26 13:00:47 [main] INFO  o.e.j.s.handler.ContextHandler.ROOT - Initializing Spring DispatcherServlet 'org.springframework.web.servlet.DispatcherServlet-73700b80'
+2024-09-26 13:00:47 [main] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'org.springframework.web.servlet.DispatcherServlet-73700b80'
+2024-09-26 13:00:47 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.0.Final
+2024-09-26 13:00:47 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2024-09-26 13:00:48 [main] INFO  SQL dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2024-09-26 13:00:48 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-09-26 13:00:48 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-09-26 13:00:48 [main] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1556 ms
+2024-09-26 13:00:48 [main] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@698e1bf5{/,null,AVAILABLE}
+2024-09-26 13:00:48 [main] INFO  o.e.jetty.server.AbstractConnector - Started ServerConnector@131774fe{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2024-09-26 13:00:48 [main] INFO  org.eclipse.jetty.server.Server - Started Server@71238fc2{STARTING}[11.0.24,sto=0] @1932ms
+2024-09-26 13:00:51 [qtp694316372-32] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /swagger-ui/index.html
+2024-09-26 13:00:51 [qtp694316372-27] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /swagger-ui/index.html
+2024-09-26 13:00:54 [qtp694316372-31] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /v3/api-docs
+2024-09-26 13:01:53 [main] INFO  org.eclipse.jetty.server.Server - jetty-11.0.24; built: 2024-08-26T18:11:22.448Z; git: 5dfc59a691b748796f922208956bd1f2794bcd16; jvm 22.0.2+9-70
+2024-09-26 13:01:53 [main] INFO  o.e.j.s.s.DefaultSessionIdManager - Session workerName=node0
+2024-09-26 13:01:53 [main] INFO  o.e.j.s.handler.ContextHandler.ROOT - Initializing Spring DispatcherServlet 'org.springframework.web.servlet.DispatcherServlet-3d6f0054'
+2024-09-26 13:01:53 [main] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'org.springframework.web.servlet.DispatcherServlet-3d6f0054'
+2024-09-26 13:01:54 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.0.Final
+2024-09-26 13:01:54 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2024-09-26 13:01:54 [main] INFO  SQL dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2024-09-26 13:01:54 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-09-26 13:01:54 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-09-26 13:01:55 [main] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1444 ms
+2024-09-26 13:01:55 [main] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@698e1bf5{/,null,AVAILABLE}
+2024-09-26 13:01:55 [main] INFO  o.e.jetty.server.AbstractConnector - Started ServerConnector@747ddf94{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2024-09-26 13:01:55 [main] INFO  org.eclipse.jetty.server.Server - Started Server@1da2cb77{STARTING}[11.0.24,sto=0] @1818ms
+2024-09-26 13:01:59 [qtp203849460-41] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: ef9052c1-e144-4e63-9f34-feefad4824ca
+2024-09-26 13:01:59 [qtp203849460-41] INFO  c.d.f.t.RequestLoggingInterceptor - Transaction ID: ef9052c1-e144-4e63-9f34-feefad4824ca | Incoming request: POST /api/trainee/register
+2024-09-26 13:01:59 [qtp203849460-41] INFO  c.d.f.t.RequestLoggingInterceptor - Transaction ID: ef9052c1-e144-4e63-9f34-feefad4824ca | Response status: 200
+2024-09-26 13:01:59 [qtp203849460-41] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: ef9052c1-e144-4e63-9f34-feefad4824ca completed.
+2024-09-26 13:02:02 [qtp203849460-28] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: f61359ac-0523-457a-bb72-9b532a65912c
+2024-09-26 13:02:02 [qtp203849460-28] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /swagger-ui/index.html
+2024-09-26 13:02:02 [qtp203849460-28] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: f61359ac-0523-457a-bb72-9b532a65912c completed.
+2024-09-26 13:02:02 [qtp203849460-25] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: 8dc8fd1d-dd25-444b-8115-24ed4a39472c
+2024-09-26 13:02:02 [qtp203849460-25] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /swagger-ui/index.html
+2024-09-26 13:02:02 [qtp203849460-25] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: 8dc8fd1d-dd25-444b-8115-24ed4a39472c completed.
+2024-09-26 13:02:09 [qtp203849460-32] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: 45e6eb09-d377-4c32-86f1-e8fbedb22752
+2024-09-26 13:02:09 [qtp203849460-32] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /v3/api-docs
+2024-09-26 13:02:09 [qtp203849460-32] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: 45e6eb09-d377-4c32-86f1-e8fbedb22752 completed.
+2024-09-26 13:17:12 [main] INFO  org.eclipse.jetty.server.Server - jetty-11.0.24; built: 2024-08-26T18:11:22.448Z; git: 5dfc59a691b748796f922208956bd1f2794bcd16; jvm 22.0.2+9-70
+2024-09-26 13:17:12 [main] INFO  o.e.j.s.s.DefaultSessionIdManager - Session workerName=node0
+2024-09-26 13:17:12 [main] INFO  o.e.j.s.handler.ContextHandler.ROOT - Initializing Spring DispatcherServlet 'org.springframework.web.servlet.DispatcherServlet-3d6f0054'
+2024-09-26 13:17:12 [main] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'org.springframework.web.servlet.DispatcherServlet-3d6f0054'
+2024-09-26 13:17:13 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.0.Final
+2024-09-26 13:17:13 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2024-09-26 13:17:13 [main] INFO  SQL dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2024-09-26 13:17:13 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-09-26 13:17:13 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-09-26 13:17:14 [main] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1520 ms
+2024-09-26 13:17:14 [main] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@698e1bf5{/,null,AVAILABLE}
+2024-09-26 13:17:14 [main] INFO  o.e.jetty.server.AbstractConnector - Started ServerConnector@747ddf94{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2024-09-26 13:17:14 [main] INFO  org.eclipse.jetty.server.Server - Started Server@1da2cb77{STARTING}[11.0.24,sto=0] @1942ms
+2024-09-26 13:17:19 [qtp203849460-32] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: d5293f89-5f97-4cee-b9e8-4fc86b12128e
+2024-09-26 13:17:19 [qtp203849460-32] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /swagger-ui/index.html
+2024-09-26 13:17:19 [qtp203849460-32] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: d5293f89-5f97-4cee-b9e8-4fc86b12128e completed.
+2024-09-26 13:17:20 [qtp203849460-27] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: d5b7982e-1c37-4d32-be54-9fbbb757c4df
+2024-09-26 13:17:20 [qtp203849460-27] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /swagger-ui/index.html
+2024-09-26 13:17:20 [qtp203849460-27] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: d5b7982e-1c37-4d32-be54-9fbbb757c4df completed.
+2024-09-26 13:17:26 [qtp203849460-25] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: fd98e9d3-96de-40cb-8b6e-653d0f887349
+2024-09-26 13:17:26 [qtp203849460-25] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /api-docs
+2024-09-26 13:17:26 [qtp203849460-25] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: fd98e9d3-96de-40cb-8b6e-653d0f887349 completed.
+2024-09-26 13:17:29 [qtp203849460-31] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: 1b2130bb-cf85-4441-aa90-e25f73913d99
+2024-09-26 13:17:29 [qtp203849460-31] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /v3/api-docs
+2024-09-26 13:17:29 [qtp203849460-31] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: 1b2130bb-cf85-4441-aa90-e25f73913d99 completed.
+2024-09-26 13:40:55 [main] INFO  org.eclipse.jetty.server.Server - jetty-11.0.24; built: 2024-08-26T18:11:22.448Z; git: 5dfc59a691b748796f922208956bd1f2794bcd16; jvm 22.0.2+9-70
+2024-09-26 13:40:55 [main] INFO  o.e.j.s.s.DefaultSessionIdManager - Session workerName=node0
+2024-09-26 13:40:55 [main] INFO  o.e.j.s.handler.ContextHandler.ROOT - Initializing Spring DispatcherServlet 'org.springframework.web.servlet.DispatcherServlet-3d6f0054'
+2024-09-26 13:40:55 [main] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'org.springframework.web.servlet.DispatcherServlet-3d6f0054'
+2024-09-26 13:40:55 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.0.Final
+2024-09-26 13:40:55 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2024-09-26 13:40:56 [main] INFO  SQL dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2024-09-26 13:40:56 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-09-26 13:40:56 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-09-26 13:40:57 [main] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1692 ms
+2024-09-26 13:40:57 [main] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@698e1bf5{/,null,AVAILABLE}
+2024-09-26 13:40:57 [main] INFO  o.e.jetty.server.AbstractConnector - Started ServerConnector@747ddf94{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2024-09-26 13:40:57 [main] INFO  org.eclipse.jetty.server.Server - Started Server@1da2cb77{STARTING}[11.0.24,sto=0] @2114ms
+2024-09-26 13:40:57 [qtp203849460-32] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: b2349c29-315f-4254-bad3-7e4ecf20fcd8
+2024-09-26 13:40:57 [qtp203849460-32] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /swagger-ui/index.html
+2024-09-26 13:40:57 [qtp203849460-32] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: b2349c29-315f-4254-bad3-7e4ecf20fcd8 completed.
+2024-09-26 13:40:57 [qtp203849460-27] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: 0ab2c802-09c5-47eb-864d-ac8ceef886ec
+2024-09-26 13:40:57 [qtp203849460-27] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /swagger-ui/index.html
+2024-09-26 13:40:57 [qtp203849460-27] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: 0ab2c802-09c5-47eb-864d-ac8ceef886ec completed.
+2024-09-26 13:41:05 [qtp203849460-31] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: 1e469ea6-058f-4a71-af1f-cf081924321f
+2024-09-26 13:41:05 [qtp203849460-31] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /swagger-ui/index.html
+2024-09-26 13:41:05 [qtp203849460-31] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: 1e469ea6-058f-4a71-af1f-cf081924321f completed.
+2024-09-26 13:41:27 [qtp203849460-30] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: 7a50be27-cf9f-413a-99e6-120c2eba8b32
+2024-09-26 13:41:27 [qtp203849460-30] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /v3/api-docs
+2024-09-26 13:41:27 [qtp203849460-30] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: 7a50be27-cf9f-413a-99e6-120c2eba8b32 completed.
+2024-09-26 13:41:27 [qtp203849460-31] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: 7142700f-e61f-4025-a221-4ddcc8a73145
+2024-09-26 13:41:27 [qtp203849460-31] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /v3/api-docs
+2024-09-26 13:41:27 [qtp203849460-31] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: 7142700f-e61f-4025-a221-4ddcc8a73145 completed.
+2024-09-26 13:43:07 [main] INFO  org.eclipse.jetty.server.Server - jetty-11.0.24; built: 2024-08-26T18:11:22.448Z; git: 5dfc59a691b748796f922208956bd1f2794bcd16; jvm 22.0.2+9-70
+2024-09-26 13:43:08 [main] INFO  o.e.j.s.s.DefaultSessionIdManager - Session workerName=node0
+2024-09-26 13:43:08 [main] INFO  o.e.j.s.handler.ContextHandler.ROOT - Initializing Spring DispatcherServlet 'org.springframework.web.servlet.DispatcherServlet-3e84448c'
+2024-09-26 13:43:08 [main] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'org.springframework.web.servlet.DispatcherServlet-3e84448c'
+2024-09-26 13:43:08 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.0.Final
+2024-09-26 13:43:08 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2024-09-26 13:43:08 [main] INFO  SQL dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2024-09-26 13:43:08 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-09-26 13:43:09 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-09-26 13:43:09 [main] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1539 ms
+2024-09-26 13:43:09 [main] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@6f87a7c7{/,null,AVAILABLE}
+2024-09-26 13:43:09 [main] INFO  o.e.jetty.server.AbstractConnector - Started ServerConnector@57a3af25{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2024-09-26 13:43:09 [main] INFO  org.eclipse.jetty.server.Server - Started Server@7133da86{STARTING}[11.0.24,sto=0] @1951ms
+2024-09-26 13:43:11 [qtp235237152-32] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: 404ae22f-125c-4df4-99cd-507f400116fe
+2024-09-26 13:43:11 [qtp235237152-32] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /swagger-ui/index.html
+2024-09-26 13:43:11 [qtp235237152-32] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: 404ae22f-125c-4df4-99cd-507f400116fe completed.
+2024-09-26 13:43:11 [qtp235237152-27] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: 85bc3ecd-43fe-41f9-9ba7-f8bf73e921a6
+2024-09-26 13:43:11 [qtp235237152-27] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /swagger-ui/index.html
+2024-09-26 13:43:11 [qtp235237152-27] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: 85bc3ecd-43fe-41f9-9ba7-f8bf73e921a6 completed.
+2024-09-26 13:43:14 [qtp235237152-31] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: 4cedfdc5-5012-43c9-a053-7b38357b6e64
+2024-09-26 13:43:14 [qtp235237152-31] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /v3/api-docs
+2024-09-26 13:43:14 [qtp235237152-31] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: 4cedfdc5-5012-43c9-a053-7b38357b6e64 completed.
+2024-09-26 13:43:15 [qtp235237152-28] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: f3b7f9bb-cf39-44e9-b32b-22b8271db538
+2024-09-26 13:43:15 [qtp235237152-28] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /v3/api-docs
+2024-09-26 13:43:15 [qtp235237152-28] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: f3b7f9bb-cf39-44e9-b32b-22b8271db538 completed.
+2024-09-26 14:01:38 [main] INFO  org.eclipse.jetty.server.Server - jetty-11.0.24; built: 2024-08-26T18:11:22.448Z; git: 5dfc59a691b748796f922208956bd1f2794bcd16; jvm 22.0.2+9-70
+2024-09-26 14:01:38 [main] INFO  o.e.j.s.s.DefaultSessionIdManager - Session workerName=node0
+2024-09-26 14:01:38 [main] INFO  o.e.j.s.handler.ContextHandler.ROOT - Initializing Spring DispatcherServlet 'org.springframework.web.servlet.DispatcherServlet-3d6f0054'
+2024-09-26 14:01:38 [main] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'org.springframework.web.servlet.DispatcherServlet-3d6f0054'
+2024-09-26 14:01:39 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.0.Final
+2024-09-26 14:01:39 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2024-09-26 14:01:39 [main] INFO  SQL dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2024-09-26 14:01:39 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-09-26 14:01:40 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-09-26 14:01:40 [main] WARN  o.s.w.c.s.AnnotationConfigWebApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'requestMappingHandlerMapping' defined in org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration: Failed to introspect Class [org.springdoc.webmvc.api.OpenApiWebMvcResource] from ClassLoader [jdk.internal.loader.ClassLoaders$AppClassLoader@43e45247]
+2024-09-26 14:01:40 [main] ERROR o.s.web.servlet.DispatcherServlet - Context initialization failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'requestMappingHandlerMapping' defined in org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration: Failed to introspect Class [org.springdoc.webmvc.api.OpenApiWebMvcResource] from ClassLoader [jdk.internal.loader.ClassLoaders$AppClassLoader@43e45247]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1806)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:971)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625)
+	at org.springframework.web.servlet.FrameworkServlet.configureAndRefreshWebApplicationContext(FrameworkServlet.java:706)
+	at org.springframework.web.servlet.FrameworkServlet.initWebApplicationContext(FrameworkServlet.java:583)
+	at org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:537)
+	at org.springframework.web.servlet.HttpServletBean.init(HttpServletBean.java:169)
+	at jakarta.servlet.GenericServlet.init(GenericServlet.java:178)
+	at jakarta.servlet.http.HttpServlet.init(HttpServlet.java:114)
+	at org.eclipse.jetty.servlet.ServletHolder.initServlet(ServletHolder.java:633)
+	at org.eclipse.jetty.servlet.ServletHolder.initialize(ServletHolder.java:415)
+	at org.eclipse.jetty.servlet.ServletHandler.lambda$initialize$2(ServletHandler.java:725)
+	at java.base/java.util.stream.SortedOps$SizedRefSortingSink.end(SortedOps.java:357)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:557)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:546)
+	at java.base/java.util.stream.StreamSpliterators$WrappingSpliterator.forEachRemaining(StreamSpliterators.java:310)
+	at java.base/java.util.stream.Streams$ConcatSpliterator.forEachRemaining(Streams.java:735)
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:782)
+	at org.eclipse.jetty.servlet.ServletHandler.initialize(ServletHandler.java:749)
+	at org.eclipse.jetty.servlet.ServletContextHandler.startContext(ServletContextHandler.java:392)
+	at org.eclipse.jetty.server.handler.ContextHandler.doStart(ContextHandler.java:902)
+	at org.eclipse.jetty.servlet.ServletContextHandler.doStart(ServletContextHandler.java:306)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:93)
+	at org.eclipse.jetty.util.component.ContainerLifeCycle.start(ContainerLifeCycle.java:171)
+	at org.eclipse.jetty.server.Server.start(Server.java:470)
+	at org.eclipse.jetty.util.component.ContainerLifeCycle.doStart(ContainerLifeCycle.java:114)
+	at org.eclipse.jetty.server.handler.AbstractHandler.doStart(AbstractHandler.java:89)
+	at org.eclipse.jetty.server.Server.doStart(Server.java:415)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:93)
+	at com.demo.folder.App.main(App.java:39)
+Caused by: java.lang.IllegalStateException: Failed to introspect Class [org.springdoc.webmvc.api.OpenApiWebMvcResource] from ClassLoader [jdk.internal.loader.ClassLoaders$AppClassLoader@43e45247]
+	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:483)
+	at org.springframework.util.ReflectionUtils.doWithMethods(ReflectionUtils.java:360)
+	at org.springframework.core.MethodIntrospector.selectMethods(MethodIntrospector.java:73)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.detectHandlerMethods(AbstractHandlerMethodMapping.java:280)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.processCandidateBean(AbstractHandlerMethodMapping.java:265)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.initHandlerMethods(AbstractHandlerMethodMapping.java:224)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.afterPropertiesSet(AbstractHandlerMethodMapping.java:212)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.afterPropertiesSet(RequestMappingHandlerMapping.java:239)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1853)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1802)
+	... 36 common frames omitted
+Caused by: java.lang.NoClassDefFoundError: javax/servlet/http/HttpServletRequest
+	at java.base/java.lang.Class.getDeclaredMethods0(Native Method)
+	at java.base/java.lang.Class.privateGetDeclaredMethods(Class.java:3601)
+	at java.base/java.lang.Class.getDeclaredMethods(Class.java:2686)
+	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:465)
+	... 45 common frames omitted
+Caused by: java.lang.ClassNotFoundException: javax.servlet.http.HttpServletRequest
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 49 common frames omitted
+2024-09-26 14:01:40 [main] WARN  o.e.j.s.handler.ContextHandler.ROOT - unavailable
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'requestMappingHandlerMapping' defined in org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration: Failed to introspect Class [org.springdoc.webmvc.api.OpenApiWebMvcResource] from ClassLoader [jdk.internal.loader.ClassLoaders$AppClassLoader@43e45247]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1806)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:971)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625)
+	at org.springframework.web.servlet.FrameworkServlet.configureAndRefreshWebApplicationContext(FrameworkServlet.java:706)
+	at org.springframework.web.servlet.FrameworkServlet.initWebApplicationContext(FrameworkServlet.java:583)
+	at org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:537)
+	at org.springframework.web.servlet.HttpServletBean.init(HttpServletBean.java:169)
+	at jakarta.servlet.GenericServlet.init(GenericServlet.java:178)
+	at jakarta.servlet.http.HttpServlet.init(HttpServlet.java:114)
+	at org.eclipse.jetty.servlet.ServletHolder.initServlet(ServletHolder.java:633)
+	at org.eclipse.jetty.servlet.ServletHolder.initialize(ServletHolder.java:415)
+	at org.eclipse.jetty.servlet.ServletHandler.lambda$initialize$2(ServletHandler.java:725)
+	at java.base/java.util.stream.SortedOps$SizedRefSortingSink.end(SortedOps.java:357)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:557)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:546)
+	at java.base/java.util.stream.StreamSpliterators$WrappingSpliterator.forEachRemaining(StreamSpliterators.java:310)
+	at java.base/java.util.stream.Streams$ConcatSpliterator.forEachRemaining(Streams.java:735)
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:782)
+	at org.eclipse.jetty.servlet.ServletHandler.initialize(ServletHandler.java:749)
+	at org.eclipse.jetty.servlet.ServletContextHandler.startContext(ServletContextHandler.java:392)
+	at org.eclipse.jetty.server.handler.ContextHandler.doStart(ContextHandler.java:902)
+	at org.eclipse.jetty.servlet.ServletContextHandler.doStart(ServletContextHandler.java:306)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:93)
+	at org.eclipse.jetty.util.component.ContainerLifeCycle.start(ContainerLifeCycle.java:171)
+	at org.eclipse.jetty.server.Server.start(Server.java:470)
+	at org.eclipse.jetty.util.component.ContainerLifeCycle.doStart(ContainerLifeCycle.java:114)
+	at org.eclipse.jetty.server.handler.AbstractHandler.doStart(AbstractHandler.java:89)
+	at org.eclipse.jetty.server.Server.doStart(Server.java:415)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:93)
+	at com.demo.folder.App.main(App.java:39)
+Caused by: java.lang.IllegalStateException: Failed to introspect Class [org.springdoc.webmvc.api.OpenApiWebMvcResource] from ClassLoader [jdk.internal.loader.ClassLoaders$AppClassLoader@43e45247]
+	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:483)
+	at org.springframework.util.ReflectionUtils.doWithMethods(ReflectionUtils.java:360)
+	at org.springframework.core.MethodIntrospector.selectMethods(MethodIntrospector.java:73)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.detectHandlerMethods(AbstractHandlerMethodMapping.java:280)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.processCandidateBean(AbstractHandlerMethodMapping.java:265)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.initHandlerMethods(AbstractHandlerMethodMapping.java:224)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.afterPropertiesSet(AbstractHandlerMethodMapping.java:212)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.afterPropertiesSet(RequestMappingHandlerMapping.java:239)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1853)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1802)
+	... 36 common frames omitted
+Caused by: java.lang.NoClassDefFoundError: javax/servlet/http/HttpServletRequest
+	at java.base/java.lang.Class.getDeclaredMethods0(Native Method)
+	at java.base/java.lang.Class.privateGetDeclaredMethods(Class.java:3601)
+	at java.base/java.lang.Class.getDeclaredMethods(Class.java:2686)
+	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:465)
+	... 45 common frames omitted
+Caused by: java.lang.ClassNotFoundException: javax.servlet.http.HttpServletRequest
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 49 common frames omitted
+2024-09-26 14:02:03 [main] INFO  org.eclipse.jetty.server.Server - jetty-11.0.24; built: 2024-08-26T18:11:22.448Z; git: 5dfc59a691b748796f922208956bd1f2794bcd16; jvm 22.0.2+9-70
+2024-09-26 14:02:03 [main] INFO  o.e.j.s.s.DefaultSessionIdManager - Session workerName=node0
+2024-09-26 14:02:03 [main] INFO  o.e.j.s.handler.ContextHandler.ROOT - Initializing Spring DispatcherServlet 'org.springframework.web.servlet.DispatcherServlet-16a0ee18'
+2024-09-26 14:02:03 [main] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'org.springframework.web.servlet.DispatcherServlet-16a0ee18'
+2024-09-26 14:02:03 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.0.Final
+2024-09-26 14:02:03 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2024-09-26 14:02:04 [main] INFO  SQL dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2024-09-26 14:02:04 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-09-26 14:02:04 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-09-26 14:02:04 [main] WARN  o.s.w.c.s.AnnotationConfigWebApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration': Injection of autowired dependencies failed
+2024-09-26 14:02:04 [main] ERROR o.s.web.servlet.DispatcherServlet - Context initialization failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration': Injection of autowired dependencies failed
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:515)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1439)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:971)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625)
+	at org.springframework.web.servlet.FrameworkServlet.configureAndRefreshWebApplicationContext(FrameworkServlet.java:706)
+	at org.springframework.web.servlet.FrameworkServlet.initWebApplicationContext(FrameworkServlet.java:583)
+	at org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:537)
+	at org.springframework.web.servlet.HttpServletBean.init(HttpServletBean.java:169)
+	at jakarta.servlet.GenericServlet.init(GenericServlet.java:178)
+	at jakarta.servlet.http.HttpServlet.init(HttpServlet.java:114)
+	at org.eclipse.jetty.servlet.ServletHolder.initServlet(ServletHolder.java:633)
+	at org.eclipse.jetty.servlet.ServletHolder.initialize(ServletHolder.java:415)
+	at org.eclipse.jetty.servlet.ServletHandler.lambda$initialize$2(ServletHandler.java:725)
+	at java.base/java.util.stream.SortedOps$SizedRefSortingSink.end(SortedOps.java:357)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:557)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:546)
+	at java.base/java.util.stream.StreamSpliterators$WrappingSpliterator.forEachRemaining(StreamSpliterators.java:310)
+	at java.base/java.util.stream.Streams$ConcatSpliterator.forEachRemaining(Streams.java:735)
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:782)
+	at org.eclipse.jetty.servlet.ServletHandler.initialize(ServletHandler.java:749)
+	at org.eclipse.jetty.servlet.ServletContextHandler.startContext(ServletContextHandler.java:392)
+	at org.eclipse.jetty.server.handler.ContextHandler.doStart(ContextHandler.java:902)
+	at org.eclipse.jetty.servlet.ServletContextHandler.doStart(ServletContextHandler.java:306)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:93)
+	at org.eclipse.jetty.util.component.ContainerLifeCycle.start(ContainerLifeCycle.java:171)
+	at org.eclipse.jetty.server.Server.start(Server.java:470)
+	at org.eclipse.jetty.util.component.ContainerLifeCycle.doStart(ContainerLifeCycle.java:114)
+	at org.eclipse.jetty.server.handler.AbstractHandler.doStart(AbstractHandler.java:89)
+	at org.eclipse.jetty.server.Server.doStart(Server.java:415)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:93)
+	at com.demo.folder.App.main(App.java:39)
+Caused by: java.lang.RuntimeException: Could not postProcess org.springframework.security.config.annotation.web.builders.WebSecurity@1d0f7bcf of type class org.springframework.security.config.annotation.web.builders.WebSecurity
+	at org.springframework.security.config.annotation.configuration.AutowireBeanFactoryObjectPostProcessor.postProcess(AutowireBeanFactoryObjectPostProcessor.java:71)
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration.setFilterChainProxySecurityConfigurer(WebSecurityConfiguration.java:148)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.inject(AutowiredAnnotationBeanPostProcessor.java:854)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:145)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:509)
+	... 37 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'mvcHandlerMappingIntrospectorRequestTransformer': Cannot resolve reference to bean 'mvcHandlerMappingIntrospector' while setting constructor argument
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:377)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:135)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveConstructorArguments(ConstructorResolver.java:682)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:203)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1375)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1212)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:225)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveNamedBean(DefaultListableBeanFactory.java:1323)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveNamedBean(DefaultListableBeanFactory.java:1284)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveBean(DefaultListableBeanFactory.java:486)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory$1.getIfUnique(DefaultListableBeanFactory.java:438)
+	at org.springframework.security.config.annotation.web.builders.WebSecurity.setApplicationContext(WebSecurity.java:397)
+	at org.springframework.context.support.ApplicationContextAwareProcessor.invokeAwareInterfaces(ApplicationContextAwareProcessor.java:110)
+	at org.springframework.context.support.ApplicationContextAwareProcessor.postProcessBeforeInitialization(ApplicationContextAwareProcessor.java:85)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:422)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1798)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:412)
+	at org.springframework.security.config.annotation.configuration.AutowireBeanFactoryObjectPostProcessor.initializeBeanIfNeeded(AutowireBeanFactoryObjectPostProcessor.java:98)
+	at org.springframework.security.config.annotation.configuration.AutowireBeanFactoryObjectPostProcessor.postProcess(AutowireBeanFactoryObjectPostProcessor.java:67)
+	... 43 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'mvcHandlerMappingIntrospector' defined in class path resource [org/springframework/web/servlet/config/annotation/DelegatingWebMvcConfiguration.class]: Error creating bean with name 'requestMappingHandlerMapping' defined in class path resource [org/springframework/web/servlet/config/annotation/DelegatingWebMvcConfiguration.class]: Failed to introspect Class [org.springdoc.webmvc.api.OpenApiWebMvcResource] from ClassLoader [jdk.internal.loader.ClassLoaders$AppClassLoader@43e45247]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1806)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:365)
+	... 66 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'requestMappingHandlerMapping' defined in class path resource [org/springframework/web/servlet/config/annotation/DelegatingWebMvcConfiguration.class]: Failed to introspect Class [org.springdoc.webmvc.api.OpenApiWebMvcResource] from ClassLoader [jdk.internal.loader.ClassLoaders$AppClassLoader@43e45247]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1806)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBeansOfType(DefaultListableBeanFactory.java:665)
+	at org.springframework.context.support.AbstractApplicationContext.getBeansOfType(AbstractApplicationContext.java:1397)
+	at org.springframework.beans.factory.BeanFactoryUtils.beansOfTypeIncludingAncestors(BeanFactoryUtils.java:368)
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.initHandlerMappings(HandlerMappingIntrospector.java:130)
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.afterPropertiesSet(HandlerMappingIntrospector.java:118)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1853)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1802)
+	... 73 common frames omitted
+Caused by: java.lang.IllegalStateException: Failed to introspect Class [org.springdoc.webmvc.api.OpenApiWebMvcResource] from ClassLoader [jdk.internal.loader.ClassLoaders$AppClassLoader@43e45247]
+	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:483)
+	at org.springframework.util.ReflectionUtils.doWithMethods(ReflectionUtils.java:360)
+	at org.springframework.core.MethodIntrospector.selectMethods(MethodIntrospector.java:73)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.detectHandlerMethods(AbstractHandlerMethodMapping.java:280)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.processCandidateBean(AbstractHandlerMethodMapping.java:265)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.initHandlerMethods(AbstractHandlerMethodMapping.java:224)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.afterPropertiesSet(AbstractHandlerMethodMapping.java:212)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.afterPropertiesSet(RequestMappingHandlerMapping.java:239)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1853)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1802)
+	... 86 common frames omitted
+Caused by: java.lang.NoClassDefFoundError: javax/servlet/http/HttpServletRequest
+	at java.base/java.lang.Class.getDeclaredMethods0(Native Method)
+	at java.base/java.lang.Class.privateGetDeclaredMethods(Class.java:3601)
+	at java.base/java.lang.Class.getDeclaredMethods(Class.java:2686)
+	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:465)
+	... 95 common frames omitted
+Caused by: java.lang.ClassNotFoundException: javax.servlet.http.HttpServletRequest
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 99 common frames omitted
+2024-09-26 14:02:04 [main] WARN  o.e.j.s.handler.ContextHandler.ROOT - unavailable
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration': Injection of autowired dependencies failed
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:515)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1439)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:971)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625)
+	at org.springframework.web.servlet.FrameworkServlet.configureAndRefreshWebApplicationContext(FrameworkServlet.java:706)
+	at org.springframework.web.servlet.FrameworkServlet.initWebApplicationContext(FrameworkServlet.java:583)
+	at org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:537)
+	at org.springframework.web.servlet.HttpServletBean.init(HttpServletBean.java:169)
+	at jakarta.servlet.GenericServlet.init(GenericServlet.java:178)
+	at jakarta.servlet.http.HttpServlet.init(HttpServlet.java:114)
+	at org.eclipse.jetty.servlet.ServletHolder.initServlet(ServletHolder.java:633)
+	at org.eclipse.jetty.servlet.ServletHolder.initialize(ServletHolder.java:415)
+	at org.eclipse.jetty.servlet.ServletHandler.lambda$initialize$2(ServletHandler.java:725)
+	at java.base/java.util.stream.SortedOps$SizedRefSortingSink.end(SortedOps.java:357)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:557)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:546)
+	at java.base/java.util.stream.StreamSpliterators$WrappingSpliterator.forEachRemaining(StreamSpliterators.java:310)
+	at java.base/java.util.stream.Streams$ConcatSpliterator.forEachRemaining(Streams.java:735)
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:782)
+	at org.eclipse.jetty.servlet.ServletHandler.initialize(ServletHandler.java:749)
+	at org.eclipse.jetty.servlet.ServletContextHandler.startContext(ServletContextHandler.java:392)
+	at org.eclipse.jetty.server.handler.ContextHandler.doStart(ContextHandler.java:902)
+	at org.eclipse.jetty.servlet.ServletContextHandler.doStart(ServletContextHandler.java:306)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:93)
+	at org.eclipse.jetty.util.component.ContainerLifeCycle.start(ContainerLifeCycle.java:171)
+	at org.eclipse.jetty.server.Server.start(Server.java:470)
+	at org.eclipse.jetty.util.component.ContainerLifeCycle.doStart(ContainerLifeCycle.java:114)
+	at org.eclipse.jetty.server.handler.AbstractHandler.doStart(AbstractHandler.java:89)
+	at org.eclipse.jetty.server.Server.doStart(Server.java:415)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:93)
+	at com.demo.folder.App.main(App.java:39)
+Caused by: java.lang.RuntimeException: Could not postProcess org.springframework.security.config.annotation.web.builders.WebSecurity@1d0f7bcf of type class org.springframework.security.config.annotation.web.builders.WebSecurity
+	at org.springframework.security.config.annotation.configuration.AutowireBeanFactoryObjectPostProcessor.postProcess(AutowireBeanFactoryObjectPostProcessor.java:71)
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration.setFilterChainProxySecurityConfigurer(WebSecurityConfiguration.java:148)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.inject(AutowiredAnnotationBeanPostProcessor.java:854)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:145)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:509)
+	... 37 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'mvcHandlerMappingIntrospectorRequestTransformer': Cannot resolve reference to bean 'mvcHandlerMappingIntrospector' while setting constructor argument
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:377)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:135)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveConstructorArguments(ConstructorResolver.java:682)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:203)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1375)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1212)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:225)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveNamedBean(DefaultListableBeanFactory.java:1323)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveNamedBean(DefaultListableBeanFactory.java:1284)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveBean(DefaultListableBeanFactory.java:486)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory$1.getIfUnique(DefaultListableBeanFactory.java:438)
+	at org.springframework.security.config.annotation.web.builders.WebSecurity.setApplicationContext(WebSecurity.java:397)
+	at org.springframework.context.support.ApplicationContextAwareProcessor.invokeAwareInterfaces(ApplicationContextAwareProcessor.java:110)
+	at org.springframework.context.support.ApplicationContextAwareProcessor.postProcessBeforeInitialization(ApplicationContextAwareProcessor.java:85)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:422)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1798)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:412)
+	at org.springframework.security.config.annotation.configuration.AutowireBeanFactoryObjectPostProcessor.initializeBeanIfNeeded(AutowireBeanFactoryObjectPostProcessor.java:98)
+	at org.springframework.security.config.annotation.configuration.AutowireBeanFactoryObjectPostProcessor.postProcess(AutowireBeanFactoryObjectPostProcessor.java:67)
+	... 43 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'mvcHandlerMappingIntrospector' defined in class path resource [org/springframework/web/servlet/config/annotation/DelegatingWebMvcConfiguration.class]: Error creating bean with name 'requestMappingHandlerMapping' defined in class path resource [org/springframework/web/servlet/config/annotation/DelegatingWebMvcConfiguration.class]: Failed to introspect Class [org.springdoc.webmvc.api.OpenApiWebMvcResource] from ClassLoader [jdk.internal.loader.ClassLoaders$AppClassLoader@43e45247]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1806)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:365)
+	... 66 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'requestMappingHandlerMapping' defined in class path resource [org/springframework/web/servlet/config/annotation/DelegatingWebMvcConfiguration.class]: Failed to introspect Class [org.springdoc.webmvc.api.OpenApiWebMvcResource] from ClassLoader [jdk.internal.loader.ClassLoaders$AppClassLoader@43e45247]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1806)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBeansOfType(DefaultListableBeanFactory.java:665)
+	at org.springframework.context.support.AbstractApplicationContext.getBeansOfType(AbstractApplicationContext.java:1397)
+	at org.springframework.beans.factory.BeanFactoryUtils.beansOfTypeIncludingAncestors(BeanFactoryUtils.java:368)
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.initHandlerMappings(HandlerMappingIntrospector.java:130)
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.afterPropertiesSet(HandlerMappingIntrospector.java:118)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1853)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1802)
+	... 73 common frames omitted
+Caused by: java.lang.IllegalStateException: Failed to introspect Class [org.springdoc.webmvc.api.OpenApiWebMvcResource] from ClassLoader [jdk.internal.loader.ClassLoaders$AppClassLoader@43e45247]
+	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:483)
+	at org.springframework.util.ReflectionUtils.doWithMethods(ReflectionUtils.java:360)
+	at org.springframework.core.MethodIntrospector.selectMethods(MethodIntrospector.java:73)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.detectHandlerMethods(AbstractHandlerMethodMapping.java:280)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.processCandidateBean(AbstractHandlerMethodMapping.java:265)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.initHandlerMethods(AbstractHandlerMethodMapping.java:224)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.afterPropertiesSet(AbstractHandlerMethodMapping.java:212)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.afterPropertiesSet(RequestMappingHandlerMapping.java:239)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1853)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1802)
+	... 86 common frames omitted
+Caused by: java.lang.NoClassDefFoundError: javax/servlet/http/HttpServletRequest
+	at java.base/java.lang.Class.getDeclaredMethods0(Native Method)
+	at java.base/java.lang.Class.privateGetDeclaredMethods(Class.java:3601)
+	at java.base/java.lang.Class.getDeclaredMethods(Class.java:2686)
+	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:465)
+	... 95 common frames omitted
+Caused by: java.lang.ClassNotFoundException: javax.servlet.http.HttpServletRequest
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 99 common frames omitted
+2024-09-26 14:02:10 [main] INFO  org.eclipse.jetty.server.Server - jetty-11.0.24; built: 2024-08-26T18:11:22.448Z; git: 5dfc59a691b748796f922208956bd1f2794bcd16; jvm 22.0.2+9-70
+2024-09-26 14:02:10 [main] INFO  o.e.j.s.s.DefaultSessionIdManager - Session workerName=node0
+2024-09-26 14:02:10 [main] INFO  o.e.j.s.handler.ContextHandler.ROOT - Initializing Spring DispatcherServlet 'org.springframework.web.servlet.DispatcherServlet-3d6f0054'
+2024-09-26 14:02:10 [main] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'org.springframework.web.servlet.DispatcherServlet-3d6f0054'
+2024-09-26 14:02:11 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.0.Final
+2024-09-26 14:02:11 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2024-09-26 14:02:11 [main] INFO  SQL dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2024-09-26 14:02:11 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-09-26 14:02:12 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-09-26 14:02:12 [main] WARN  o.s.w.c.s.AnnotationConfigWebApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'requestMappingHandlerMapping' defined in org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration: Failed to introspect Class [org.springdoc.webmvc.api.OpenApiWebMvcResource] from ClassLoader [jdk.internal.loader.ClassLoaders$AppClassLoader@43e45247]
+2024-09-26 14:02:12 [main] ERROR o.s.web.servlet.DispatcherServlet - Context initialization failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'requestMappingHandlerMapping' defined in org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration: Failed to introspect Class [org.springdoc.webmvc.api.OpenApiWebMvcResource] from ClassLoader [jdk.internal.loader.ClassLoaders$AppClassLoader@43e45247]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1806)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:971)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625)
+	at org.springframework.web.servlet.FrameworkServlet.configureAndRefreshWebApplicationContext(FrameworkServlet.java:706)
+	at org.springframework.web.servlet.FrameworkServlet.initWebApplicationContext(FrameworkServlet.java:583)
+	at org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:537)
+	at org.springframework.web.servlet.HttpServletBean.init(HttpServletBean.java:169)
+	at jakarta.servlet.GenericServlet.init(GenericServlet.java:178)
+	at jakarta.servlet.http.HttpServlet.init(HttpServlet.java:114)
+	at org.eclipse.jetty.servlet.ServletHolder.initServlet(ServletHolder.java:633)
+	at org.eclipse.jetty.servlet.ServletHolder.initialize(ServletHolder.java:415)
+	at org.eclipse.jetty.servlet.ServletHandler.lambda$initialize$2(ServletHandler.java:725)
+	at java.base/java.util.stream.SortedOps$SizedRefSortingSink.end(SortedOps.java:357)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:557)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:546)
+	at java.base/java.util.stream.StreamSpliterators$WrappingSpliterator.forEachRemaining(StreamSpliterators.java:310)
+	at java.base/java.util.stream.Streams$ConcatSpliterator.forEachRemaining(Streams.java:735)
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:782)
+	at org.eclipse.jetty.servlet.ServletHandler.initialize(ServletHandler.java:749)
+	at org.eclipse.jetty.servlet.ServletContextHandler.startContext(ServletContextHandler.java:392)
+	at org.eclipse.jetty.server.handler.ContextHandler.doStart(ContextHandler.java:902)
+	at org.eclipse.jetty.servlet.ServletContextHandler.doStart(ServletContextHandler.java:306)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:93)
+	at org.eclipse.jetty.util.component.ContainerLifeCycle.start(ContainerLifeCycle.java:171)
+	at org.eclipse.jetty.server.Server.start(Server.java:470)
+	at org.eclipse.jetty.util.component.ContainerLifeCycle.doStart(ContainerLifeCycle.java:114)
+	at org.eclipse.jetty.server.handler.AbstractHandler.doStart(AbstractHandler.java:89)
+	at org.eclipse.jetty.server.Server.doStart(Server.java:415)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:93)
+	at com.demo.folder.App.main(App.java:39)
+Caused by: java.lang.IllegalStateException: Failed to introspect Class [org.springdoc.webmvc.api.OpenApiWebMvcResource] from ClassLoader [jdk.internal.loader.ClassLoaders$AppClassLoader@43e45247]
+	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:483)
+	at org.springframework.util.ReflectionUtils.doWithMethods(ReflectionUtils.java:360)
+	at org.springframework.core.MethodIntrospector.selectMethods(MethodIntrospector.java:73)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.detectHandlerMethods(AbstractHandlerMethodMapping.java:280)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.processCandidateBean(AbstractHandlerMethodMapping.java:265)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.initHandlerMethods(AbstractHandlerMethodMapping.java:224)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.afterPropertiesSet(AbstractHandlerMethodMapping.java:212)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.afterPropertiesSet(RequestMappingHandlerMapping.java:239)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1853)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1802)
+	... 36 common frames omitted
+Caused by: java.lang.NoClassDefFoundError: javax/servlet/http/HttpServletRequest
+	at java.base/java.lang.Class.getDeclaredMethods0(Native Method)
+	at java.base/java.lang.Class.privateGetDeclaredMethods(Class.java:3601)
+	at java.base/java.lang.Class.getDeclaredMethods(Class.java:2686)
+	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:465)
+	... 45 common frames omitted
+Caused by: java.lang.ClassNotFoundException: javax.servlet.http.HttpServletRequest
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 49 common frames omitted
+2024-09-26 14:02:12 [main] WARN  o.e.j.s.handler.ContextHandler.ROOT - unavailable
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'requestMappingHandlerMapping' defined in org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration: Failed to introspect Class [org.springdoc.webmvc.api.OpenApiWebMvcResource] from ClassLoader [jdk.internal.loader.ClassLoaders$AppClassLoader@43e45247]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1806)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:971)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625)
+	at org.springframework.web.servlet.FrameworkServlet.configureAndRefreshWebApplicationContext(FrameworkServlet.java:706)
+	at org.springframework.web.servlet.FrameworkServlet.initWebApplicationContext(FrameworkServlet.java:583)
+	at org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:537)
+	at org.springframework.web.servlet.HttpServletBean.init(HttpServletBean.java:169)
+	at jakarta.servlet.GenericServlet.init(GenericServlet.java:178)
+	at jakarta.servlet.http.HttpServlet.init(HttpServlet.java:114)
+	at org.eclipse.jetty.servlet.ServletHolder.initServlet(ServletHolder.java:633)
+	at org.eclipse.jetty.servlet.ServletHolder.initialize(ServletHolder.java:415)
+	at org.eclipse.jetty.servlet.ServletHandler.lambda$initialize$2(ServletHandler.java:725)
+	at java.base/java.util.stream.SortedOps$SizedRefSortingSink.end(SortedOps.java:357)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:557)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:546)
+	at java.base/java.util.stream.StreamSpliterators$WrappingSpliterator.forEachRemaining(StreamSpliterators.java:310)
+	at java.base/java.util.stream.Streams$ConcatSpliterator.forEachRemaining(Streams.java:735)
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:782)
+	at org.eclipse.jetty.servlet.ServletHandler.initialize(ServletHandler.java:749)
+	at org.eclipse.jetty.servlet.ServletContextHandler.startContext(ServletContextHandler.java:392)
+	at org.eclipse.jetty.server.handler.ContextHandler.doStart(ContextHandler.java:902)
+	at org.eclipse.jetty.servlet.ServletContextHandler.doStart(ServletContextHandler.java:306)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:93)
+	at org.eclipse.jetty.util.component.ContainerLifeCycle.start(ContainerLifeCycle.java:171)
+	at org.eclipse.jetty.server.Server.start(Server.java:470)
+	at org.eclipse.jetty.util.component.ContainerLifeCycle.doStart(ContainerLifeCycle.java:114)
+	at org.eclipse.jetty.server.handler.AbstractHandler.doStart(AbstractHandler.java:89)
+	at org.eclipse.jetty.server.Server.doStart(Server.java:415)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:93)
+	at com.demo.folder.App.main(App.java:39)
+Caused by: java.lang.IllegalStateException: Failed to introspect Class [org.springdoc.webmvc.api.OpenApiWebMvcResource] from ClassLoader [jdk.internal.loader.ClassLoaders$AppClassLoader@43e45247]
+	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:483)
+	at org.springframework.util.ReflectionUtils.doWithMethods(ReflectionUtils.java:360)
+	at org.springframework.core.MethodIntrospector.selectMethods(MethodIntrospector.java:73)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.detectHandlerMethods(AbstractHandlerMethodMapping.java:280)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.processCandidateBean(AbstractHandlerMethodMapping.java:265)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.initHandlerMethods(AbstractHandlerMethodMapping.java:224)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.afterPropertiesSet(AbstractHandlerMethodMapping.java:212)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.afterPropertiesSet(RequestMappingHandlerMapping.java:239)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1853)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1802)
+	... 36 common frames omitted
+Caused by: java.lang.NoClassDefFoundError: javax/servlet/http/HttpServletRequest
+	at java.base/java.lang.Class.getDeclaredMethods0(Native Method)
+	at java.base/java.lang.Class.privateGetDeclaredMethods(Class.java:3601)
+	at java.base/java.lang.Class.getDeclaredMethods(Class.java:2686)
+	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:465)
+	... 45 common frames omitted
+Caused by: java.lang.ClassNotFoundException: javax.servlet.http.HttpServletRequest
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 49 common frames omitted
+2024-09-26 14:07:48 [main] INFO  org.eclipse.jetty.server.Server - jetty-11.0.24; built: 2024-08-26T18:11:22.448Z; git: 5dfc59a691b748796f922208956bd1f2794bcd16; jvm 22.0.2+9-70
+2024-09-26 14:07:48 [main] INFO  o.e.j.s.s.DefaultSessionIdManager - Session workerName=node0
+2024-09-26 14:07:48 [main] INFO  o.e.j.s.handler.ContextHandler.ROOT - Initializing Spring DispatcherServlet 'org.springframework.web.servlet.DispatcherServlet-3e84448c'
+2024-09-26 14:07:48 [main] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'org.springframework.web.servlet.DispatcherServlet-3e84448c'
+2024-09-26 14:07:48 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.0.Final
+2024-09-26 14:07:48 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2024-09-26 14:07:49 [main] INFO  SQL dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2024-09-26 14:07:49 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-09-26 14:07:49 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-09-26 14:07:50 [main] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1438 ms
+2024-09-26 14:07:50 [main] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@6f87a7c7{/,null,AVAILABLE}
+2024-09-26 14:07:50 [main] INFO  o.e.jetty.server.AbstractConnector - Started ServerConnector@57a3af25{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2024-09-26 14:07:50 [main] INFO  org.eclipse.jetty.server.Server - Started Server@7133da86{STARTING}[11.0.24,sto=0] @1820ms
+2024-09-26 14:07:52 [qtp235237152-32] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: 4f59336d-d2ae-425a-a720-dbede4412c27
+2024-09-26 14:07:52 [qtp235237152-32] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /swagger-ui/index.html
+2024-09-26 14:07:52 [qtp235237152-32] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: 4f59336d-d2ae-425a-a720-dbede4412c27 completed.
+2024-09-26 14:07:52 [qtp235237152-27] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: a0dd680c-6106-4672-98da-3634b785c804
+2024-09-26 14:07:52 [qtp235237152-27] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /swagger-ui/index.html
+2024-09-26 14:07:52 [qtp235237152-27] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: a0dd680c-6106-4672-98da-3634b785c804 completed.
+2024-09-26 14:11:43 [main] INFO  org.eclipse.jetty.server.Server - jetty-11.0.24; built: 2024-08-26T18:11:22.448Z; git: 5dfc59a691b748796f922208956bd1f2794bcd16; jvm 22.0.2+9-70
+2024-09-26 14:11:43 [main] INFO  o.e.j.s.s.DefaultSessionIdManager - Session workerName=node0
+2024-09-26 14:11:43 [main] INFO  o.e.j.s.handler.ContextHandler.ROOT - Initializing Spring DispatcherServlet 'org.springframework.web.servlet.DispatcherServlet-3d6f0054'
+2024-09-26 14:11:43 [main] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'org.springframework.web.servlet.DispatcherServlet-3d6f0054'
+2024-09-26 14:11:44 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.0.Final
+2024-09-26 14:11:44 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2024-09-26 14:11:44 [main] INFO  SQL dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2024-09-26 14:11:44 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-09-26 14:11:45 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-09-26 14:11:45 [main] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1807 ms
+2024-09-26 14:11:45 [main] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@169d5567{/,null,AVAILABLE}
+2024-09-26 14:11:45 [main] INFO  o.e.jetty.server.AbstractConnector - Started ServerConnector@747ddf94{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2024-09-26 14:11:45 [main] INFO  org.eclipse.jetty.server.Server - Started Server@1da2cb77{STARTING}[11.0.24,sto=0] @2220ms
+2024-09-26 14:11:48 [qtp203849460-32] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: 5968ee07-04c1-4c4b-b92e-9efefd4fc61c
+2024-09-26 14:11:48 [qtp203849460-32] INFO  c.d.f.t.RequestLoggingInterceptor - Transaction ID: 5968ee07-04c1-4c4b-b92e-9efefd4fc61c | Incoming request: GET /swagger-ui/index.html
+2024-09-26 14:11:48 [qtp203849460-32] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: 5968ee07-04c1-4c4b-b92e-9efefd4fc61c completed.
+2024-09-26 14:11:48 [qtp203849460-27] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: e2e75f2a-e63b-47eb-a0ec-360696b11126
+2024-09-26 14:11:48 [qtp203849460-27] INFO  c.d.f.t.RequestLoggingInterceptor - Transaction ID: e2e75f2a-e63b-47eb-a0ec-360696b11126 | Incoming request: GET /swagger-ui/index.html
+2024-09-26 14:11:48 [qtp203849460-27] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: e2e75f2a-e63b-47eb-a0ec-360696b11126 completed.
+2024-09-26 14:11:52 [qtp203849460-25] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: 57cb7896-da78-4477-ad12-b8a8095529dd
+2024-09-26 14:11:52 [qtp203849460-25] INFO  c.d.f.t.RequestLoggingInterceptor - Transaction ID: 57cb7896-da78-4477-ad12-b8a8095529dd | Incoming request: GET /v3/api-docs
+2024-09-26 14:11:52 [qtp203849460-25] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 201 ms
+2024-09-26 14:11:52 [qtp203849460-25] INFO  c.d.f.t.RequestLoggingInterceptor - Transaction ID: 57cb7896-da78-4477-ad12-b8a8095529dd | Response status: 200
+2024-09-26 14:11:52 [qtp203849460-25] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: 57cb7896-da78-4477-ad12-b8a8095529dd completed.
