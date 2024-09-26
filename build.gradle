@@ -81,10 +81,6 @@ dependencies {
 
 
     implementation 'org.springdoc:springdoc-openapi-ui:1.7.0'
-    implementation 'org.springdoc:springdoc-openapi-webmvc-core:1.7.0'
-
-
-    implementation group: 'org.springdoc', name: 'springdoc-openapi-webmvc-core', version: '1.7.0'
 
     // https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-server
     implementation 'org.eclipse.jetty:jetty-server:11.0.24'
