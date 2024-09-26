@@ -3,11 +3,13 @@ package com.demo.folder.config;
 
 import com.demo.folder.trainsaction.AuthenticationInterceptor;
 import com.demo.folder.trainsaction.RequestLoggingInterceptor;
+import java.util.List;
 import java.util.Objects;
 import java.util.Properties;
 import javax.sql.DataSource;
 import org.hibernate.SessionFactory;
 import org.modelmapper.ModelMapper;
+import org.springdoc.core.properties.SpringDocConfigProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -50,6 +52,15 @@ public class SpringConfig implements WebMvcConfigurer {
             "/swagger-resources/**",
             "/webjars/**");
   }
+
+  @Bean
+  public SpringDocConfigProperties springDocConfigProperties() {
+    var springDocConfigProperties = new SpringDocConfigProperties();
+    springDocConfigProperties.setPackagesToScan(List.of("com.demo.folder.controller"));
+    springDocConfigProperties.setPathsToMatch(List.of("/**"));
+    return springDocConfigProperties;
+  }
+
 
   @Bean
   public RestTemplate restTemplate() {

@@ -1028,3 +1028,27 @@ Caused by: java.lang.ClassNotFoundException: javax.servlet.http.HttpServletReque
 2024-09-26 14:07:52 [qtp235237152-27] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: a0dd680c-6106-4672-98da-3634b785c804
 2024-09-26 14:07:52 [qtp235237152-27] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /swagger-ui/index.html
 2024-09-26 14:07:52 [qtp235237152-27] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: a0dd680c-6106-4672-98da-3634b785c804 completed.
+2024-09-26 14:11:43 [main] INFO  org.eclipse.jetty.server.Server - jetty-11.0.24; built: 2024-08-26T18:11:22.448Z; git: 5dfc59a691b748796f922208956bd1f2794bcd16; jvm 22.0.2+9-70
+2024-09-26 14:11:43 [main] INFO  o.e.j.s.s.DefaultSessionIdManager - Session workerName=node0
+2024-09-26 14:11:43 [main] INFO  o.e.j.s.handler.ContextHandler.ROOT - Initializing Spring DispatcherServlet 'org.springframework.web.servlet.DispatcherServlet-3d6f0054'
+2024-09-26 14:11:43 [main] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'org.springframework.web.servlet.DispatcherServlet-3d6f0054'
+2024-09-26 14:11:44 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.0.Final
+2024-09-26 14:11:44 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2024-09-26 14:11:44 [main] INFO  SQL dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2024-09-26 14:11:44 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-09-26 14:11:45 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-09-26 14:11:45 [main] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1807 ms
+2024-09-26 14:11:45 [main] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@169d5567{/,null,AVAILABLE}
+2024-09-26 14:11:45 [main] INFO  o.e.jetty.server.AbstractConnector - Started ServerConnector@747ddf94{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2024-09-26 14:11:45 [main] INFO  org.eclipse.jetty.server.Server - Started Server@1da2cb77{STARTING}[11.0.24,sto=0] @2220ms
+2024-09-26 14:11:48 [qtp203849460-32] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: 5968ee07-04c1-4c4b-b92e-9efefd4fc61c
+2024-09-26 14:11:48 [qtp203849460-32] INFO  c.d.f.t.RequestLoggingInterceptor - Transaction ID: 5968ee07-04c1-4c4b-b92e-9efefd4fc61c | Incoming request: GET /swagger-ui/index.html
+2024-09-26 14:11:48 [qtp203849460-32] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: 5968ee07-04c1-4c4b-b92e-9efefd4fc61c completed.
+2024-09-26 14:11:48 [qtp203849460-27] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: e2e75f2a-e63b-47eb-a0ec-360696b11126
+2024-09-26 14:11:48 [qtp203849460-27] INFO  c.d.f.t.RequestLoggingInterceptor - Transaction ID: e2e75f2a-e63b-47eb-a0ec-360696b11126 | Incoming request: GET /swagger-ui/index.html
+2024-09-26 14:11:48 [qtp203849460-27] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: e2e75f2a-e63b-47eb-a0ec-360696b11126 completed.
+2024-09-26 14:11:52 [qtp203849460-25] INFO  c.d.f.trainsaction.TransactionFilter - Starting transaction with ID: 57cb7896-da78-4477-ad12-b8a8095529dd
+2024-09-26 14:11:52 [qtp203849460-25] INFO  c.d.f.t.RequestLoggingInterceptor - Transaction ID: 57cb7896-da78-4477-ad12-b8a8095529dd | Incoming request: GET /v3/api-docs
+2024-09-26 14:11:52 [qtp203849460-25] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 201 ms
+2024-09-26 14:11:52 [qtp203849460-25] INFO  c.d.f.t.RequestLoggingInterceptor - Transaction ID: 57cb7896-da78-4477-ad12-b8a8095529dd | Response status: 200
+2024-09-26 14:11:52 [qtp203849460-25] INFO  c.d.f.trainsaction.TransactionFilter - Transaction with ID: 57cb7896-da78-4477-ad12-b8a8095529dd completed.
