@@ -1,42 +1,33 @@
 package com.demo.folder.controller;
 
-import com.demo.folder.config.SecurityConfig;
-import com.demo.folder.config.SpringConfig;
-import com.demo.folder.config.WebConfig;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+// Import other necessary annotations and classes
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockHttpSession;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.test.context.web.WebAppConfiguration;
-import org.springframework.web.context.WebApplicationContext;
+
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import static org.hamcrest.Matchers.is;
-
+import static org.hamcrest.Matchers.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@ExtendWith(SpringExtension.class)
-@WebAppConfiguration
-@ContextConfiguration(classes = {SpringConfig.class, WebConfig.class, SecurityConfig.class})
+@SpringBootTest
+@AutoConfigureMockMvc
 class TrainingControllerTest {
 
-  private static final Logger LOGGER = LoggerFactory.getLogger(TrainingControllerTest.class);
-
-  private MockMvc mockMvc;
+  private static final org.slf4j.Logger LOGGER = org.slf4j.LoggerFactory.getLogger(
+      TrainingControllerTest.class);
 
   @Autowired
-  private WebApplicationContext wac;
+  private MockMvc mockMvc;
 
   private String traineeUsername;
   private String traineePassword;
@@ -46,16 +37,14 @@ class TrainingControllerTest {
 
   @BeforeEach
   public void setup() throws Exception {
-    this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
     ObjectMapper objectMapper = new ObjectMapper();
 
     String trainingTypeJson = "{ \"trainingTypeName\": \"Yoga\" }";
 
-    MvcResult trainingTypeResult = mockMvc.perform(post("/api/training-type/create")
+    MvcResult trainingTypeResult = mockMvc.perform(post("/api/training-type")
             .contentType(MediaType.APPLICATION_JSON)
             .content(trainingTypeJson))
-        .andExpect(status().isOk())
-        .andExpect(content().string("Training type created successfully."))
+        .andExpect(status().isCreated())
         .andReturn();
 
     String traineeJson = """
@@ -67,11 +56,10 @@ class TrainingControllerTest {
         }
         """;
 
-    MvcResult traineeRegistrationResult = mockMvc.perform(post("/api/trainee/register")
+    MvcResult traineeRegistrationResult = mockMvc.perform(post("/api/trainees")
             .contentType(MediaType.APPLICATION_JSON)
             .content(traineeJson))
-        .andExpect(status().isOk())
-        .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+        .andExpect(status().isCreated())
         .andReturn();
 
     String traineeRegistrationResponse = traineeRegistrationResult.getResponse()
@@ -89,11 +77,10 @@ class TrainingControllerTest {
         + "\"trainingTypeId\": " + 1
         + "}";
 
-    MvcResult trainerRegistrationResult = mockMvc.perform(post("/api/trainer/register")
+    MvcResult trainerRegistrationResult = mockMvc.perform(post("/api/trainers")
             .contentType(MediaType.APPLICATION_JSON)
             .content(trainerJson))
-        .andExpect(status().isOk())
-        .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+        .andExpect(status().isCreated())
         .andReturn();
 
     String trainerRegistrationResponse = trainerRegistrationResult.getResponse()
@@ -105,10 +92,10 @@ class TrainingControllerTest {
     LOGGER.info("Registered trainer with username: {}", trainerUsername);
     LOGGER.info("Registered trainer with password: {}", trainerPassword);
 
-    MvcResult loginResult = mockMvc.perform(get("/api/login")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content("{\"username\": \"" + traineeUsername + "\", \"password\": \"" + traineePassword
-                + "\"}"))
+    MvcResult loginResult = mockMvc.perform(post("/api/login")
+            .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+            .param("username", trainerUsername)
+            .param("password", trainerPassword))
         .andExpect(status().isOk())
         .andExpect(content().string("Login successful"))
         .andReturn();
@@ -118,7 +105,8 @@ class TrainingControllerTest {
 
   @Test
   public void testRegisterTraining() throws Exception {
-    String trainingDateStr = "2024-01-01T10:00:00.000Z";
+    String trainingDateStr = "2024/01/01"; // ISO 8601 format
+
     String trainingJson = "{"
         + "\"traineeUserName\": \"" + traineeUsername + "\","
         + "\"trainerUserName\": \"" + trainerUsername + "\","
@@ -127,17 +115,18 @@ class TrainingControllerTest {
         + "\"duration\": 60"
         + "}";
 
-    mockMvc.perform(post("/api/training/create")
+    mockMvc.perform(post("/api/trainings")
             .session(session)
             .contentType(MediaType.APPLICATION_JSON)
             .content(trainingJson))
-        .andExpect(status().isOk())
+        .andExpect(status().isCreated())
         .andExpect(content().string("Training created successfully"));
   }
 
   @Test
   public void testGetTrainings() throws Exception {
-    String trainingDateStr = "2024-01-01T10:00:00.000Z";
+    String trainingDateStr = "2024/01/01";
+
     String trainingJson = "{"
         + "\"traineeUserName\": \"" + traineeUsername + "\","
         + "\"trainerUserName\": \"" + trainerUsername + "\","
@@ -146,13 +135,13 @@ class TrainingControllerTest {
         + "\"duration\": 60"
         + "}";
 
-    mockMvc.perform(post("/api/training/create")
+    mockMvc.perform(post("/api/trainings")
             .session(session)
             .contentType(MediaType.APPLICATION_JSON)
             .content(trainingJson))
-        .andExpect(status().isOk());
+        .andExpect(status().isCreated());
 
-    mockMvc.perform(get("/api/training/all")
+    mockMvc.perform(get("/api/trainings")
             .session(session))
         .andExpect(status().isOk())
         .andExpect(content().contentType(MediaType.APPLICATION_JSON))

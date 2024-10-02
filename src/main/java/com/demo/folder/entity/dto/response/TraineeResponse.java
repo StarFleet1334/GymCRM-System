@@ -1,9 +1,11 @@
 package com.demo.folder.entity.dto.response;
 
+
 public class TraineeResponse {
 
   private String username;
   private String password;
+
 
   public String getUsername() {
     return username;

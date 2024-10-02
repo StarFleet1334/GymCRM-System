@@ -3,6 +3,7 @@ package com.demo.folder.error.handler;
 import com.demo.folder.error.exception.AuthenticationException;
 import com.demo.folder.error.exception.EntityNotFoundException;
 import com.demo.folder.error.exception.ErrorResponse;
+import java.util.Objects;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -16,7 +17,7 @@ public class GlobalExceptionHandler {
   @ExceptionHandler(MethodArgumentNotValidException.class)
   public ResponseEntity<ErrorResponse> handleValidationException(MethodArgumentNotValidException ex,
       WebRequest request) {
-    String errorMessage = ex.getBindingResult().getFieldError().getDefaultMessage();
+    String errorMessage = Objects.requireNonNull(ex.getBindingResult().getFieldError()).getDefaultMessage();
     ErrorResponse errorResponse = new ErrorResponse(
         HttpStatus.BAD_REQUEST.value(),
         errorMessage,
@@ -52,7 +53,7 @@ public class GlobalExceptionHandler {
       org.springframework.dao.DataIntegrityViolationException ex, WebRequest request) {
     ErrorResponse errorResponse = new ErrorResponse(
         HttpStatus.CONFLICT.value(),
-        "Database error: " + ex.getRootCause().getMessage(),
+        "Database error: " + Objects.requireNonNull(ex.getRootCause()).getMessage(),
         request.getDescription(false)
     );
     return new ResponseEntity<>(errorResponse, HttpStatus.CONFLICT);

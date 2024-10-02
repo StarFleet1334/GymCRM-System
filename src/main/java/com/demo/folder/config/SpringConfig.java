@@ -1,20 +1,17 @@
 package com.demo.folder.config;
 
-
-import com.demo.folder.trainsaction.AuthenticationInterceptor;
 import com.demo.folder.trainsaction.RequestLoggingInterceptor;
+import com.demo.folder.trainsaction.TransactionFilter;
 import java.util.List;
-import java.util.Objects;
 import java.util.Properties;
 import javax.sql.DataSource;
 import org.hibernate.SessionFactory;
 import org.modelmapper.ModelMapper;
 import org.springdoc.core.properties.SpringDocConfigProperties;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -34,23 +31,12 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class SpringConfig implements WebMvcConfigurer {
 
   private final Environment env;
-  @Autowired
-  @Lazy
-  private AuthenticationInterceptor authenticationInterceptor;
+
 
   @Override
   public void addInterceptors(InterceptorRegistry registry) {
     registry.addInterceptor(new RequestLoggingInterceptor())
         .addPathPatterns("/**");
-    registry.addInterceptor(authenticationInterceptor)
-        .addPathPatterns("/**")  // Authenticate for all paths
-        .excludePathPatterns("/api/trainee/register", "/api/trainer/register",
-            "/api/training-type/create", "/api/login", "/api/trainee/all", "/api/trainer/all",
-            "/swagger-ui.html",
-            "/swagger-ui/**",
-            "/v3/api-docs/**",
-            "/swagger-resources/**",
-            "/webjars/**");
   }
 
   @Bean
@@ -67,6 +53,16 @@ public class SpringConfig implements WebMvcConfigurer {
     return new RestTemplate();
   }
 
+  @Bean
+  public FilterRegistrationBean<TransactionFilter> loggingFilter() {
+    FilterRegistrationBean<TransactionFilter> registrationBean = new FilterRegistrationBean<>();
+
+    registrationBean.setFilter(new TransactionFilter());
+    registrationBean.addUrlPatterns("/*");
+    registrationBean.setOrder(1);
+
+    return registrationBean;
+  }
 
   public SpringConfig(Environment env) {
     this.env = env;
@@ -80,8 +76,7 @@ public class SpringConfig implements WebMvcConfigurer {
   @Bean
   public DataSource dataSource() {
     DriverManagerDataSource dataSource = new DriverManagerDataSource();
-    dataSource.setDriverClassName(
-        Objects.requireNonNull(env.getProperty("spring.datasource.driver-class-name")));
+    dataSource.setDriverClassName(env.getProperty("spring.datasource.driver-class-name"));
     dataSource.setUrl(env.getProperty("spring.datasource.url"));
     dataSource.setUsername(env.getProperty("spring.datasource.username"));
     dataSource.setPassword(env.getProperty("spring.datasource.password"));
@@ -111,3 +106,4 @@ public class SpringConfig implements WebMvcConfigurer {
     return transactionManager;
   }
 }
+

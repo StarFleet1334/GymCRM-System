@@ -7,6 +7,7 @@ import com.demo.folder.entity.dto.request.TrainingRequestDTO;
 import com.demo.folder.repository.TrainingRepository;
 import jakarta.persistence.EntityNotFoundException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,9 +31,9 @@ public class TrainingService {
   @Transactional
   public List<Training> getTrainingsForTraineeByCriteria(Long traineeId, LocalDate fromDate,
       LocalDate toDate, String trainerName, String trainingType) {
-//    LOGGER.info(
-//        "Fetching trainings for trainee with ID: {}, from: {}, to: {}, trainerName: {}, trainingType: {}",
-//        traineeId, fromDate, toDate, trainerName, trainingType);
+    LOGGER.info(
+        "Fetching trainings for trainee with ID: {}, from: {}, to: {}, trainerName: {}, trainingType: {}",
+        traineeId, fromDate, toDate, trainerName, trainingType);
 
     if (traineeId == null || traineeId <= 0) {
       throw new IllegalArgumentException("Invalid trainee ID.");
@@ -48,8 +49,8 @@ public class TrainingService {
   @Transactional
   public List<Training> getTrainingsForTrainerByCriteria(Long trainerId, LocalDate fromDate,
       LocalDate toDate, String traineeName) {
-//    LOGGER.info("Fetching trainings for trainer with ID: {}, from: {}, to: {}, traineeName: {}",
-//        trainerId, fromDate, toDate, traineeName);
+    LOGGER.info("Fetching trainings for trainer with ID: {}, from: {}, to: {}, traineeName: {}",
+        trainerId, fromDate, toDate, traineeName);
     if (trainerId == null || trainerId <= 0) {
       throw new IllegalArgumentException("Invalid trainer ID.");
     }
@@ -63,13 +64,13 @@ public class TrainingService {
 
   @Transactional
   public void saveTraining(Training training) {
-//    LOGGER.info("Saving training with name: {}", training.getTrainingName());
+    LOGGER.info("Saving training with name: {}", training.getTrainingName());
     trainingRepository.save(training);
   }
 
   @Transactional(readOnly = true)
   public List<Training> getAllTrainings() {
-//    LOGGER.info("Fetching all trainings");
+    LOGGER.info("Fetching all trainings");
     List<Training> trainings = trainingRepository.findAll();
     if (trainings.isEmpty()) {
       throw new EntityNotFoundException("No trainings found.");
@@ -80,14 +81,20 @@ public class TrainingService {
 
   @Transactional
   public void createTraining(TrainingRequestDTO trainingRequestDTO) {
+    int duration = trainingRequestDTO.getDuration().intValue();
+    if (duration < 0) {
+      throw new IllegalArgumentException("Training duration must not be negative.");
+    }
     Trainee trainee = traineeService.findTraineeByUsername(trainingRequestDTO.getTraineeUserName());
     if (trainee == null) {
-      throw new EntityNotFoundException("Trainee with username " + trainingRequestDTO.getTraineeUserName() + " not found.");
+      throw new EntityNotFoundException(
+          "Trainee with username " + trainingRequestDTO.getTraineeUserName() + " not found.");
     }
 
     Trainer trainer = trainerService.findTrainerByUsername(trainingRequestDTO.getTrainerUserName());
     if (trainer == null) {
-      throw new EntityNotFoundException("Trainer with username " + trainingRequestDTO.getTrainerUserName() + " not found.");
+      throw new EntityNotFoundException(
+          "Trainer with username " + trainingRequestDTO.getTrainerUserName() + " not found.");
     }
 
     if (!trainee.getTrainers().contains(trainer)) {
@@ -99,7 +106,6 @@ public class TrainingService {
       trainer.getTrainees().add(trainee);
       trainerService.updateTrainer(trainer);
     }
-
 
 
     Training training = new Training();
@@ -114,7 +120,24 @@ public class TrainingService {
     traineeService.updateTrainee(trainee);
 
     saveTraining(training);
-//    LOGGER.info("Created training for trainee {} with trainer {}", trainee.getUser().getUsername(), trainer.getUser().getUsername());
+    LOGGER.info("Created training for trainee {} with trainer {}", trainee.getUser().getUsername(),
+        trainer.getUser().getUsername());
+  }
+
+  @Transactional
+  public List<TrainingRequestDTO> retrieveAllTrainings() {
+    List<Training> trainings = getAllTrainings();
+    List<TrainingRequestDTO> dtoList = new ArrayList<>();
+    for (Training training : trainings) {
+      TrainingRequestDTO trainingRequestDTO = new TrainingRequestDTO();
+      trainingRequestDTO.setTraineeUserName(training.getTrainee().getUser().getUsername());
+      trainingRequestDTO.setTrainerUserName(training.getTrainer().getUser().getUsername());
+      trainingRequestDTO.setTrainingName(training.getTrainingName());
+      trainingRequestDTO.setTrainingDate(training.getTrainingDate());
+      trainingRequestDTO.setDuration(training.getTrainingDuration());
+      dtoList.add(trainingRequestDTO);
+    }
+    return dtoList;
   }
 }
 

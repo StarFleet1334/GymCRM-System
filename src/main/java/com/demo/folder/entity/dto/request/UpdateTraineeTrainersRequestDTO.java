@@ -6,20 +6,8 @@ import java.util.List;
 
 public class UpdateTraineeTrainersRequestDTO {
 
-  @NotBlank(message = "Trainee Username is required")
-  private String traineeUsername;
-
   @NotEmpty(message = "Trainers list cannot be empty")
   private List<@NotBlank(message = "Trainer Username is required") String> trainerUsernames;
-
-  // Getters and Setters
-  public String getTraineeUsername() {
-    return traineeUsername;
-  }
-
-  public void setTraineeUsername(String traineeUsername) {
-    this.traineeUsername = traineeUsername;
-  }
 
   public List<String> getTrainerUsernames() {
     return trainerUsernames;

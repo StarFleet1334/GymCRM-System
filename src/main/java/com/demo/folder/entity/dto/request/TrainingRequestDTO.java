@@ -3,6 +3,8 @@ package com.demo.folder.entity.dto.request;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 
 public class TrainingRequestDTO {
 
@@ -13,6 +15,7 @@ public class TrainingRequestDTO {
   @NotBlank(message = "Training name is required")
   private String trainingName;
   @NotNull(message = "Training date is required")
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy/MM/dd")
   private Date trainingDate;
   @NotNull(message = "Training duration is required")
   private Number duration;

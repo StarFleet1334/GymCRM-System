@@ -5,6 +5,7 @@ import com.demo.folder.entity.base.TrainingType;
 import com.demo.folder.entity.dto.request.TrainingTypeRequestDTO;
 import com.demo.folder.repository.TrainingTypeRepository;
 import jakarta.persistence.EntityNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
@@ -23,7 +24,7 @@ public class TrainingTypeService {
 
   @Transactional
   public void createTrainingType(TrainingType trainingType) {
-//    LOGGER.info("Creating new training type: {}", trainingType.getTrainingTypeName());
+    LOGGER.info("Creating new training type: {}", trainingType.getTrainingTypeName());
     trainingTypeRepository.save(trainingType);
   }
 
@@ -37,7 +38,7 @@ public class TrainingTypeService {
 
   @Transactional(readOnly = true)
   public List<TrainingType> getAllTrainingTypes() {
-//    LOGGER.info("Fetching all training types");
+    LOGGER.info("Fetching all training types");
     List<TrainingType> trainingTypes = trainingTypeRepository.findAll();
     if (trainingTypes.isEmpty()) {
       throw new EntityNotFoundException("No training types found.");
@@ -51,6 +52,22 @@ public class TrainingTypeService {
     return trainingTypeRepository.findById(id)
         .map(trainingType -> modelMapper.map(trainingType, TrainingTypeRequestDTO.class))
         .orElseThrow(() -> new EntityNotFoundException("Training Type with ID " + id + " not found"));
+  }
+
+  @Transactional
+  public List<TrainingTypeRequestDTO> retrieveAllTrainingTypes() {
+    List<TrainingType> list = getAllTrainingTypes();
+    if (list.isEmpty()) {
+      throw new com.demo.folder.error.exception.EntityNotFoundException("No training types found.");
+    }
+    List<TrainingTypeRequestDTO> trainingTypeRequestDTOS = new ArrayList<>();
+    for (TrainingType trainingType : list) {
+      TrainingTypeRequestDTO trainingTypeRequestDTO = new TrainingTypeRequestDTO();
+      trainingTypeRequestDTO.setId(trainingType.getId());
+      trainingTypeRequestDTO.setTrainingTypeName(trainingType.getTrainingTypeName());
+      trainingTypeRequestDTOS.add(trainingTypeRequestDTO);
+    }
+    return trainingTypeRequestDTOS;
   }
 
 }

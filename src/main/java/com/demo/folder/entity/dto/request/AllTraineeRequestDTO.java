@@ -5,12 +5,10 @@ import jakarta.validation.constraints.NotBlank;
 import java.util.Date;
 import java.util.List;
 
-public class TraineeRequestDTO {
+public class AllTraineeRequestDTO {
 
   private Long id;
-  @NotBlank(message = "First Name is required")
   private String firstName;
-  @NotBlank(message = "Last Name is required")
   private String lastName;
   private String username;
   private String password;
@@ -24,6 +22,7 @@ public class TraineeRequestDTO {
   public String getPassword() {
     return password;
   }
+
 
   public void setPassword(String password) {
     this.password = password;

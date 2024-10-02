@@ -1,6 +1,7 @@
 package com.demo.folder.entity.base;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import java.util.Date;
 import org.slf4j.Logger;
@@ -33,6 +34,8 @@ public class Training {
   private TrainingType trainingType;
 
   @Column(name = "Training_Date", nullable = false)
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy/MM/dd")
+
   private Date trainingDate;
 
   @Column(name = "Training_Duration", nullable = false)

@@ -5,8 +5,6 @@ import jakarta.validation.constraints.NotNull;
 
 public class UpdateTrainerProfileRequestDTO {
 
-  @NotBlank(message = "userName is required")
-  private String userName;
   @NotBlank(message = "firstName is required")
   private String firstName;
   @NotBlank(message = "lastName is required")
@@ -17,14 +15,6 @@ public class UpdateTrainerProfileRequestDTO {
   @NotNull(message = "isActive is required")
   private boolean isActive;
 
-  public String getUserName() {
-    return userName;
-  }
-
-  public void setUserName(
-      @NotBlank(message = "userName is required") String userName) {
-    this.userName = userName;
-  }
 
   public @NotBlank(message = "firstName is required") String getFirstName() {
     return firstName;

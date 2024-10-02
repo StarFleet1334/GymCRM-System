@@ -19,8 +19,6 @@ public class DownstreamServiceClient {
     HttpHeaders headers = new HttpHeaders();
     String transactionId = MDC.get("transactionId");
     headers.set("Transaction-ID", transactionId);
-
-    // Call downstream service with the transaction ID
     return restTemplate.getForObject("http://downstream-service/api", String.class, headers);
   }
 }
