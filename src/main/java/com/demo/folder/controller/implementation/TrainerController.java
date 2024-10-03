@@ -8,6 +8,8 @@ import com.demo.folder.entity.dto.response.TrainerProfileResponseDTO;
 import com.demo.folder.entity.dto.response.TrainerResponseDTO;
 import com.demo.folder.error.exception.EntityNotFoundException;
 import com.demo.folder.health.prome.CustomMetrics;
+import com.demo.folder.health.prome.TraineeExecutionTime;
+import com.demo.folder.health.prome.TrainerExecutionTime;
 import com.demo.folder.service.TrainerService;
 import com.demo.folder.utils.StatusAction;
 import com.demo.folder.utils.FileUtil;
@@ -36,33 +38,46 @@ public class TrainerController implements TrainerControllerInterface {
   @Autowired
   private CustomMetrics customMetrics;
 
+  @Autowired
+  private TrainerExecutionTime trainerExecutionTime;
+
   @Override
   public ResponseEntity<?> registerTrainer(@Valid @RequestBody TrainerRequestDTO trainerRequestDTO,
       BindingResult result) {
-    if (result.hasErrors()) {
-      return ResponseEntity.badRequest()
-          .body(Objects.requireNonNull(result.getFieldError()).getDefaultMessage());
+
+    try {
+      return trainerExecutionTime.recordExecutionTime(() -> {
+
+        if (result.hasErrors()) {
+          return ResponseEntity.badRequest()
+              .body(Objects.requireNonNull(result.getFieldError()).getDefaultMessage());
+        }
+
+        String[] registeredTrainer = trainerService.createTrainer(trainerRequestDTO);
+        if (registeredTrainer == null) {
+          throw new IllegalArgumentException(
+              "Training type credential was incorrect or some other fields were indicated incorrectly.");
+        }
+
+        TrainerResponseDTO response = new TrainerResponseDTO();
+        response.setUsername(registeredTrainer[1]);
+        response.setPassword(registeredTrainer[0]);
+
+        FileUtil.writeCredentialsToFile("trainer_credentials.txt", registeredTrainer[1],
+            registeredTrainer[0]);
+
+        customMetrics.incrementTrainerRegistrationCount();
+
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
+            .path("/{username}")
+            .buildAndExpand(response.getUsername())
+            .toUri();
+
+        return ResponseEntity.created(location).body(response);
+      });
+    } catch (IllegalArgumentException e) {
+      return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(e.getMessage());
     }
-    String[] registeredTrainer = trainerService.createTrainer(trainerRequestDTO);
-    if (registeredTrainer == null) {
-      throw new IllegalArgumentException(
-          "Training type credential was incorrect or some other fields were indicated incorrectly.");
-    }
-    TrainerResponseDTO response = new TrainerResponseDTO();
-    response.setUsername(registeredTrainer[1]);
-    response.setPassword(registeredTrainer[0]);
-
-    FileUtil.writeCredentialsToFile("trainer_credentials.txt", registeredTrainer[1],
-        registeredTrainer[0]);
-    customMetrics.incrementTrainerRegistrationCount();
-
-    customMetrics.incrementTraineeRegistrationCount();
-    URI location = ServletUriComponentsBuilder.fromCurrentRequest()
-        .path("/{username}")
-        .buildAndExpand(response.getUsername())
-        .toUri();
-
-    return ResponseEntity.created(location).body(response);
 
   }
 

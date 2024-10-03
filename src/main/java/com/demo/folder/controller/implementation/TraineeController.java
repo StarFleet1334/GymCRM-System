@@ -11,8 +11,10 @@ import com.demo.folder.entity.dto.response.TraineeResponse;
 import com.demo.folder.entity.dto.response.UpdateTraineeTrainersResponseDTO;
 import com.demo.folder.error.exception.EntityNotFoundException;
 import com.demo.folder.health.prome.CustomMetrics;
+import com.demo.folder.health.prome.TraineeExecutionTime;
 import com.demo.folder.service.TraineeService;
 import com.demo.folder.utils.FileUtil;
+import io.micrometer.core.annotation.Timed;
 import jakarta.validation.Valid;
 import java.net.URI;
 import java.util.Date;
@@ -38,18 +40,20 @@ public class TraineeController implements TraineeControllerInterface {
   private TraineeService traineeService;
 
   @Autowired
-  private CustomMetrics customMetrics;
+  private TraineeExecutionTime traineeExecutionTime;
 
+  @Autowired
+  private CustomMetrics customMetrics;
 
   @Override
   public ResponseEntity<TraineeResponse> registerTrainee(
       @Valid @RequestBody CreateTraineeRequestDTO traineeRequestDTO,
       BindingResult result) {
-    try {
+    return traineeExecutionTime.recordExecutionTime(() -> {
       if (result.hasErrors()) {
-        return ResponseEntity.badRequest()
-            .body(null);
+        return ResponseEntity.badRequest().body(null);
       }
+
       String[] registeredTrainee = traineeService.createTrainee(traineeRequestDTO);
       TraineeResponse response = new TraineeResponse();
       response.setUsername(registeredTrainee[1]);
@@ -59,15 +63,14 @@ public class TraineeController implements TraineeControllerInterface {
           registeredTrainee[0]);
 
       customMetrics.incrementTraineeRegistrationCount();
+
       URI location = ServletUriComponentsBuilder.fromCurrentRequest()
           .path("/{username}")
           .buildAndExpand(response.getUsername())
           .toUri();
 
       return ResponseEntity.created(location).body(response);
-    } catch (IllegalArgumentException e) {
-      return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(null);
-    }
+    });
   }
 
 
