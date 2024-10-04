@@ -1,6 +1,0 @@
-userId,firstName,lastName,userName,password,dateOfBirth,Address,isActive
-1,John,Doe,jdoe,password123,1990-01-15,123 Elm Street,true
-2,Jane,Smith,jsmith,secure456,1985-05-22,456 Oak Avenue,true
-3,Bob,Brown,bbrown,password789,1992-09-12,789 Pine Road,false
-4,Alice,Johnson,ajohnson,alice2024,1993-03-25,101 Maple Drive,true
-5,Michael,White,mwhite,mike2021,1988-07-08,202 Birch Boulevard,true

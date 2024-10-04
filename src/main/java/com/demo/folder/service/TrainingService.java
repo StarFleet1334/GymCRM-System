@@ -1,84 +1,143 @@
 package com.demo.folder.service;
 
-import com.demo.folder.dao.TrainingDAO;
-import com.demo.folder.model.Training;
+import com.demo.folder.entity.base.Trainee;
+import com.demo.folder.entity.base.Trainer;
+import com.demo.folder.entity.base.Training;
+import com.demo.folder.entity.dto.request.TrainingRequestDTO;
+import com.demo.folder.repository.TrainingRepository;
+import jakarta.persistence.EntityNotFoundException;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.Date;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class TrainingService {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(TrainingService.class);
-
-  private TrainingDAO trainingDAO;
+  @Autowired
+  private TrainingRepository trainingRepository;
 
   @Autowired
-  public void setTrainingDAO(TrainingDAO trainingDAO) {
-    this.trainingDAO = trainingDAO;
+  private TrainerService trainerService;
+
+  @Autowired
+  private TraineeService traineeService;
+
+  @Transactional
+  public List<Training> getTrainingsForTraineeByCriteria(Long traineeId, LocalDate fromDate,
+      LocalDate toDate, String trainerName, String trainingType) {
+    LOGGER.info(
+        "Fetching trainings for trainee with ID: {}, from: {}, to: {}, trainerName: {}, trainingType: {}",
+        traineeId, fromDate, toDate, trainerName, trainingType);
+
+    if (traineeId == null || traineeId <= 0) {
+      throw new IllegalArgumentException("Invalid trainee ID.");
+    }
+
+    if (fromDate != null && toDate != null && fromDate.isAfter(toDate)) {
+      throw new IllegalArgumentException("From date cannot be after to date.");
+    }
+    return trainingRepository.findTrainingsForTraineeByCriteria(traineeId, fromDate, toDate,
+        trainerName, trainingType);
   }
 
-  public Training getTraining(Long trainingId) {
-    return trainingDAO.read(trainingId);
+  @Transactional
+  public List<Training> getTrainingsForTrainerByCriteria(Long trainerId, LocalDate fromDate,
+      LocalDate toDate, String traineeName) {
+    LOGGER.info("Fetching trainings for trainer with ID: {}, from: {}, to: {}, traineeName: {}",
+        trainerId, fromDate, toDate, traineeName);
+    if (trainerId == null || trainerId <= 0) {
+      throw new IllegalArgumentException("Invalid trainer ID.");
+    }
+    if (fromDate != null && toDate != null && fromDate.isAfter(toDate)) {
+      throw new IllegalArgumentException("From date cannot be after to date.");
+    }
+
+    return trainingRepository.findTrainingsForTrainerByCriteria(trainerId, fromDate, toDate,
+        traineeName);
   }
 
+  @Transactional
+  public void saveTraining(Training training) {
+    LOGGER.info("Saving training with name: {}", training.getTrainingName());
+    trainingRepository.save(training);
+  }
+
+  @Transactional(readOnly = true)
   public List<Training> getAllTrainings() {
-    return trainingDAO.getAll();
+    LOGGER.info("Fetching all trainings");
+    List<Training> trainings = trainingRepository.findAll();
+    if (trainings.isEmpty()) {
+      throw new EntityNotFoundException("No trainings found.");
+    }
+
+    return trainings;
   }
 
-  public void createTraining(Training training) {
-    if (training == null || training.getTrainingName() == null || training.getTrainingType() == null
-        || training.getTrainingDate() == null || training.getTrainingDuration() <= 0) {
-      LOGGER.error("Invalid training data. Training creation failed.");
-      return;
+  @Transactional
+  public void createTraining(TrainingRequestDTO trainingRequestDTO) {
+    int duration = trainingRequestDTO.getDuration().intValue();
+    if (duration < 0) {
+      throw new IllegalArgumentException("Training duration must not be negative.");
+    }
+    Trainee trainee = traineeService.findTraineeByUsername(trainingRequestDTO.getTraineeUserName());
+    if (trainee == null) {
+      throw new EntityNotFoundException(
+          "Trainee with username " + trainingRequestDTO.getTraineeUserName() + " not found.");
     }
 
-    Date currentDate = new Date();
-    if (training.getTrainingDate().before(currentDate)) {
-      LOGGER.error("Training date {} is in the past. Training creation failed.",
-          training.getTrainingDate());
-      return;
+    Trainer trainer = trainerService.findTrainerByUsername(trainingRequestDTO.getTrainerUserName());
+    if (trainer == null) {
+      throw new EntityNotFoundException(
+          "Trainer with username " + trainingRequestDTO.getTrainerUserName() + " not found.");
     }
 
-    if (training.getTrainingDuration() < 0) {
-      LOGGER.error("Training duration cannot be negative. Training creation failed.");
-      return;
+    if (!trainee.getTrainers().contains(trainer)) {
+      trainee.getTrainers().add(trainer);
+      traineeService.updateTrainee(trainee);
     }
 
-    if (isTrainerBusy(training)) {
-      LOGGER.error(
-          "Trainer with ID {} is already busy during the specified training period. Training creation failed.",
-          training.getTrainerId());
-      return;
+    if (!trainer.getTrainees().contains(trainee)) {
+      trainer.getTrainees().add(trainee);
+      trainerService.updateTrainer(trainer);
     }
 
-    trainingDAO.create(training); // Use the DAO to create training
-    LOGGER.info("Training with ID {} successfully created: {}", training.getTrainingId(), training);
+
+    Training training = new Training();
+    training.setTrainee(trainee);
+    training.setTrainer(trainer);
+    training.setTrainingName(trainingRequestDTO.getTrainingName());
+    training.setTrainingDate(trainingRequestDTO.getTrainingDate());
+    training.setTrainingDuration(trainingRequestDTO.getDuration());
+
+    trainee.getTrainings().add(training);
+    LOGGER.info("Trainee's trainings list: {}", trainee.getTrainings());
+    traineeService.updateTrainee(trainee);
+
+    saveTraining(training);
+    LOGGER.info("Created training for trainee {} with trainer {}", trainee.getUser().getUsername(),
+        trainer.getUser().getUsername());
   }
 
-  private boolean isTrainerBusy(Training training) {
-    List<Training> trainings = trainingDAO.getAll();
-    for (Training existingTraining : trainings) {
-      if (existingTraining.getTrainerId().equals(training.getTrainerId())) {
-        Date existingStart = existingTraining.getTrainingDate();
-        Date existingEnd = getEndDate(existingStart, existingTraining.getTrainingDuration());
-        Date newStart = training.getTrainingDate();
-        Date newEnd = getEndDate(newStart, training.getTrainingDuration());
-        if (newStart.before(existingEnd) && existingStart.before(newEnd)) {
-          return true;
-        }
-      }
+  @Transactional
+  public List<TrainingRequestDTO> retrieveAllTrainings() {
+    List<Training> trainings = getAllTrainings();
+    List<TrainingRequestDTO> dtoList = new ArrayList<>();
+    for (Training training : trainings) {
+      TrainingRequestDTO trainingRequestDTO = new TrainingRequestDTO();
+      trainingRequestDTO.setTraineeUserName(training.getTrainee().getUser().getUsername());
+      trainingRequestDTO.setTrainerUserName(training.getTrainer().getUser().getUsername());
+      trainingRequestDTO.setTrainingName(training.getTrainingName());
+      trainingRequestDTO.setTrainingDate(training.getTrainingDate());
+      trainingRequestDTO.setDuration(training.getTrainingDuration());
+      dtoList.add(trainingRequestDTO);
     }
-    return false;
-  }
-
-  private Date getEndDate(Date startDate, int durationDays) {
-    long durationMillis = TimeUnit.DAYS.toMillis(durationDays);
-    return new Date(startDate.getTime() + durationMillis);
+    return dtoList;
   }
 }
+

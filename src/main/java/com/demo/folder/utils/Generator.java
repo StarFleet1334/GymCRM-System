@@ -1,8 +1,12 @@
 package com.demo.folder.utils;
 
+import com.demo.folder.repository.TraineeRepository;
+import com.demo.folder.service.TraineeService;
 import java.security.SecureRandom;
+import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+
 
 public class Generator {
 
@@ -18,9 +22,12 @@ public class Generator {
         .collect(Collectors.joining());
   }
 
+
   public static String generateUserName(String firstName, String lastName) {
-    return firstName + "." + lastName;
+    return firstName + "." + lastName + "-" + UUID.randomUUID().toString().substring(0, 8);
   }
+
+
 
 
 }
