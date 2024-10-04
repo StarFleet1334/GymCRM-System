@@ -141,11 +141,11 @@ public class TraineeController implements TraineeControllerInterface {
       return switch (traineeAction) {
         case ADD -> {
           traineeService.updateTraineeTrainersAdd(username, requestDTO);
-          yield ResponseEntity.ok("Trainee activated");
+          yield ResponseEntity.ok("Trainer added");
         }
         case REMOVE -> {
           traineeService.updateTraineeTrainersRemove(username, requestDTO);
-          yield ResponseEntity.ok("Trainee de-activated");
+          yield ResponseEntity.ok("Trainer removed");
         }
       };
     } catch (IllegalArgumentException e) {

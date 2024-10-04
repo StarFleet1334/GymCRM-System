@@ -67,7 +67,7 @@ public interface TraineeControllerInterface {
   })
   ResponseEntity<?> getTraineeProfile(@PathVariable String username);
 
-  @PutMapping("/{username}/trainers")
+  @PutMapping("/{username}/trainers/{traineeAction}")
   @Operation(summary = "Update Trainee's Trainers", description = "Updates the list of trainers assigned to a trainee.")
   @ApiResponses(value = {
       @ApiResponse(responseCode = "200", description = "Successfully updated trainee's trainers"),
