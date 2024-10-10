@@ -45,6 +45,7 @@ dependencies {
     implementation 'jakarta.validation:jakarta.validation-api:3.0.2'
     implementation 'jakarta.servlet:jakarta.servlet-api:6.1.0'
 
+
     // OpenAPI
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0'
     implementation 'org.springdoc:springdoc-openapi-ui:1.8.0'
@@ -78,6 +79,10 @@ dependencies {
 
     // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-aop
     implementation 'org.springframework.boot:spring-boot-starter-aop:3.3.4'
+
+    // https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt
+    implementation 'io.jsonwebtoken:jjwt:0.12.6'
+
 
 }
 

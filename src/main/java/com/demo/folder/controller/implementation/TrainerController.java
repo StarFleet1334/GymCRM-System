@@ -8,8 +8,8 @@ import com.demo.folder.entity.dto.response.TrainerProfileResponseDTO;
 import com.demo.folder.entity.dto.response.TrainerResponseDTO;
 import com.demo.folder.error.exception.EntityNotFoundException;
 import com.demo.folder.health.prome.CustomMetrics;
-import com.demo.folder.health.prome.TraineeExecutionTime;
 import com.demo.folder.health.prome.TrainerExecutionTime;
+import com.demo.folder.service.LoginAttemptService;
 import com.demo.folder.service.TrainerService;
 import com.demo.folder.utils.StatusAction;
 import com.demo.folder.utils.FileUtil;
@@ -41,8 +41,11 @@ public class TrainerController implements TrainerControllerInterface {
   @Autowired
   private TrainerExecutionTime trainerExecutionTime;
 
+  @Autowired
+  private LoginAttemptService loginAttemptService;
+
   @Override
-  public ResponseEntity<?> registerTrainer(@Valid @RequestBody TrainerRequestDTO trainerRequestDTO,
+  public ResponseEntity<Object> registerTrainer(@Valid @RequestBody TrainerRequestDTO trainerRequestDTO,
       BindingResult result) {
 
     try {
@@ -58,13 +61,12 @@ public class TrainerController implements TrainerControllerInterface {
           throw new IllegalArgumentException(
               "Training type credential was incorrect or some other fields were indicated incorrectly.");
         }
+        loginAttemptService.clearAttempts(registeredTrainer[1]);
 
         TrainerResponseDTO response = new TrainerResponseDTO();
         response.setUsername(registeredTrainer[1]);
         response.setPassword(registeredTrainer[0]);
 
-        FileUtil.writeCredentialsToFile("trainer_credentials.txt", registeredTrainer[1],
-            registeredTrainer[0]);
 
         customMetrics.incrementTrainerRegistrationCount();
 
@@ -87,16 +89,16 @@ public class TrainerController implements TrainerControllerInterface {
   }
 
   @Override
-  public ResponseEntity<?> changeTrainerAccountState(@PathVariable String username,
+  public ResponseEntity<String> changeTrainerAccountState(@PathVariable String username,
       @PathVariable StatusAction statusAction) {
     try {
       return switch (statusAction) {
         case ACTIVATE -> {
-          trainerService.activateTrainerRest(username);
+          trainerService.modifyTrainerState(username,true);
           yield ResponseEntity.ok("Trainer activated");
         }
         case DEACTIVATE -> {
-          trainerService.deActivateTrainerRest(username);
+          trainerService.modifyTrainerState(username,false);
           yield ResponseEntity.ok("Trainer de-activated");
         }
       };
@@ -124,7 +126,7 @@ public class TrainerController implements TrainerControllerInterface {
   }
 
   @Override
-  public ResponseEntity<?> getTrainings(
+  public ResponseEntity<Object> getTrainings(
       @PathVariable String username,
       @RequestParam(name = "periodFrom", required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date periodFrom,
       @RequestParam(name = "periodTo", required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date periodTo,

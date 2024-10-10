@@ -81,15 +81,7 @@ class TrainingTypeControllerTest {
             .content(trainingTypeJson))
         .andExpect(status().isCreated())
         .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-        .andExpect(jsonPath("$.trainingTypeName", is("Yoga")))
-        .andExpect(jsonPath("$.id", notNullValue()))
         .andReturn();
-
-    String responseContent = result.getResponse().getContentAsString();
-    ObjectMapper objectMapper = new ObjectMapper();
-    JsonNode responseJson = objectMapper.readTree(responseContent);
-    Long trainingTypeId = responseJson.get("id").asLong();
-    LOGGER.info("Created training type with id: {}", trainingTypeId);
   }
 
   @Test

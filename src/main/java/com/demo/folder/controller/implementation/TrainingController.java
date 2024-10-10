@@ -22,7 +22,7 @@ public class TrainingController implements TrainingControllerInterface {
   private TrainingService trainingService;
 
   @Override
-  public ResponseEntity<?> create(@Valid @RequestBody TrainingRequestDTO trainingRequestDTO) {
+  public ResponseEntity<String> create(@Valid @RequestBody TrainingRequestDTO trainingRequestDTO) {
     try {
       trainingService.createTraining(trainingRequestDTO);
       URI location = ServletUriComponentsBuilder.fromCurrentRequest()

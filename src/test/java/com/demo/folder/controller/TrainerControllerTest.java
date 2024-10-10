@@ -117,20 +117,25 @@ class TrainerControllerTest {
 
   @Test
   public void testActivationOfTrainer() throws Exception {
-    mockMvc.perform(patch("/api/trainers/{username}/DEACTIVATE", trainerUsername)
+    mockMvc.perform(patch("/api/trainers/{username}/{action}", trainerUsername, "DEACTIVATE")
             .session(session))
         .andExpect(status().isOk())
         .andExpect(content().string("Trainer de-activated"));
 
-    mockMvc.perform(patch("/api/trainers/{username}/ACTIVATE", trainerUsername)
+    mockMvc.perform(patch("/api/trainers/{username}/{action}", trainerUsername, "ACTIVATE")
             .session(session))
         .andExpect(status().isOk())
         .andExpect(content().string("Trainer activated"));
+
+    mockMvc.perform(get("/api/trainers/{username}", trainerUsername)
+            .session(session))
+        .andExpect(status().isOk())
+        .andExpect(jsonPath("$.active", is(true)));
   }
 
   @Test
   public void testDeActivationOfTrainer() throws Exception {
-    mockMvc.perform(patch("/api/trainers/{username}/DEACTIVATE", trainerUsername)
+    mockMvc.perform(patch("/api/trainers/{username}/{action}", trainerUsername, "DEACTIVATE")
             .session(session))
         .andExpect(status().isOk())
         .andExpect(content().string("Trainer de-activated"));
@@ -140,6 +145,7 @@ class TrainerControllerTest {
         .andExpect(status().isOk())
         .andExpect(jsonPath("$.active", is(false)));
   }
+
 
   @Test
   public void testRetrieveTrainerByUserName() throws Exception {

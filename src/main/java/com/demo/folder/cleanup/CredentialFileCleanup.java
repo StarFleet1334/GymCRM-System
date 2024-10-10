@@ -1,6 +1,7 @@
 package com.demo.folder.cleanup;
 
 import jakarta.annotation.PreDestroy;
+import java.io.IOException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -30,7 +31,7 @@ public class CredentialFileCleanup {
       } else {
         LOGGER.warn("File not found, cannot delete: {}", path.toAbsolutePath());
       }
-    } catch (Exception e) {
+    } catch (IOException e) {
       LOGGER.error("Error deleting file {}: {}", path.toAbsolutePath(), e.getMessage());
     }
   }

@@ -18,6 +18,7 @@ import com.demo.folder.entity.dto.response.UpdateTraineeTrainersResponseDTO.Trai
 import com.demo.folder.repository.TraineeRepository;
 import com.demo.folder.repository.TrainerRepository;
 import com.demo.folder.repository.TrainingRepository;
+import com.demo.folder.utils.FileUtil;
 import com.demo.folder.utils.Generator;
 import jakarta.persistence.EntityNotFoundException;
 import java.util.ArrayList;
@@ -30,6 +31,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -101,7 +103,7 @@ public class TraineeService {
     traineeRepository.updateTraineeStatus(traineeId, false);
   }
 
-  @Transactional
+  @Transactional(isolation = Isolation.SERIALIZABLE)
   public void deleteTraineeById(Long traineeId) {
     LOGGER.info("Deleting Trainee with ID: {}", traineeId);
     traineeRepository.deleteById(traineeId);
@@ -154,14 +156,7 @@ public class TraineeService {
     arr[0] = plainTextPassword;
     // Create Trainee and User
     Trainee trainee = new Trainee();
-    User user = new User();
-
-    user.setFirstName(traineeRequestDTO.getFirstName());
-    user.setLastName(traineeRequestDTO.getLastName());
-    user.setUsername(Generator.generateUserName(traineeRequestDTO.getFirstName(),
-        traineeRequestDTO.getLastName()));
-    user.setPassword(passwordEncoder.encode(plainTextPassword));
-    user.setActive(true);
+    User user = createUser(traineeRequestDTO,plainTextPassword);
 
     // Set the user to trainee
     trainee.setUser(user);
@@ -169,6 +164,9 @@ public class TraineeService {
     trainee.setAddress(traineeRequestDTO.getAddress());
     createTrainee(trainee);
     arr[1] = user.getUsername();
+
+    FileUtil.writeCredentialsToFile("trainee_credentials.txt", arr[1],
+        arr[0]);
     return arr;
   }
 
@@ -234,7 +232,6 @@ public class TraineeService {
       UpdateTraineeProfileRequestDTO requestDTO) {
 
     Trainee trainee = findTraineeByUsername(traineeUserName);
-    System.out.println("US: " + trainee.getUser().getUsername());
 
     trainee.getUser().setFirstName(requestDTO.getFirstName());
     trainee.getUser().setLastName(requestDTO.getLastName());
@@ -267,22 +264,23 @@ public class TraineeService {
         .filter(x -> x.getUser().isActive())
         .toList();
 
-    List<TrainerInfoDTO> trainerInfoDTOS = new ArrayList<>();
-    for (Trainer trainer : unassignedActiveTrainers) {
-      TrainerInfoDTO dto = new TrainerInfoDTO();
-      dto.setFirstName(trainer.getUser().getFirstName());
-      dto.setLastName(trainer.getUser().getLastName());
-      dto.setUsername(trainer.getUser().getUsername());
-      dto.setTrainerSpecializationId(trainer.getSpecialization().getId());
-      trainerInfoDTOS.add(dto);
-    }
+    List<TrainerInfoDTO> trainerInfoDTOS = unassignedActiveTrainers.stream()
+        .map(trainer -> {
+          TrainerInfoDTO dto = new TrainerInfoDTO();
+          dto.setFirstName(trainer.getUser().getFirstName());
+          dto.setLastName(trainer.getUser().getLastName());
+          dto.setUsername(trainer.getUser().getUsername());
+          dto.setTrainerSpecializationId(trainer.getSpecialization().getId());
+          return dto;
+        })
+        .collect(Collectors.toList());
     UpdateTraineeTrainersResponseDTO responseDTO = new UpdateTraineeTrainersResponseDTO();
     responseDTO.setTrainers(trainerInfoDTOS);
     return responseDTO;
 
   }
 
-  @Transactional
+  @Transactional(isolation = Isolation.SERIALIZABLE)
   public void deleteTraineeByIdVolTwo(Long traineeId) {
     LOGGER.info("Deleting Trainee with ID: {}", traineeId);
     Trainee trainee = traineeRepository.getCurrentSession().get(Trainee.class, traineeId);
@@ -324,17 +322,17 @@ public class TraineeService {
       }
       dto.setTrainers(trainerUsernames);
 
-      List<TraineeTrainingResponseDTO> trainingResponseDTOS = new ArrayList<>();
-      for (Training training : trainee.getTrainings()) {
-        TraineeTrainingResponseDTO trainingDTO = new TraineeTrainingResponseDTO();
-        trainingDTO.setTrainerName(training.getTrainer().getUser().getUsername());
-        trainingDTO.setTrainingName(training.getTrainingName());
-        trainingDTO.setTrainingType(
-            training.getTrainer().getSpecialization().getTrainingTypeName());
-        trainingDTO.setTrainingDuration(training.getTrainingDuration());
-        trainingDTO.setTrainingDate(training.getTrainingDate());
-        trainingResponseDTOS.add(trainingDTO);
-      }
+      List<TraineeTrainingResponseDTO> trainingResponseDTOS = trainee.getTrainings().stream()
+          .map(training -> {
+            TraineeTrainingResponseDTO trainingDTO = new TraineeTrainingResponseDTO();
+            trainingDTO.setTrainerName(training.getTrainer().getUser().getUsername());
+            trainingDTO.setTrainingName(training.getTrainingName());
+            trainingDTO.setTrainingType(training.getTrainer().getSpecialization().getTrainingTypeName());
+            trainingDTO.setTrainingDuration(training.getTrainingDuration());
+            trainingDTO.setTrainingDate(training.getTrainingDate());
+            return trainingDTO;
+          })
+          .collect(Collectors.toList());
       dto.setTrainings(trainingResponseDTOS);
 
       dtos.add(dto);
@@ -356,17 +354,17 @@ public class TraineeService {
 
     List<Training> trainings = trainee.getTrainings();
     if (!trainings.isEmpty()) {
-      List<TraineeTrainingResponseDTO> traineeTrainingResponseDTOS = new ArrayList<>();
-      for (Training training : trainings) {
-        TraineeTrainingResponseDTO traineeTrainingResponseDTO = new TraineeTrainingResponseDTO();
-        traineeTrainingResponseDTO.setTrainerName(training.getTrainer().getUser().getUsername());
-        traineeTrainingResponseDTO.setTrainingName(training.getTrainingName());
-        traineeTrainingResponseDTO.setTrainingType(
-            training.getTrainer().getSpecialization().getTrainingTypeName());
-        traineeTrainingResponseDTO.setTrainingDuration(training.getTrainingDuration());
-        traineeTrainingResponseDTO.setTrainingDate(training.getTrainingDate());
-        traineeTrainingResponseDTOS.add(traineeTrainingResponseDTO);
-      }
+      List<TraineeTrainingResponseDTO> traineeTrainingResponseDTOS = trainings.stream()
+          .map(training -> {
+            TraineeTrainingResponseDTO traineeTrainingResponseDTO = new TraineeTrainingResponseDTO();
+            traineeTrainingResponseDTO.setTrainerName(training.getTrainer().getUser().getUsername());
+            traineeTrainingResponseDTO.setTrainingName(training.getTrainingName());
+            traineeTrainingResponseDTO.setTrainingType(training.getTrainer().getSpecialization().getTrainingTypeName());
+            traineeTrainingResponseDTO.setTrainingDuration(training.getTrainingDuration());
+            traineeTrainingResponseDTO.setTrainingDate(training.getTrainingDate());
+            return traineeTrainingResponseDTO;
+          })
+          .collect(Collectors.toList());
       traineeResponseProfileDTO.setTrainings(traineeTrainingResponseDTOS);
     }
 
@@ -376,16 +374,16 @@ public class TraineeService {
   }
 
   private static List<TrainerResponseProfileDTO> getTrainerProfiles(Trainee trainee) {
-    List<TrainerResponseProfileDTO> trainerResponseProfileDTOList = new ArrayList<>();
-    for (Trainer trainer : trainee.getTrainers()) {
-      TrainerResponseProfileDTO trainerResponseProfileDTO = new TrainerResponseProfileDTO();
-      trainerResponseProfileDTO.setFirstName(trainer.getUser().getFirstName());
-      trainerResponseProfileDTO.setLastName(trainer.getUser().getLastName());
-      trainerResponseProfileDTO.setUserName(trainer.getUser().getUsername());
-      trainerResponseProfileDTO.setTrainingType(trainer.getSpecialization().getTrainingTypeName());
-      trainerResponseProfileDTOList.add(trainerResponseProfileDTO);
-    }
-    return trainerResponseProfileDTOList;
+    return trainee.getTrainers().stream()
+        .map(trainer -> {
+          TrainerResponseProfileDTO trainerResponseProfileDTO = new TrainerResponseProfileDTO();
+          trainerResponseProfileDTO.setFirstName(trainer.getUser().getFirstName());
+          trainerResponseProfileDTO.setLastName(trainer.getUser().getLastName());
+          trainerResponseProfileDTO.setUserName(trainer.getUser().getUsername());
+          trainerResponseProfileDTO.setTrainingType(trainer.getSpecialization().getTrainingTypeName());
+          return trainerResponseProfileDTO;
+        })
+        .collect(Collectors.toList());
   }
 
 
@@ -403,21 +401,13 @@ public class TraineeService {
     allTraineeRequestDTO.setAddress(updateTraineeProfile.getAddress());
     allTraineeRequestDTO.setActive(updateTraineeProfile.getUser().isActive());
 
-    List<String> trainersUserNames = new ArrayList<>();
-    for (Trainer trainer : updateTraineeProfile.getTrainers()) {
-      trainersUserNames.add(trainer.getUser().getUsername());
-    }
+    List<String> trainersUserNames = updateTraineeProfile.getTrainers().stream()
+        .map(trainer -> trainer.getUser().getUsername())
+        .collect(Collectors.toList());
     allTraineeRequestDTO.setTrainers(trainersUserNames);
     return allTraineeRequestDTO;
   }
 
-
-  public Date addDurationToTrainingDate(Date trainingDate, Number trainingDurationInMinutes) {
-    Calendar calendar = Calendar.getInstance();
-    calendar.setTime(trainingDate);
-    calendar.add(Calendar.MINUTE, trainingDurationInMinutes.intValue());
-    return calendar.getTime();
-  }
 
   @Transactional
   public List<TraineeTrainingResponseDTO> getFilteredTrainings(String username, Date periodFrom,
@@ -454,30 +444,45 @@ public class TraineeService {
 
 
   @Transactional
-  public void activateTraineeRest(String username) {
+  public void modifyTraineeState(String username,boolean state) {
     Trainee trainee = findTraineeByUsername(username);
     if (trainee == null) {
       throw new EntityNotFoundException("Trainee with given username not found");
     }
 
-    if (trainee.getUser().isActive()) {
+    if (trainee.getUser().isActive() && state) {
       throw new IllegalArgumentException("Trainee is already activated");
     }
 
-    activateTrainee(trainee.getId());
-  }
-
-  @Transactional
-  public void deActivateTraineeRest(String username) {
-    Trainee trainee = findTraineeByUsername(username);
-    if (trainee == null) {
-      throw new EntityNotFoundException("Trainee with given username not found");
+    if (!trainee.getUser().isActive() && !state) {
+      throw new IllegalArgumentException("Trainee is already activated");
     }
-
-    if (!trainee.getUser().isActive()) {
-      throw new IllegalArgumentException("Trainee is already de-activated");
+    if (state) {
+      activateTrainee(trainee.getId());
     }
-
     deactivateTrainee(trainee.getId());
+
   }
+
+  private User createUser(CreateTraineeRequestDTO requestDTO, String plainTextPassword) {
+    User user = new User();
+    user.setFirstName(requestDTO.getFirstName());
+    user.setLastName(requestDTO.getLastName());
+    user.setUsername(Generator.generateUserName(requestDTO.getFirstName(), requestDTO.getLastName()));
+    user.setPassword(passwordEncoder.encode(plainTextPassword));
+    user.setActive(true);
+    return user;
+  }
+
+  private Date addDurationToTrainingDate(Date trainingDate, Number trainingDurationInMinutes) {
+    Calendar calendar = Calendar.getInstance();
+    calendar.setTime(trainingDate);
+    calendar.add(Calendar.MINUTE, trainingDurationInMinutes.intValue());
+    return calendar.getTime();
+  }
+
+
+
+
+
 }

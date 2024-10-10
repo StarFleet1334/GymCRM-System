@@ -1,7 +1,5 @@
 package com.demo.folder.utils;
 
-import com.demo.folder.repository.TraineeRepository;
-import com.demo.folder.service.TraineeService;
 import java.security.SecureRandom;
 import java.util.UUID;
 import java.util.stream.Collectors;

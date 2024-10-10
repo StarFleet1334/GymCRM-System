@@ -82,7 +82,12 @@ class TraineeControllerTest {
 
   @Test
   public void testActivationOfTrainee() throws Exception {
-    mockMvc.perform(patch("/api/trainees/{username}/ACTIVATE", username)
+    mockMvc.perform(patch("/api/trainees/{username}/{action}", username, "DEACTIVATE")
+            .session(session))
+        .andExpect(status().isOk())
+        .andExpect(content().string(containsString("Trainee de-activated")));
+
+    mockMvc.perform(patch("/api/trainees/{username}/{action}", username, "ACTIVATE")
             .session(session))
         .andExpect(status().isOk())
         .andExpect(content().string(containsString("Trainee activated")));
@@ -96,7 +101,7 @@ class TraineeControllerTest {
 
   @Test
   public void testDeActivationOfTrainee() throws Exception {
-    mockMvc.perform(patch("/api/trainees/{username}/DEACTIVATE", username)
+    mockMvc.perform(patch("/api/trainees/{username}/{action}", username, "DEACTIVATE")
             .session(session))
         .andExpect(status().isOk())
         .andExpect(content().string(containsString("Trainee de-activated")));
@@ -107,6 +112,7 @@ class TraineeControllerTest {
         .andExpect(content().contentType(MediaType.APPLICATION_JSON))
         .andExpect(jsonPath("$.active", is(false)));
   }
+
 
   @Test
   public void testDeletionOfTrainee() throws Exception {

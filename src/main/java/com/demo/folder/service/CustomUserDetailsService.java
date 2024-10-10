@@ -16,11 +16,15 @@ public class CustomUserDetailsService implements UserDetailsService {
   private static final Logger LOGGER = LoggerFactory.getLogger(CustomUserDetailsService.class);
   private final TraineeService traineeService;
   private final TrainerService trainerService;
+  private final LoginAttemptService loginAttemptService;
+
 
   @Autowired
-  public CustomUserDetailsService(TraineeService traineeService, TrainerService trainerService) {
+  public CustomUserDetailsService(TraineeService traineeService, TrainerService trainerService,
+      LoginAttemptService loginAttemptService) {
     this.traineeService = traineeService;
     this.trainerService = trainerService;
+    this.loginAttemptService = loginAttemptService;
   }
 
   @Override
@@ -30,6 +34,10 @@ public class CustomUserDetailsService implements UserDetailsService {
     if (username == null || username.isEmpty()) {
       LOGGER.error("Username is null or empty");
       throw new UsernameNotFoundException("Username cannot be null or empty");
+    }
+    if (loginAttemptService.isBlocked(username)) {
+      LOGGER.warn("User is blocked due to multiple failed login attempts: {}", username);
+      throw new UsernameNotFoundException("User is temporarily blocked. Please try again later.");
     }
 
     Trainer trainer = trainerService.findTrainerByUsername(username);

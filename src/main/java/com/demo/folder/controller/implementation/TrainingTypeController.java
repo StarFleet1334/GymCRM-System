@@ -23,7 +23,7 @@ public class TrainingTypeController implements TrainingTypeControllerInterface {
   private TrainingTypeService trainingTypeService;
 
   @Override
-  public ResponseEntity<?> createTrainingType(
+  public ResponseEntity<String> createTrainingType(
       @Valid @RequestBody TrainingTypeRequestDTO trainingTypeRequestDTO, BindingResult result) {
     try {
       if (result.hasErrors()) {

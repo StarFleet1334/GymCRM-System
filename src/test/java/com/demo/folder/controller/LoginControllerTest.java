@@ -69,7 +69,7 @@ class LoginControllerTest {
             .session(session)
             .contentType(MediaType.APPLICATION_JSON)
             .content(trainingTypeJson))
-        .andExpect(status().isOk());
+        .andExpect(status().isCreated());
 
     mockMvc.perform(get("/api/training-type")
             .session(session))
@@ -87,7 +87,7 @@ class LoginControllerTest {
             .session(session)
             .contentType(MediaType.APPLICATION_JSON)
             .content(trainingTypeJson))
-        .andExpect(status().isOk());
+        .andExpect(status().isCreated());
 
     MvcResult getAllResult = mockMvc.perform(get("/api/training-type")
             .session(session))

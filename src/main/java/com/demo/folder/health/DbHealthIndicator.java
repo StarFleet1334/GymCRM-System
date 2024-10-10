@@ -56,7 +56,6 @@ public class DbHealthIndicator implements HealthIndicator {
       while (rs.next()) {
         String tableName = rs.getString("TABLE_NAME");
         tableNames.add(tableName);
-        System.out.println("Found table: " + tableName);
       }
     }
     return tableNames;

@@ -7,8 +7,8 @@ import com.demo.folder.entity.dto.request.TrainingRequestDTO;
 import com.demo.folder.repository.TrainingRepository;
 import jakarta.persistence.EntityNotFoundException;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -127,17 +127,17 @@ public class TrainingService {
   @Transactional
   public List<TrainingRequestDTO> retrieveAllTrainings() {
     List<Training> trainings = getAllTrainings();
-    List<TrainingRequestDTO> dtoList = new ArrayList<>();
-    for (Training training : trainings) {
-      TrainingRequestDTO trainingRequestDTO = new TrainingRequestDTO();
-      trainingRequestDTO.setTraineeUserName(training.getTrainee().getUser().getUsername());
-      trainingRequestDTO.setTrainerUserName(training.getTrainer().getUser().getUsername());
-      trainingRequestDTO.setTrainingName(training.getTrainingName());
-      trainingRequestDTO.setTrainingDate(training.getTrainingDate());
-      trainingRequestDTO.setDuration(training.getTrainingDuration());
-      dtoList.add(trainingRequestDTO);
-    }
-    return dtoList;
+    return trainings.stream()
+        .map(training -> {
+          TrainingRequestDTO trainingRequestDTO = new TrainingRequestDTO();
+          trainingRequestDTO.setTraineeUserName(training.getTrainee().getUser().getUsername());
+          trainingRequestDTO.setTrainerUserName(training.getTrainer().getUser().getUsername());
+          trainingRequestDTO.setTrainingName(training.getTrainingName());
+          trainingRequestDTO.setTrainingDate(training.getTrainingDate());
+          trainingRequestDTO.setDuration(training.getTrainingDuration());
+          return trainingRequestDTO;
+        })
+        .collect(Collectors.toList());
   }
 }
 

@@ -4,6 +4,7 @@ import com.demo.folder.controller.skeleton.LoginControllerInterface;
 import com.demo.folder.entity.base.User;
 import com.demo.folder.entity.dto.request.ChangeLoginRequestDTO;
 import com.demo.folder.error.exception.AuthenticationException;
+import com.demo.folder.service.LoginAttemptService;
 import com.demo.folder.service.UserService;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
@@ -34,35 +35,33 @@ public class LoginController implements LoginControllerInterface {
   @Autowired
   private AuthenticationManager authenticationManager;
 
-  @Override
-  public ResponseEntity<?> login(@Valid @RequestParam(name = "username") String username,
+  @Autowired
+  private LoginAttemptService loginAttemptService;
+
+
+  public ResponseEntity<String> login(@RequestParam(name = "username") String username,
       @RequestParam(name = "password") String password,
       BindingResult result,
       HttpSession session) {
     if (result.hasErrors()) {
-      String errorMessage = Objects.requireNonNull(result.getFieldError()).getDefaultMessage();
-      LOGGER.warn("Validation failed: {}", errorMessage);
+      String errorMessage = result.getFieldError().getDefaultMessage();
       return ResponseEntity.badRequest().body(errorMessage);
     }
-    LOGGER.debug("Received login request with username: {}, password: {}",
-        username, password);
     try {
       Authentication authentication = authenticationManager.authenticate(
-          new UsernamePasswordAuthenticationToken(username, password)
-      );
+          new UsernamePasswordAuthenticationToken(username, password));
       SecurityContextHolder.getContext().setAuthentication(authentication);
       session.setAttribute("SPRING_SECURITY_CONTEXT", SecurityContextHolder.getContext());
-      LOGGER.info("Authenticated user: {}", authentication.getName());
+      loginAttemptService.loginSucceeded(username);
       return ResponseEntity.ok("Login successful");
     } catch (BadCredentialsException e) {
-      LOGGER.warn("Invalid credentials for user: {}", username);
       return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
     }
   }
 
 
   @Override
-  public ResponseEntity<?> changeLogin(@Valid @RequestBody ChangeLoginRequestDTO changeLoginDTO,
+  public ResponseEntity<String> changeLogin(@Valid @RequestBody ChangeLoginRequestDTO changeLoginDTO,
       BindingResult result) {
     try {
       if (result.hasErrors()) {
@@ -78,6 +77,26 @@ public class LoginController implements LoginControllerInterface {
     } catch (AuthenticationException e) {
       LOGGER.warn("Invalid credentials for user: {}", changeLoginDTO.getUsername());
       return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid current password.");
+    }
+  }
+
+  @Override
+  public ResponseEntity<String> logout(@RequestParam(name = "username")String username, @RequestParam(name = "password") String password, HttpSession session) {
+    try {
+      // Authenticate user manually
+      User user = userService.authenticate(username, password);
+      LOGGER.info("User logged out: {}", user.getUsername());
+      if (user != null) {
+        session.invalidate();
+        SecurityContextHolder.clearContext();
+        LOGGER.info("User {} logged out successfully", username);
+        return ResponseEntity.ok("Logout successful");
+      } else {
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
+      }
+    } catch (BadCredentialsException e) {
+      LOGGER.warn("Invalid credentials for user: {}", username);
+      return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
     }
   }
 }

@@ -13,12 +13,14 @@ import com.demo.folder.entity.dto.response.TrainerProfileResponseDTO;
 import com.demo.folder.entity.dto.response.TrainerTrainingResponseDTO;
 import com.demo.folder.repository.TrainerRepository;
 import com.demo.folder.repository.TrainingTypeRepository;
+import com.demo.folder.utils.FileUtil;
 import com.demo.folder.utils.Generator;
 import jakarta.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Optional;
+import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,7 +62,6 @@ public class TrainerService {
 
   @Transactional
   public String[] createTrainer(TrainerRequestDTO trainerRequestDTO) {
-    // Check if TrainingType exists in the database
     if (trainerRequestDTO.getFirstName() == null || trainerRequestDTO.getFirstName().isEmpty() ||
         trainerRequestDTO.getLastName() == null || trainerRequestDTO.getLastName().isEmpty()) {
       throw new IllegalArgumentException("Trainer's first name or last name must not be empty");
@@ -74,30 +75,22 @@ public class TrainerService {
 
     TrainingType trainingType;
     if (existingTrainingType.isPresent()) {
-      // If the TrainingType exists, use the existing one
       trainingType = existingTrainingType.get();
     } else {
       return null;
     }
+    User user = createUser(trainerRequestDTO,plainTextPassword);
 
-    // Create User entity for the Trainer
-    User user = new User();
-    user.setFirstName(trainerRequestDTO.getFirstName());
-    user.setLastName(trainerRequestDTO.getLastName());
-    user.setUsername(Generator.generateUserName(trainerRequestDTO.getFirstName(),
-        trainerRequestDTO.getLastName()));
-    user.setPassword(passwordEncoder.encode(plainTextPassword));
-    user.setActive(true);
-
-    // Create Trainer entity
     Trainer trainer = new Trainer();
     trainer.setSpecialization(trainingType);
     trainer.setUser(user);
 
-    // Save the Trainer
     trainerRepository.save(trainer);
 
     arr[1] = user.getUsername();
+
+    FileUtil.writeCredentialsToFile("trainer_credentials.txt", arr[1],
+        arr[0]);
 
     return arr;
   }
@@ -174,14 +167,15 @@ public class TrainerService {
     responseDTO.setActive(trainer.getUser().isActive());
 
     // now setting Trainees List
-    List<TraineeProfileResponseDTO> dtos = new ArrayList<>();
-    for (Trainee trainee : trainer.getTrainees()) {
-      TraineeProfileResponseDTO dto = new TraineeProfileResponseDTO();
-      dto.setFirstName(trainee.getUser().getFirstName());
-      dto.setLastName(trainee.getUser().getLastName());
-      dto.setUserName(trainee.getUser().getUsername());
-      dtos.add(dto);
-    }
+    List<TraineeProfileResponseDTO> dtos = trainer.getTrainees().stream()
+        .map(trainee -> {
+          TraineeProfileResponseDTO dto = new TraineeProfileResponseDTO();
+          dto.setFirstName(trainee.getUser().getFirstName());
+          dto.setLastName(trainee.getUser().getLastName());
+          dto.setUserName(trainee.getUser().getUsername());
+          return dto;
+        })
+        .collect(Collectors.toList());
     responseDTO.setTraineeList(dtos);
     return responseDTO;
   }
@@ -217,7 +211,6 @@ public class TrainerService {
   @Transactional
   public List<TrainerRequestDTO> retrieveAllTrainers() {
     List<Trainer> trainers = getAllTrainers();
-    System.out.println("Trainers: " + trainers);
     List<TrainerRequestDTO> trainerRequestDTOS = new ArrayList<>();
     for (Trainer trainer : trainers) {
       TrainingTypeRequestDTO trainingTypeRequestDTO = new TrainingTypeRequestDTO();
@@ -257,14 +250,15 @@ public class TrainerService {
     dto.setActive(trainer.getUser().isActive());
 
     // Now trainee's list
-    List<TraineeProfileResponseDTO> traineeProfileResponseDTOS = new ArrayList<>();
-    for (Trainee traineeProfile : trainer.getTrainees()) {
-      TraineeProfileResponseDTO traineeProfileResponseDTO = new TraineeProfileResponseDTO();
-      traineeProfileResponseDTO.setFirstName(traineeProfile.getUser().getFirstName());
-      traineeProfileResponseDTO.setLastName(traineeProfile.getUser().getLastName());
-      traineeProfileResponseDTO.setUserName(traineeProfile.getUser().getUsername());
-      traineeProfileResponseDTOS.add(traineeProfileResponseDTO);
-    }
+    List<TraineeProfileResponseDTO> traineeProfileResponseDTOS = trainer.getTrainees().stream()
+        .map(traineeProfile -> {
+          TraineeProfileResponseDTO traineeProfileResponseDTO = new TraineeProfileResponseDTO();
+          traineeProfileResponseDTO.setFirstName(traineeProfile.getUser().getFirstName());
+          traineeProfileResponseDTO.setLastName(traineeProfile.getUser().getLastName());
+          traineeProfileResponseDTO.setUserName(traineeProfile.getUser().getUsername());
+          return traineeProfileResponseDTO;
+        })
+        .collect(Collectors.toList());
 
     dto.setTraineeList(traineeProfileResponseDTOS);
 
@@ -308,40 +302,42 @@ public class TrainerService {
     return responseDTOList;
   }
 
-  public Date addDurationToTrainingDate(Date trainingDate, Number trainingDurationInMinutes) {
+  @Transactional
+  public void modifyTrainerState(String username,boolean state) {
+    Trainer trainer = findTrainerByUsername(username);
+    if (trainer == null) {
+      throw new EntityNotFoundException("Trainer with given username not found");
+    }
+
+    if (trainer.getUser().isActive() && state) {
+      throw new IllegalArgumentException("Trainer is already activated");
+    }
+
+    if (!trainer.getUser().isActive() && !state) {
+      throw new IllegalArgumentException("Trainer is already activated");
+    }
+    if (state) {
+      activateTrainer(trainer.getId());
+    }
+    deactivateTrainer(trainer.getId());
+  }
+
+  private User createUser(TrainerRequestDTO requestDTO, String plainTextPassword) {
+    User user = new User();
+    user.setFirstName(requestDTO.getFirstName());
+    user.setLastName(requestDTO.getLastName());
+    user.setUsername(Generator.generateUserName(requestDTO.getFirstName(), requestDTO.getLastName()));
+    user.setPassword(passwordEncoder.encode(plainTextPassword));
+    user.setActive(true);
+    return user;
+  }
+
+  private Date addDurationToTrainingDate(Date trainingDate, Number trainingDurationInMinutes) {
     Calendar calendar = Calendar.getInstance();
     calendar.setTime(trainingDate);
     calendar.add(Calendar.MINUTE, trainingDurationInMinutes.intValue());
     return calendar.getTime();
   }
 
-
-  @Transactional
-  public void deActivateTrainerRest(String username) {
-    Trainer trainer = findTrainerByUsername(username);
-    if (trainer == null) {
-      throw new EntityNotFoundException("Trainer with given username not found");
-    }
-
-    if (!trainer.getUser().isActive()) {
-      throw new IllegalArgumentException("Trainer is already de-activated");
-    }
-
-    deactivateTrainer(trainer.getId());
-  }
-
-  @Transactional
-  public void activateTrainerRest(String username) {
-    Trainer trainer = findTrainerByUsername(username);
-    if (trainer == null) {
-      throw new EntityNotFoundException("Trainer with given username not found");
-    }
-
-    if (trainer.getUser().isActive()) {
-      throw new IllegalArgumentException("Trainer is already activated");
-    }
-
-    activateTrainer(trainer.getId());
-  }
 
 }

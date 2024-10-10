@@ -5,8 +5,8 @@ import com.demo.folder.entity.base.TrainingType;
 import com.demo.folder.entity.dto.request.TrainingTypeRequestDTO;
 import com.demo.folder.repository.TrainingTypeRepository;
 import jakarta.persistence.EntityNotFoundException;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -60,14 +60,14 @@ public class TrainingTypeService {
     if (list.isEmpty()) {
       throw new com.demo.folder.error.exception.EntityNotFoundException("No training types found.");
     }
-    List<TrainingTypeRequestDTO> trainingTypeRequestDTOS = new ArrayList<>();
-    for (TrainingType trainingType : list) {
-      TrainingTypeRequestDTO trainingTypeRequestDTO = new TrainingTypeRequestDTO();
-      trainingTypeRequestDTO.setId(trainingType.getId());
-      trainingTypeRequestDTO.setTrainingTypeName(trainingType.getTrainingTypeName());
-      trainingTypeRequestDTOS.add(trainingTypeRequestDTO);
-    }
-    return trainingTypeRequestDTOS;
+    return list.stream()
+        .map(trainingType -> {
+          TrainingTypeRequestDTO trainingTypeRequestDTO = new TrainingTypeRequestDTO();
+          trainingTypeRequestDTO.setId(trainingType.getId());
+          trainingTypeRequestDTO.setTrainingTypeName(trainingType.getTrainingTypeName());
+          return trainingTypeRequestDTO;
+        })
+        .collect(Collectors.toList());
   }
 
 }

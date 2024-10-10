@@ -1,6 +1,10 @@
 package com.demo.folder.config;
 
 import com.demo.folder.service.CustomUserDetailsService;
+import com.demo.folder.service.LoginAttemptService;
+import com.demo.folder.utils.BlockUserFilter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,13 +20,19 @@ import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
+  private static final Logger LOGGER = LoggerFactory.getLogger(SecurityConfig.class);
 
   private final CustomUserDetailsService userDetailsService;
+
+  @Autowired
+  private LoginAttemptService loginAttemptService;
+
 
   @Autowired
   public SecurityConfig(@Lazy CustomUserDetailsService userDetailsService) {
@@ -59,6 +69,8 @@ public class SecurityConfig {
             })
             .failureHandler((request, response, exception) -> {
               response.setStatus(HttpStatus.UNAUTHORIZED.value());
+              String username = request.getParameter("username");
+              loginAttemptService.loginFailed(username);
               response.getWriter().write("Invalid credentials");
             })
         )
@@ -69,8 +81,8 @@ public class SecurityConfig {
         .sessionManagement(session -> session
             .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
         )
+        .addFilterBefore(new BlockUserFilter(loginAttemptService), UsernamePasswordAuthenticationFilter.class)
         .userDetailsService(userDetailsService);
-
 
     return http.build();
   }

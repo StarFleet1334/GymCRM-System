@@ -12,9 +12,8 @@ import com.demo.folder.entity.dto.response.UpdateTraineeTrainersResponseDTO;
 import com.demo.folder.error.exception.EntityNotFoundException;
 import com.demo.folder.health.prome.CustomMetrics;
 import com.demo.folder.health.prome.TraineeExecutionTime;
+import com.demo.folder.service.LoginAttemptService;
 import com.demo.folder.service.TraineeService;
-import com.demo.folder.utils.FileUtil;
-import io.micrometer.core.annotation.Timed;
 import jakarta.validation.Valid;
 import java.net.URI;
 import java.util.Date;
@@ -45,6 +44,9 @@ public class TraineeController implements TraineeControllerInterface {
   @Autowired
   private CustomMetrics customMetrics;
 
+  @Autowired
+  private LoginAttemptService loginAttemptService;
+
   @Override
   public ResponseEntity<TraineeResponse> registerTrainee(
       @Valid @RequestBody CreateTraineeRequestDTO traineeRequestDTO,
@@ -55,12 +57,10 @@ public class TraineeController implements TraineeControllerInterface {
       }
 
       String[] registeredTrainee = traineeService.createTrainee(traineeRequestDTO);
+      loginAttemptService.clearAttempts(registeredTrainee[1]);
       TraineeResponse response = new TraineeResponse();
       response.setUsername(registeredTrainee[1]);
       response.setPassword(registeredTrainee[0]);
-
-      FileUtil.writeCredentialsToFile("trainee_credentials.txt", registeredTrainee[1],
-          registeredTrainee[0]);
 
       customMetrics.incrementTraineeRegistrationCount();
 
@@ -68,6 +68,7 @@ public class TraineeController implements TraineeControllerInterface {
           .path("/{username}")
           .buildAndExpand(response.getUsername())
           .toUri();
+
 
       return ResponseEntity.created(location).body(response);
     });
@@ -81,16 +82,16 @@ public class TraineeController implements TraineeControllerInterface {
 
 
   @Override
-  public ResponseEntity<?> changeTraineeAccountState(@PathVariable String username,
+  public ResponseEntity<String> changeTraineeAccountState(@PathVariable String username,
       @PathVariable StatusAction statusAction) {
     try {
       return switch (statusAction) {
         case ACTIVATE -> {
-          traineeService.activateTraineeRest(username);
+          traineeService.modifyTraineeState(username,true);
           yield ResponseEntity.ok("Trainee activated");
         }
         case DEACTIVATE -> {
-          traineeService.deActivateTraineeRest(username);
+          traineeService.modifyTraineeState(username,false);
           yield ResponseEntity.ok("Trainee de-activated");
         }
       };
@@ -103,7 +104,7 @@ public class TraineeController implements TraineeControllerInterface {
 
 
   @Override
-  public ResponseEntity<?> deleteTrainee(@PathVariable String username) {
+  public ResponseEntity<String> deleteTrainee(@PathVariable String username) {
     try {
       Trainee trainee = traineeService.findTraineeByUsername(username);
       if (trainee == null) {
@@ -118,7 +119,7 @@ public class TraineeController implements TraineeControllerInterface {
   }
 
   @Override
-  public ResponseEntity<?> getTraineeProfile(@PathVariable String username) {
+  public ResponseEntity<Object> getTraineeProfile(@PathVariable String username) {
     try {
       TraineeResponseProfileDTO profile = traineeService.getTraineeProfileByUsername(username);
       return ResponseEntity.ok(profile);
@@ -129,7 +130,7 @@ public class TraineeController implements TraineeControllerInterface {
 
 
   @Override
-  public ResponseEntity<?> updateTraineeTrainers(
+  public ResponseEntity<String> updateTraineeTrainers(
       @PathVariable String username,
       @Valid @RequestBody UpdateTraineeTrainersRequestDTO requestDTO,
       @PathVariable TraineeAction traineeAction, BindingResult result) {
@@ -156,7 +157,7 @@ public class TraineeController implements TraineeControllerInterface {
   }
 
   @Override
-  public ResponseEntity<?> updateTrainee(
+  public ResponseEntity<Object> updateTrainee(
       @PathVariable String username,
       @Valid @RequestBody UpdateTraineeProfileRequestDTO requestDTO, BindingResult result) {
     try {
@@ -173,7 +174,7 @@ public class TraineeController implements TraineeControllerInterface {
   }
 
   @Override
-  public ResponseEntity<?> getUnassignedTrainers(@PathVariable String username) {
+  public ResponseEntity<Object> getUnassignedTrainers(@PathVariable String username) {
     try {
       UpdateTraineeTrainersResponseDTO unassignedTrainers = traineeService.getUnassignedActiveTrainers(
           username);
@@ -184,7 +185,7 @@ public class TraineeController implements TraineeControllerInterface {
   }
 
   @Override
-  public ResponseEntity<?> getTrainings(
+  public ResponseEntity<Object> getTrainings(
       @PathVariable String userName,
       @RequestParam(name = "periodFrom", required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date periodFrom,
       @RequestParam(name = "periodTo", required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date periodTo,

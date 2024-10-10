@@ -14,7 +14,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -73,15 +72,6 @@ public class SpringConfig implements WebMvcConfigurer {
     return new ModelMapper();
   }
 
-//  @Bean
-//  public DataSource dataSource() {
-//    DriverManagerDataSource dataSource = new DriverManagerDataSource();
-//    dataSource.setDriverClassName(env.getProperty("spring.datasource.driver-class-name"));
-//    dataSource.setUrl(env.getProperty("spring.datasource.url"));
-//    dataSource.setUsername(env.getProperty("spring.datasource.username"));
-//    dataSource.setPassword(env.getProperty("spring.datasource.password"));
-//    return dataSource;
-//  }
 
   @Bean(name = "sessionFactory")
   public LocalSessionFactoryBean sessionFactory(DataSource dataSource) {

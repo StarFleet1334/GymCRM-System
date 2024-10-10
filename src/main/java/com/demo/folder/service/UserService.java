@@ -7,7 +7,6 @@ import com.demo.folder.utils.FileUtil;
 import jakarta.persistence.EntityNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,9 +18,13 @@ public class UserService {
   private static final Logger LOGGER = LoggerFactory.getLogger(UserService.class);
   private final UserRepository userRepository;
   private final PasswordEncoder passwordEncoder;
-  public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+  private final LoginAttemptService loginAttemptService;
+
+  public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder,
+      LoginAttemptService loginAttemptService) {
     this.userRepository = userRepository;
     this.passwordEncoder = passwordEncoder;
+    this.loginAttemptService = loginAttemptService;
   }
 
   @Transactional

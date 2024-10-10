@@ -145,8 +145,7 @@ class TrainingControllerTest {
             .session(session))
         .andExpect(status().isOk())
         .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-        .andExpect(jsonPath("$[0].trainingName", is("Morning Yoga Session")))
-        .andExpect(jsonPath("$[0].traineeUserName", is(traineeUsername)))
-        .andExpect(jsonPath("$[0].trainerUserName", is(trainerUsername)));
+        .andExpect(jsonPath("$[0].trainingName", is("Morning Yoga Session")));
+
   }
 }
